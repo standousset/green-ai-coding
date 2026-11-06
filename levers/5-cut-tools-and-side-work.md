@@ -7,15 +7,15 @@
 
 ## Why it matters
 
-- **Tools:** each connected tool server (MCP server) adds its tool names and
-  instructions to the context
+- Each connected tool server (MCP server) adds its tool names and instructions
+  to the context
   ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
   Command-line tools such as `gh`, `aws` or `gcloud` do not add a tool list to
   the context. The Claude Code docs call them "more context-efficient than MCP
   servers".
-- **Side work:** test runs, logs and documentation searches fill the context
-  fast. A subagent does this work in its own context and sends back only a short
-  result ([Claude Code docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
+- Test runs, logs and documentation searches fill the context fast. A subagent
+  is a helper agent with its own context. It does this work and sends back only
+  a short result ([Claude Code docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
   A subagent still makes its own requests, so give it a small model
   ([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model)).
 
@@ -42,7 +42,7 @@ A subagent that runs the tests on a small model. Save it as
 ```markdown
 ---
 name: test-runner
-description: Run the tests and report only the result. Use after each code change.
+description: Run the tests and report only the result. Use it instead of running the tests in the main conversation.
 model: haiku
 ---
 

@@ -7,34 +7,33 @@ what the task needs.
 
 ## Why it matters
 
-- The assistant sends the **full conversation again with every request**. Each
+- The assistant sends the full conversation again with every request. Each
   time it uses a tool, it sends one more request with the tool results
   ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
-  Old, unrelated context costs something with each message.
+  Old, unrelated context adds to the cost of each message.
 - A long context also makes the answers less reliable. In a study of 18 models,
   the results became less reliable as the input got longer
   ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)).
-  Less reliable answers mean more retries (see [lever 6](6-make-fewer-round-trips.md)).
+  Less reliable answers lead to more retries (see [lever 6](6-make-fewer-round-trips.md)).
 
 ## How to apply
 
 **Claude Code**
 - New task: `/clear`. It costs nothing.
-- Long task that you want to continue: `/compact`, at a natural break, **while
-  the cache is still warm**. To make the summary, compacting sends the full
+- Long task that you want to continue: `/compact`, at a natural break, while
+  the cache is still warm. To make the summary, compacting sends the full
   conversation again. With a warm cache, this request reads the conversation
   from the cache and "costs a fraction of what the context size suggests". After
   a break longer than the cache lifetime, it processes the full history again,
   with no cache ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
-  So compact before you step away, not when you come back. See
-  [lever 4](4-stay-in-the-cache-window.md).
-- To drop a path that did not work, use `/rewind` to go back to an earlier
-  message. It keeps the part of the conversation that is already in the cache.
+  Compact before you step away. See [lever 4](4-stay-in-the-cache-window.md).
+- If a path did not work, use `/rewind` to go back to an earlier message. It
+  keeps the part of the conversation that is already in the cache.
 - See what fills the context: `/context`.
 - Keep `CLAUDE.md` or `AGENTS.md` short. It is part of every request.
 
 **All assistants**
-- Give only the part of a log or a file that matters, not the full file.
+- Give only the part of a log or a file that matters.
 - Point to the files: "change `src/auth/login.ts`" is better than "find the
   login code".
 - Ask for short answers (see the text to copy below).

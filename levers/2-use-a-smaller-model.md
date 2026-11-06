@@ -3,7 +3,7 @@
 # 2 · Use a smaller model
 
 **In one line:** make a mid-size model your default, and use the largest model
-only for the hardest tasks.
+for the hardest tasks only.
 
 ## Why it matters
 
@@ -18,26 +18,28 @@ only for the hardest tasks.
 
 **Claude Code**
 - Set a default: `"model": "sonnet"` in your settings (see below).
-- Change the model for one task: `/model`. Do it at the start of the task, after
-  `/clear`. Each model has its own cache, so a change in the middle of a task
-  reads the full conversation again
+- Change the model for one task with `/model`, at the start of the task and
+  after `/clear`. Each model has its own cache, so a change in the middle of a
+  task reads the full conversation again
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#switching-models)).
-- Know the trap: `/model` also saves your choice as the default for new sessions,
-  in your user settings
+- `/model` also saves your choice as the default for new sessions, in your user
+  settings
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#setting-your-model)).
-  To switch for this session only, open `/model`, choose the model, and press
-  `s`. Also, a `model` key in the project or local settings file wins over the
-  user settings, so the next session starts on the small model again.
+  To switch for this session only, open `/model`, choose the model and press
+  `s`.
+- If the project or local settings file also has a `model` key, that key wins
+  over your user settings. The next session then starts on the project model,
+  whatever you saved with `/model`.
 - Option: `opusplan` uses Opus in plan mode and Sonnet for the work
   ([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
-  Each switch between plan mode and work mode starts a new cache, so use it for
-  one plan and then a long work phase, not for frequent switches.
+  Each switch between plan mode and work mode starts a new cache. It fits one
+  plan followed by a long work phase, and it costs more if you switch often.
 
 **Other assistants:** use the model picker. Choose a mid-size model as the
 default. If the assistant has an automatic mode, check which models it uses.
 
 **Teams:** set the default model in the project settings file. Make the largest
-model a choice for hard tasks, not the default.
+model an option for hard tasks.
 
 ## Copy this
 

@@ -8,39 +8,43 @@ for hard ones.
 ## Why it matters
 
 The effort level sets how much the model thinks before it answers. Thinking is
-text that the model generates, and generated text is what uses the most energy.
+text that the model generates, and generated text uses most of the energy.
 
-- Reasoning models use on average **30 times more energy** than models without
-  reasoning. The same model uses **150 to 700 times more energy** with reasoning
-  on, because it generates 300 to 800 times more tokens
+- Across many models, reasoning models use on average 30 times more energy than
+  models without reasoning. For a single model the gap is larger: three open
+  models used 150 to 700 times more energy with reasoning on than off, mostly
+  because they generated 300 to 800 times more tokens
   ([AI Energy Score v2](https://huggingface.co/blog/sasha/ai-energy-score-v2)).
 - In Claude Code, thinking tokens are billed as output tokens, and the default
   can be tens of thousands of tokens for each request
   ([Claude Code docs](https://code.claude.com/docs/en/costs#adjust-extended-thinking)).
-- On the newest Claude models (Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable), you
+- On the newest Claude models (Opus 5.5, Sonnet 5.5, Haiku 5.5, Fable 5.1), you
   cannot turn thinking off. The effort level is the control that you have.
 
-Most coding tasks do not need deep reasoning: a rename, a small fix, a question
-about the code, a test to add.
+Most coding tasks do not need deep reasoning. Examples are a rename, a small
+fix, a question about the code and a test to add.
 
 ## How to apply
 
 **Claude Code**
-- Know the default. Opus 5.5, Sonnet 5.5 and Haiku 5.5 start at `medium`. Most
+- Check the default. Opus 5.5, Sonnet 5.5 and Haiku 5.5 start at `medium`. Most
   other models start at `high`, and Opus 4.7 at `xhigh`
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
-- Do not raise your default by mistake. A level that you type after `/effort`
-  (for example `/effort high`) becomes your default for later sessions.
-- To change the level for one task only: open `/effort`, choose the level, and
-  press `s`. The level applies to this session only. Use `low` for small tasks,
-  and `high` for a hard bug or a design decision.
+- A level that you type after `/effort` (for example `/effort high`) becomes your
+  default for later sessions, so check what you typed.
+- To change the level for one task only, open `/effort`, choose the level and
+  press `s`. The level then applies to this session only. Use `low` for small
+  tasks and `high` for a hard bug or a design decision.
 - Set a default for a project in the project or local settings file (see below).
-- Choose the level at the start of a task. On some models, a change in the
-  middle of a session restarts the cache
+- Choose the level at the start of a task. On Opus 5.5, Sonnet 5.5, Haiku 5.5
+  and Fable 5.1, a change in the middle of a session keeps the cache if you use
+  an API key or a Claude subscription. On other models, and on Amazon Bedrock
+  and Google Cloud, it restarts the cache
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#changing-effort-level)).
 
-**Other assistants:** look for a setting named effort, thinking, reasoning or
-"fast / thinking" mode. Use the fast mode by default.
+**Other assistants:** look for a setting named effort, thinking or reasoning, or
+for a switch between an "instant" mode and a "thinking" mode. Use the mode
+without reasoning by default.
 
 **Teams:** put the default in the project settings file (in Claude Code:
 `.claude/settings.json`), which you commit with the code. Then every person

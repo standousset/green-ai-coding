@@ -14,7 +14,7 @@ simple tool does the job.
 - A precise request (files, limits, expected result) needs fewer rounds than a
   vague one.
 - Search, rename, formatting and code from templates do not need a model. Your
-  editor, a formatter or a linter does these tasks with almost no energy.
+  editor, a formatter or a linter does these tasks with far less energy.
 
 ## How to apply
 
@@ -24,7 +24,8 @@ simple tool does the job.
   assistant work. Use the plan mode if your assistant has one.
 - Do not say "try again" without new information. Give the error, the test that
   fails, or what is wrong.
-- Before you ask, think: can my editor, `grep`, a formatter or a linter do it?
+- Before you ask, check if your editor, `grep`, a formatter or a linter can do
+  the task.
 
 **Teams:** add the project commands (test, lint, format) to the rules file, so
 the assistant uses them instead of guessing.
@@ -34,7 +35,7 @@ the assistant uses them instead of guessing.
 Before a large task:
 
 ```text
-Before you write code, describe the task in 3 lines, list the files that you will change, and ask me the questions that you need. Then make the smallest change that solves the task.
+Before you write code, describe the task in 3 lines, list the files that you will change, and ask me all your questions in one message. Then make the smallest change that solves the task.
 ```
 
 When you are not sure that you need AI:
@@ -45,8 +46,8 @@ Does this task need AI? If a standard tool can do it (search, formatter, linter,
 
 ## Check it
 
-- Count the rounds of a typical task. If you often need more than 3, make the
-  first request more precise.
+- Count the rounds of a typical task. As a rule of thumb (not a measured limit),
+  if you often need more than 3, make the first request more precise.
 
 ## Resources
 
