@@ -21,7 +21,7 @@ simple tool does the job.
 **All assistants**
 - Say which files, which limits and what result you expect.
 - For a large task, ask for a plan first. Correct the plan, then let the
-  assistant work. In Claude Code, use plan mode.
+  assistant work. Use the plan mode if your assistant has one.
 - Do not say "try again" without new information. Give the error, the test that
   fails, or what is wrong.
 - Before you ask, think: can my editor, `grep`, a formatter or a linter do it?

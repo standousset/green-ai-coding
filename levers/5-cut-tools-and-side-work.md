@@ -32,7 +32,7 @@
 use for the current project.
 
 **Teams:** share only the tool servers that the project needs, in the project
-configuration. Share the subagents too, in `.claude/agents/`.
+configuration. Share the subagents too (in Claude Code: `.claude/agents/`).
 
 ## Copy this
 

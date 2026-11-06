@@ -42,8 +42,8 @@ about the code, a test to add.
 **Other assistants:** look for a setting named effort, thinking, reasoning or
 "fast / thinking" mode. Use the fast mode by default.
 
-**Teams:** put the default in the project settings file
-(`.claude/settings.json`), which you commit with the code. Then every person
+**Teams:** put the default in the project settings file (in Claude Code:
+`.claude/settings.json`), which you commit with the code. Then every person
 starts with the same level.
 
 ## Copy this
