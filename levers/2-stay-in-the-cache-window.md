@@ -5,7 +5,7 @@
 **In one line:** choose the model and the effort level at the start of a task,
 do not change the model in the middle of it, and compact before a long break.
 
-## Prompt caching reuses the start of the conversation
+## 2.1 · Prompt caching reuses the start of the conversation
 
 Each request sends the full conversation again (see
 [lever 1](1-keep-the-context-short.md)). Prompt caching lets the provider reuse
@@ -19,7 +19,7 @@ Other providers also cache the start of the prompt. OpenAI does it
 automatically for long prompts
 ([OpenAI docs](https://platform.openai.com/docs/guides/prompt-caching)).
 
-## The cache lasts 5 minutes or 1 hour
+## 2.2 · The cache lasts 5 minutes or 1 hour
 
 The cache stays only for a short time without use. Each use starts the time
 again ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
@@ -42,7 +42,7 @@ costs 2 times the normal input price, against 1.25 times for 5 minutes. A cache
 read costs the same for both
 ([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)).
 
-## Set the cache time yourself
+## 2.3 · Set the cache time yourself
 
 If you use an API key, a cloud provider or usage credits, and you often come
 back after a break longer than 5 minutes, you can set `promptCacheTtl` to `1h`
@@ -53,7 +53,7 @@ often come back within the hour. For subagents, the setting is
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#choose-the-ttl-yourself),
 [settings reference](https://code.claude.com/docs/en/settings-reference#promptcachettl)).
 
-## Do not change the model in the middle of a task
+## 2.4 · Do not change the model in the middle of a task
 
 Each model has its own cache. A model change in the middle of a task reads the
 full conversation again, with no cache
@@ -63,7 +63,7 @@ Choose the model at the start of a task, and change it between tasks, after
 higher your cache hit rate"
 ([source](https://code.claude.com/docs/en/prompt-caching)).
 
-## A change of effort may keep the cache
+## 2.5 · A change of effort may keep the cache
 
 A change of effort keeps the cache on Opus 5.5, Sonnet 5.5, Haiku 5.5 and
 Fable 5.1 if you use an API key or a Claude subscription. On other models, and
@@ -71,7 +71,7 @@ on Amazon Bedrock and Google Cloud, it restarts the cache
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#changing-effort-level)).
 See [lever 4](4-lower-the-effort.md).
 
-## Compact before you step away
+## 2.6 · Compact before you step away
 
 `/compact` sends the full conversation to make a summary. While the cache is
 warm, this request reads it from the cache and costs a fraction of its size.
@@ -79,18 +79,6 @@ After the cache expires, it processes the full history again
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
 So compact before a break that is longer than your cache time (5 minutes or
 1 hour). See [lever 1](1-keep-the-context-short.md).
-
-## Start a new session after a long break
-
-After a long break, if you do not need the old context, start a new session with
-`/clear`. The first request after the cache expires reads the full context
-again.
-
-## Keep the start of the prompt the same in your own scripts
-
-In other assistants and in your own scripts, put the rules, the instructions and
-the large documents first, and the parts that change at the end. The provider
-can then reuse the start of the prompt from its cache.
 
 ---
 
