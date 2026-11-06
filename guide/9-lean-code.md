@@ -32,6 +32,7 @@ user, for the life of the product.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#9--lean-code): ready to copy into your assistant.
 - [Knip](https://knip.dev/): finds unused files, exports and dependencies in
   JavaScript and TypeScript projects.
 - [deptry](https://deptry.com/): finds unused, missing and indirect

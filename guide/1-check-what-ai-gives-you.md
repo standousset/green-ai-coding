@@ -30,6 +30,8 @@ the same confidence as real facts.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#1--check-what-ai-gives-you): ready to copy into your assistant.
+- [Keep the context small](4-use-only-the-ai-you-need.md#3-keep-the-context-small): a long context makes answers less reliable.
 - [AGENTS.md](https://agents.md/): an open format for a rules file that many
   coding assistants read.
 - [Security-Focused Guide for AI Code Assistant Instructions](https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions)

@@ -35,9 +35,17 @@ your system that trust it too much
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#7--secure-code): ready to copy into your assistant.
 - [Security-Focused Guide for AI Code Assistant Instructions](https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions)
   (OpenSSF): security rules for assistant instruction files, including supply
   chain and language-specific points.
+
+  > **In short** (checked 2026-11-06): you stay responsible for the code, and AI-made code still needs
+  > review, tests and static analysis. Assume it can be insecure. Put security rules in the assistant's
+  > instructions: validate input, encode output, use parameterized queries, keep secrets out of code.
+  > Check every dependency, because assistants can suggest packages that do not exist. Ask the
+  > assistant to find problems in its own answer, then to improve it.
+
 - [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/): the
   risks to check if your product uses a model.
 - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/):

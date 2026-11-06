@@ -34,6 +34,7 @@ fields, date formats, address forms.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#8--accessible-and-inclusive-products): ready to copy into your assistant.
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview): the
   audit tool in Chrome; its accessibility checks use axe-core.
 - [Human or LLM? A Comparative Study on Accessible Code Generation Capability](https://arxiv.org/abs/2503.15885):

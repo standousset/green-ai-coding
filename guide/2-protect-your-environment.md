@@ -46,8 +46,16 @@ rules are not a security boundary, and recommends its sandbox (an isolated space
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#2--protect-your-environment): ready to copy into your assistant.
 - [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/): the
   main risks, including prompt injection, data disclosure and excessive agency.
+
+  > **In short** (checked 2026-11-06): the ten risks of the 2025 list are prompt injection, sensitive
+  > information disclosure, supply chain, data and model poisoning, improper output handling, excessive
+  > agency, system prompt leakage, vector and embedding weaknesses, misinformation, and unbounded
+  > consumption. In our view, five apply directly to coding assistants: prompt injection, information
+  > disclosure, supply chain, excessive agency and misinformation.
+
 - [We Have a Package for You!](https://arxiv.org/abs/2406.10279): the study of
   invented packages.
 - Security settings for common assistants:

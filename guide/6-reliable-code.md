@@ -31,6 +31,7 @@ You are responsible for this code, the same as for code that you write yourself.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#6--reliable-code): ready to copy into your assistant.
 - [ScanCode Toolkit](https://github.com/aboutcode-org/scancode-toolkit): finds
   licences and copyright notices in code.
 

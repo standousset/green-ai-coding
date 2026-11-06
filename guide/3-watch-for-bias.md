@@ -34,6 +34,7 @@ culture: one type of name, one address format, one language.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#3--watch-for-bias): ready to copy into your assistant.
 - [Bias Testing and Mitigation in LLM-based Code Generation](https://arxiv.org/abs/2309.14345):
   the study, and why test feedback works better than prompts.
 - [Personal names around the world](https://www.w3.org/International/questions/qa-personal-names)

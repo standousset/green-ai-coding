@@ -32,6 +32,7 @@ send it to an AI provider.
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#5--stay-in-control): ready to copy into your assistant.
 - [About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
   (GitHub): make the platform require a review before merge.
 - [Fedora AI-Assisted Contributions Policy](https://docs.fedoraproject.org/en-US/council/policy/ai-contribution-policy/):

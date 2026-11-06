@@ -35,6 +35,7 @@ explain issues in their own words
 
 ## Resources
 
+- [Prompts for this part](../toolkit/prompts.md#10--code-that-people-own): ready to copy into your assistant.
 - [About code owners](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
   (GitHub): name the people responsible for each part of the code.
 - [Fedora AI-Assisted Contributions Policy](https://docs.fedoraproject.org/en-US/council/policy/ai-contribution-policy/):
