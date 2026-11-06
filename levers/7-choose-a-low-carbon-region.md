@@ -1,3 +1,5 @@
+[← 6 · Make fewer round trips](6-make-fewer-round-trips.md) · [All levers](../README.md)
+
 # 7 · Choose a low-carbon region
 
 **In one line:** when you can choose where your requests run, choose a region
@@ -53,4 +55,4 @@ region. Prefer providers that publish data on their energy use and emissions.
 
 ---
 
-Previous: [6 · Make fewer round trips](6-make-fewer-round-trips.md) · [All levers](../README.md)
+[← 6 · Make fewer round trips](6-make-fewer-round-trips.md) · [All levers](../README.md)

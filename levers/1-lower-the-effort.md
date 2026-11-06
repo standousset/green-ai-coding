@@ -1,3 +1,5 @@
+[All levers](../README.md) · [2 · Use a smaller model →](2-use-a-smaller-model.md)
+
 # 1 · Lower the effort
 
 **In one line:** use a low effort level for simple tasks, and keep a high level
@@ -24,9 +26,15 @@ about the code, a test to add.
 ## How to apply
 
 **Claude Code**
-- Set a default: `"effortLevel": "medium"` in your settings (see below).
-- Change it for one task: `/effort low` for small tasks, `/effort high` for a
-  hard bug or a design decision.
+- Know the default. Opus 5.5, Sonnet 5.5 and Haiku 5.5 start at `medium`. Most
+  other models start at `high`, and Opus 4.7 at `xhigh`
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
+- Do not raise your default by mistake. A level that you type after `/effort`
+  (for example `/effort high`) becomes your default for later sessions.
+- To change the level for one task only: open `/effort`, choose the level, and
+  press `s`. The level applies to this session only. Use `low` for small tasks,
+  and `high` for a hard bug or a design decision.
+- Set a default for a project in the project or local settings file (see below).
 - Choose the level at the start of a task. On some models, a change in the
   middle of a session restarts the cache
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#changing-effort-level)).
@@ -40,8 +48,8 @@ starts with the same level.
 
 ## Copy this
 
-In `~/.claude/settings.json` (for you) or `.claude/settings.json` (for the
-project):
+Add this key to `.claude/settings.json` in your project (for everyone on the
+project) or to `.claude/settings.local.json` (only for you):
 
 ```json
 {
@@ -49,8 +57,12 @@ project):
 }
 ```
 
-The values are `low`, `medium`, `high` and `xhigh`
+The values are `low`, `medium`, `high` and `xhigh`. In these two files, the key
+applies to every model. Do not put it in `~/.claude/settings.json`: there, Opus
+5.5 and later models ignore it
 ([settings reference](https://code.claude.com/docs/en/settings-reference#effortlevel)).
+For all your projects, use `/effort medium` once instead: Claude Code saves it
+for the current model.
 
 ## Check it
 
@@ -69,4 +81,4 @@ The values are `low`, `medium`, `high` and `xhigh`
 
 ---
 
-[All levers](../README.md) · Next: [2 · Use a smaller model](2-use-a-smaller-model.md)
+[All levers](../README.md) · [2 · Use a smaller model →](2-use-a-smaller-model.md)

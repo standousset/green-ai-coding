@@ -1,3 +1,5 @@
+[← 4 · Stay in the cache window](4-stay-in-the-cache-window.md) · [All levers](../README.md) · [6 · Make fewer round trips →](6-make-fewer-round-trips.md)
+
 # 5 · Cut tools and side work
 
 **In one line:** disconnect the tools that you do not use, and give noisy work
@@ -63,4 +65,4 @@ error of each failed test. Do not copy the full output.
 
 ---
 
-Previous: [4 · Stay in the cache window](4-stay-in-the-cache-window.md) · [All levers](../README.md) · Next: [6 · Make fewer round trips](6-make-fewer-round-trips.md)
+[← 4 · Stay in the cache window](4-stay-in-the-cache-window.md) · [All levers](../README.md) · [6 · Make fewer round trips →](6-make-fewer-round-trips.md)

@@ -1,3 +1,5 @@
+[← 3 · Keep the context short](3-keep-the-context-short.md) · [All levers](../README.md) · [5 · Cut tools and side work →](5-cut-tools-and-side-work.md)
+
 # 4 · Stay in the cache window
 
 **In one line:** choose the model and the effort level at the start of a task,
@@ -32,9 +34,14 @@ automatically for long prompts
   say: "The fewer changes you make mid-task, the higher your cache hit rate"
   ([source](https://code.claude.com/docs/en/prompt-caching)).
 - Change the model between tasks, after `/clear`.
+- **Compact before you step away, not after.** `/compact` sends the full
+  conversation to make a summary. While the cache is warm, this request reads it
+  from the cache and costs a fraction of its size. After the cache expires, it
+  processes the full history again
+  ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
 - After a long break, if you do not need the old context, start a new session
-  with a short summary. The first request after the cache expires reads the full
-  context again.
+  with `/clear` instead. The first request after the cache expires reads the
+  full context again.
 - With an API key, and if you often take breaks longer than 5 minutes, you can
   set `"promptCacheTtl": "1h"`. A cache write costs more with 1 hour, so do this
   only if you often come back after a break
@@ -52,6 +59,7 @@ A rule of thumb for each task:
 1. /clear
 2. Choose the model and the effort.
 3. Work without a change until the task is done.
+4. Before a long break: /compact, while the cache is still warm.
 ```
 
 ## Check it
@@ -70,4 +78,4 @@ A rule of thumb for each task:
 
 ---
 
-Previous: [3 · Keep the context short](3-keep-the-context-short.md) · [All levers](../README.md) · Next: [5 · Cut tools and side work](5-cut-tools-and-side-work.md)
+[← 3 · Keep the context short](3-keep-the-context-short.md) · [All levers](../README.md) · [5 · Cut tools and side work →](5-cut-tools-and-side-work.md)

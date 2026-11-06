@@ -1,3 +1,5 @@
+[← 1 · Lower the effort](1-lower-the-effort.md) · [All levers](../README.md) · [3 · Keep the context short →](3-keep-the-context-short.md)
+
 # 2 · Use a smaller model
 
 **In one line:** make a mid-size model your default, and use the largest model
@@ -20,6 +22,12 @@ only for the hardest tasks.
   `/clear`. Each model has its own cache, so a change in the middle of a task
   reads the full conversation again
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#switching-models)).
+- Know the trap: `/model` also saves your choice as the default for new sessions,
+  in your user settings
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#setting-your-model)).
+  To switch for this session only, open `/model`, choose the model, and press
+  `s`. Also, a `model` key in the project or local settings file wins over the
+  user settings, so the next session starts on the small model again.
 - Option: `opusplan` uses Opus in plan mode and Sonnet for the work
   ([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
   Each switch between plan mode and work mode starts a new cache, so use it for
@@ -33,8 +41,9 @@ model a choice for hard tasks, not the default.
 
 ## Copy this
 
-In `~/.claude/settings.json` (for you) or `.claude/settings.json` (for the
-project):
+Add this key to `.claude/settings.json` in your project (for everyone on the
+project), to `.claude/settings.local.json` (only for you, in this project), or
+to `~/.claude/settings.json` (for you, in all projects):
 
 ```json
 {
@@ -60,4 +69,4 @@ project):
 
 ---
 
-Previous: [1 · Lower the effort](1-lower-the-effort.md) · [All levers](../README.md) · Next: [3 · Keep the context short](3-keep-the-context-short.md)
+[← 1 · Lower the effort](1-lower-the-effort.md) · [All levers](../README.md) · [3 · Keep the context short →](3-keep-the-context-short.md)

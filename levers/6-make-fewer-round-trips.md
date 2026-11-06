@@ -1,3 +1,5 @@
+[← 5 · Cut tools and side work](5-cut-tools-and-side-work.md) · [All levers](../README.md) · [7 · Choose a low-carbon region →](7-choose-a-low-carbon-region.md)
+
 # 6 · Make fewer round trips
 
 **In one line:** ask precisely, plan large tasks first, and do not use AI when a
@@ -54,4 +56,4 @@ Does this task need AI? If a standard tool can do it (search, formatter, linter,
 
 ---
 
-Previous: [5 · Cut tools and side work](5-cut-tools-and-side-work.md) · [All levers](../README.md) · Next: [7 · Choose a low-carbon region](7-choose-a-low-carbon-region.md)
+[← 5 · Cut tools and side work](5-cut-tools-and-side-work.md) · [All levers](../README.md) · [7 · Choose a low-carbon region →](7-choose-a-low-carbon-region.md)

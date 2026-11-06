@@ -1,12 +1,10 @@
 # Green AI coding
 
-Code with AI and use less energy. 7 levers, each with its sources. Levers 1 to
-6 work for everyone, every day.
+Code with AI and use less energy.
 
-## Copy this (1 minute)
+## Copy this
 
-**For the assistant.** Paste this into your `CLAUDE.md`, `AGENTS.md`, rules
-file or prompt:
+Paste this into your `CLAUDE.md`, `AGENTS.md`, rules file or prompt:
 
 ```text
 Help me use less energy and fewer tokens:
@@ -17,18 +15,6 @@ Help me use less energy and fewer tokens:
 - If a standard tool can do the task without AI (search, rename, formatter, linter), tell me.
 - If my request is not clear, ask one question before you start.
 ```
-
-**For Claude Code.** Paste this into `~/.claude/settings.json` (for you) or
-`.claude/settings.json` (for the whole project):
-
-```json
-{
-  "model": "sonnet",
-  "effortLevel": "medium"
-}
-```
-
-Then use `/effort high` or `/model opus` only for hard tasks.
 
 ## The 7 levers
 
@@ -41,18 +27,6 @@ Then use `/effort high` or `/model opus` only for hard tasks.
 | 5 | [**Cut tools and side work**](levers/5-cut-tools-and-side-work.md) | Tool servers, tests and logs fill the context. A small subagent keeps them out. |
 | 6 | [**Make fewer round trips**](levers/6-make-fewer-round-trips.md) | Each retry sends the full context again. |
 | 7 | [**Choose a low-carbon region**](levers/7-choose-a-low-carbon-region.md) | Electricity emits from **28 gCO₂/kWh** (Norway) to **670** (India), more than 20 times more. Only if you can choose where requests run. |
-
-Each page tells you why the lever matters, how to apply it, what to copy, and
-how to check the result.
-
-## Where the energy goes
-
-A request to an AI assistant uses more energy when the model:
-- **writes** more tokens (thinking tokens included): levers 1 and 6;
-- is **larger**: lever 2;
-- **reads** more tokens that are not in the cache: levers 3, 4 and 5.
-
-The electricity of the data centre then sets the CO₂: lever 7.
 
 ## Licence
 

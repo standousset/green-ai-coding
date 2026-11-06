@@ -1,3 +1,5 @@
+[← 2 · Use a smaller model](2-use-a-smaller-model.md) · [All levers](../README.md) · [4 · Stay in the cache window →](4-stay-in-the-cache-window.md)
+
 # 3 · Keep the context short
 
 **In one line:** start a new session for each task, and give the assistant only
@@ -18,8 +20,16 @@ what the task needs.
 
 **Claude Code**
 - New task: `/clear`. It costs nothing.
-- Long task that you want to continue: `/compact`, at a natural break. Compacting
-  reads the full conversation, so it is a large request too.
+- Long task that you want to continue: `/compact`, at a natural break, **while
+  the cache is still warm**. To make the summary, compacting sends the full
+  conversation again. With a warm cache, this request reads the conversation
+  from the cache and "costs a fraction of what the context size suggests". After
+  a break longer than the cache lifetime, it processes the full history again,
+  with no cache ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
+  So compact before you step away, not when you come back. See
+  [lever 4](4-stay-in-the-cache-window.md).
+- To drop a path that did not work, use `/rewind` to go back to an earlier
+  message. It keeps the part of the conversation that is already in the cache.
 - See what fills the context: `/context`.
 - Keep `CLAUDE.md` or `AGENTS.md` short. It is part of every request.
 
@@ -65,4 +75,4 @@ Summarise this session in 10 lines: decisions, open points, files changed. I wil
 
 ---
 
-Previous: [2 · Use a smaller model](2-use-a-smaller-model.md) · [All levers](../README.md) · Next: [4 · Stay in the cache window](4-stay-in-the-cache-window.md)
+[← 2 · Use a smaller model](2-use-a-smaller-model.md) · [All levers](../README.md) · [4 · Stay in the cache window →](4-stay-in-the-cache-window.md)
