@@ -54,4 +54,4 @@ Does this task need AI? If a standard tool can do it (search, formatter, linter,
 
 ---
 
-Previous: [5 · Cut tools and side work](5-cut-tools-and-side-work.md) · [All levers](../README.md) · Next: [Bonus · A low-carbon region](bonus-low-carbon-region.md)
+Previous: [5 · Cut tools and side work](5-cut-tools-and-side-work.md) · [All levers](../README.md) · Next: [7 · Choose a low-carbon region](7-choose-a-low-carbon-region.md)

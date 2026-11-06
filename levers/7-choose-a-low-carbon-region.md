@@ -1,7 +1,10 @@
-# Bonus · A low-carbon region
+# 7 · Choose a low-carbon region
 
 **In one line:** when you can choose where your requests run, choose a region
 with low-carbon electricity.
+
+**Only if you can choose:** most coding assistants do not let you choose the
+region. This lever is for cloud providers and your own models.
 
 ## Why it matters
 
@@ -25,8 +28,7 @@ From Norway to India, the gap is more than **20 times**.
 
 ## How to apply
 
-Most coding assistants do not let you choose where your requests run. You can
-choose when:
+You can choose the region when:
 - you use a model through a cloud provider that lets you choose a region (for
   example Amazon Bedrock or Google Cloud). Claude Code can use these providers;
 - you run your own models or AI services.

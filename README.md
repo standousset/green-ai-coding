@@ -1,7 +1,7 @@
 # Green AI coding
 
-Code with AI and use less energy. 6 levers, the largest first, each with its
-sources.
+Code with AI and use less energy. 7 levers, each with its sources. Levers 1 to
+6 work for everyone, every day.
 
 ## Copy this (1 minute)
 
@@ -30,7 +30,7 @@ Help me use less energy and fewer tokens:
 
 Then use `/effort high` or `/model opus` only for hard tasks.
 
-## The 6 levers
+## The 7 levers
 
 | | Lever | Why it matters |
 |---|---|---|
@@ -40,7 +40,7 @@ Then use `/effort high` or `/model opus` only for hard tasks.
 | 4 | [**Stay in the cache window**](levers/4-stay-in-the-cache-window.md) | A cache read costs **0.1 times** the price or less, but each model has its own cache. |
 | 5 | [**Cut tools and side work**](levers/5-cut-tools-and-side-work.md) | Tool servers, tests and logs fill the context. A small subagent keeps them out. |
 | 6 | [**Make fewer round trips**](levers/6-make-fewer-round-trips.md) | Each retry sends the full context again. |
-| ★ | [**Bonus: a low-carbon region**](levers/bonus-low-carbon-region.md) | Electricity emits from **28 gCO₂/kWh** (Norway) to **670** (India). |
+| 7 | [**Choose a low-carbon region**](levers/7-choose-a-low-carbon-region.md) | Electricity emits from **28 gCO₂/kWh** (Norway) to **670** (India), more than 20 times more. Only if you can choose where requests run. |
 
 Each page tells you why the lever matters, how to apply it, what to copy, and
 how to check the result.
@@ -52,7 +52,7 @@ A request to an AI assistant uses more energy when the model:
 - is **larger**: lever 2;
 - **reads** more tokens that are not in the cache: levers 3, 4 and 5.
 
-The electricity of the data centre then sets the CO₂: bonus lever.
+The electricity of the data centre then sets the CO₂: lever 7.
 
 ## Licence
 
