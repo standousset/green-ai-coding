@@ -2,7 +2,8 @@
 
 # 5 Make fewer round trips
 
-### In one line: say the task precisely, plan a large task first, stop a wrong path early, and use a simple tool when it does the job.
+> [!IMPORTANT]
+> Say the task precisely, plan a large task first, stop a wrong path early, and use a simple tool when it does the job.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [1.1](1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
@@ -22,19 +23,6 @@ A long context makes the answers less reliable too (see
 | [5.6 Press Esc as soon as Claude goes the wrong way](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
 | [5.7 After two failed corrections, run `/clear` and write a better prompt](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
 | [5.8 Use a simple tool when it does the job](#58-use-a-simple-tool-when-it-does-the-job) | Skip the model |
-
-Each item below has the same parts:
-
-- The **title** is the recommendation.
-- **What** to do.
-- **Why** it saves energy.
-- **How** to do it.
-- **Where** it applies. This lists the three ways to use Claude: the terminal
-  (Claude Code CLI), the Code tab of the desktop app, and chat.
-- **Watch out**: some items add this.
-
-If an item does not list a way, the docs do not describe it for that way: check
-in the app.
 
 ## 5.1 Know that a retry costs more than the first attempt
 

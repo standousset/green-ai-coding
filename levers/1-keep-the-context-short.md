@@ -2,7 +2,8 @@
 
 # 1 Keep the context short
 
-### In one line: give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
+> [!IMPORTANT]
+> Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
 
 **Why it matters:** A long context costs energy, because each request sends the
 whole conversation again (see 1.1). It also makes the answers less reliable. In a
@@ -19,19 +20,6 @@ reliable answers lead to more retries (see
 | [1.4 Go back with `/rewind` when a path did not work](#14-go-back-with-rewind-when-a-path-did-not-work) | Remove a dead end |
 | [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink |
 | [1.6 Set when auto-compaction starts](#16-set-when-auto-compaction-starts) | Set the automatic fallback |
-
-Each item below has the same parts:
-
-- The **title** is the recommendation.
-- **What** to do.
-- **Why** it saves energy.
-- **How** to do it.
-- **Where** it applies. This lists the three ways to use Claude: the terminal
-  (Claude Code CLI), the Code tab of the desktop app, and chat.
-- **Watch out**: some items add this.
-
-If an item does not list a way, the docs do not describe it for that way: check
-in the app.
 
 ## 1.1 Drop old context that the task does not need
 

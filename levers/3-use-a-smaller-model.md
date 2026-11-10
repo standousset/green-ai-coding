@@ -2,7 +2,8 @@
 
 # 3 Use a smaller model
 
-### In one line: make a mid-size model your default, and use the largest model for the hardest tasks only.
+> [!IMPORTANT]
+> Make a mid-size model your default, and use the largest model for the hardest tasks only.
 
 **Why it matters:** A larger model uses more energy for each token that it writes
 (see 3.1). Many plans start on the largest model. The Claude Code docs say that
@@ -19,13 +20,6 @@ A smaller default model is the simplest saving in this guide.
 | [3.5 Press `s` in the `/model` picker to switch for one session only](#35-press-s-in-the-model-picker-to-switch-for-one-session-only) | Protect your default |
 | [3.6 Use `opusplan` for one plan followed by a long work phase](#36-use-opusplan-for-one-plan-followed-by-a-long-work-phase) | Use two models |
 | [3.7 Give simple subagent tasks to Haiku](#37-give-simple-subagent-tasks-to-haiku) | Use a small model for subagents |
-
-Each item below has the same parts. The title is the recommendation. Then:
-**What** to do, **Why** it saves energy, **How** to do it, and **Where** it
-applies. **Where** lists the three ways to use Claude: the terminal (Claude Code
-CLI), the Code tab of the desktop app, and chat. If an item does not list a way,
-the docs do not describe it for that way: check in the app. Some items add a
-**Watch out**.
 
 ## 3.1 Know that a larger model uses more energy for each token
 

@@ -2,7 +2,8 @@
 
 # 2 Stay in the cache window
 
-### In one line: choose the model and the effort level at the start of a task, do not change them in the middle of it, and compact before a long break.
+> [!IMPORTANT]
+> Choose the model and the effort level at the start of a task, do not change them in the middle of it, and compact before a long break.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [lever 1](1-keep-the-context-short.md)). Prompt caching lets the provider reuse
@@ -20,19 +21,6 @@ makes it useless. The items below help you to keep it and to use it.
 | [2.5 Change the effort level in the middle of a task only on a model that keeps the cache](#25-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache) | Protect the cache: effort |
 | [2.6 Turn on fast mode at the start of a session](#26-turn-on-fast-mode-at-the-start-of-a-session) | Protect the cache: speed |
 | [2.7 Compact while the cache is warm](#27-compact-while-the-cache-is-warm) | Use the warm cache |
-
-Each item below has the same parts:
-
-- The **title** is the recommendation.
-- **What** to do.
-- **Why** it saves energy.
-- **How** to do it.
-- **Where** it applies. This lists the three ways to use Claude: the terminal
-  (Claude Code CLI), the Code tab of the desktop app, and chat.
-- **Watch out**: some items add this.
-
-If an item does not list a way, the docs do not describe it for that way: check
-in the app.
 
 ## 2.1 Keep the start of the conversation unchanged
 

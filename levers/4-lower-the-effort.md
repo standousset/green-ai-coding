@@ -2,7 +2,8 @@
 
 # 4 Lower the effort
 
-### In one line: use a low or medium effort level for most coding tasks, and go up only for the hard ones.
+> [!IMPORTANT]
+> Use a low or medium effort level for most coding tasks, and go up only for the hard ones.
 
 **Why it matters:** The effort level sets how much the model thinks before it
 answers. Thinking is text that the model writes, and each token that it writes
@@ -20,19 +21,6 @@ so the effort level is the control that you have. The Claude Code docs say:
 | [4.5 Press `s` to change the level for this session only](#45-press-s-to-change-the-level-for-this-session-only) | Protect your default |
 | [4.6 Set a default level for a project](#46-set-a-default-level-for-a-project) | Set your default |
 | [4.7 Give simple subagent tasks a low effort](#47-give-simple-subagent-tasks-a-low-effort) | Use a low effort for subagents |
-
-Each item below has the same parts:
-
-- The **title** is the recommendation.
-- **What** to do.
-- **Why** it saves energy.
-- **How** to do it.
-- **Where** it applies. This lists the three ways to use Claude: the terminal
-  (Claude Code CLI), the Code tab of the desktop app, and chat.
-- **Watch out**: some items add this.
-
-If an item does not list a way, the docs do not describe it for that way: check
-in the app.
 
 ## 4.1 Know that more thinking means more tokens and more energy
 
