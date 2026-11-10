@@ -42,7 +42,7 @@ Find the settings and rules files of this tool yourself, for me and for this pro
 | 2 | [Stay in the cache window](levers/2-stay-in-the-cache-window.md) | A cache read costs 0.1 times the normal input price or less. The cache lasts 5 minutes or 1 hour, depending on how you pay, and each model has its own cache. A change at the start of the conversation, such as a new model, makes the cache useless. Compact while the cache is warm. |
 | 3 | [Use a smaller model](levers/3-use-a-smaller-model.md) | The energy for each token grows with the size of the model. Many plans start on the largest model. Make Sonnet your default, and use Opus for the hardest tasks only. |
 | 4 | [Lower the effort](levers/4-lower-the-effort.md) | Thinking makes the model write more tokens. In a test of three open models, reasoning on used 150 to 700 times more energy than off. Use a low or medium level for most tasks. |
-| 5 | [Make fewer round trips](levers/5-make-fewer-round-trips.md) | Each retry sends the full context again. |
+| 5 | [Make fewer round trips](levers/5-make-fewer-round-trips.md) | Each retry sends the whole conversation again, and the failed reply is part of it. Name the file, plan a large task first, and run `/clear` after two failed corrections. |
 | 6 | [Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md) | Electricity production emits between 28 gCO₂/kWh (Norway) and 670 (India), more than 20 times more. This applies only if you can choose where requests run. |
 
 ## Contents
@@ -79,10 +79,14 @@ Find the settings and rules files of this tool yourself, for me and for this pro
   - [4.6 Set a default level for a project](levers/4-lower-the-effort.md#46-set-a-default-level-for-a-project)
   - [4.7 Give simple subagent tasks a low effort](levers/4-lower-the-effort.md#47-give-simple-subagent-tasks-a-low-effort)
 - [5 Make fewer round trips](levers/5-make-fewer-round-trips.md)
-  - [5.1 A retry costs more than the first attempt](levers/5-make-fewer-round-trips.md#51-a-retry-costs-more-than-the-first-attempt)
-  - [5.2 Ask precisely](levers/5-make-fewer-round-trips.md#52-ask-precisely)
-  - [5.3 Plan large tasks first](levers/5-make-fewer-round-trips.md#53-plan-large-tasks-first)
-  - [5.4 Do not use AI when a simple tool does the job](levers/5-make-fewer-round-trips.md#54-do-not-use-ai-when-a-simple-tool-does-the-job)
+  - [5.1 Know that a retry costs more than the first attempt](levers/5-make-fewer-round-trips.md#51-know-that-a-retry-costs-more-than-the-first-attempt)
+  - [5.2 Name the file, the limit and the result in your first request](levers/5-make-fewer-round-trips.md#52-name-the-file-the-limit-and-the-result-in-your-first-request)
+  - [5.3 Ask Claude to interview you when the task is not clear](levers/5-make-fewer-round-trips.md#53-ask-claude-to-interview-you-when-the-task-is-not-clear)
+  - [5.4 Plan a large task first](levers/5-make-fewer-round-trips.md#54-plan-a-large-task-first)
+  - [5.5 Give Claude a check to run](levers/5-make-fewer-round-trips.md#55-give-claude-a-check-to-run)
+  - [5.6 Press Esc as soon as Claude goes the wrong way](levers/5-make-fewer-round-trips.md#56-press-esc-as-soon-as-claude-goes-the-wrong-way)
+  - [5.7 After two failed corrections, run `/clear` and write a better prompt](levers/5-make-fewer-round-trips.md#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt)
+  - [5.8 Use a simple tool when it does the job](levers/5-make-fewer-round-trips.md#58-use-a-simple-tool-when-it-does-the-job)
 - [6 Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md)
   - [6.1 The same energy emits very different amounts of CO₂](levers/6-choose-a-low-carbon-region.md#61-the-same-energy-emits-very-different-amounts-of-co₂)
   - [6.2 Choose the region when you can](levers/6-choose-a-low-carbon-region.md#62-choose-the-region-when-you-can)
