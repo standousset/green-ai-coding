@@ -43,7 +43,7 @@ Find the settings and rules files of this tool yourself, for me and for this pro
 | 3 | [Use a smaller model](levers/3-use-a-smaller-model.md) | The energy for each token grows with the size of the model. Many plans start on the largest model. Make Sonnet your default, and use Opus for the hardest tasks only. |
 | 4 | [Lower the effort](levers/4-lower-the-effort.md) | Thinking makes the model write more tokens. In a test of three open models, reasoning on used 150 to 700 times more energy than off. Use a low or medium level for most tasks. |
 | 5 | [Make fewer round trips](levers/5-make-fewer-round-trips.md) | Each retry sends the whole conversation again, and the failed reply is part of it. Name the file, plan a large task first, and run `/clear` after two failed corrections. |
-| 6 | [Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md) | Electricity production emits between 28 gCO₂/kWh (Norway) and 670 (India), more than 20 times more. This applies only if you can choose where requests run. |
+| 6 | [Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md) | In 2025, electricity emitted 28 gCO₂/kWh in Norway and 670 in India, more than 20 times more. This applies only if you can choose where requests run, for example on Amazon Bedrock or Google Cloud. |
 
 ## Contents
 
@@ -88,9 +88,11 @@ Find the settings and rules files of this tool yourself, for me and for this pro
   - [5.7 After two failed corrections, run `/clear` and write a better prompt](levers/5-make-fewer-round-trips.md#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt)
   - [5.8 Use a simple tool when it does the job](levers/5-make-fewer-round-trips.md#58-use-a-simple-tool-when-it-does-the-job)
 - [6 Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md)
-  - [6.1 The same energy emits very different amounts of CO₂](levers/6-choose-a-low-carbon-region.md#61-the-same-energy-emits-very-different-amounts-of-co₂)
-  - [6.2 Choose the region when you can](levers/6-choose-a-low-carbon-region.md#62-choose-the-region-when-you-can)
+  - [6.1 Know that the same energy emits very different amounts of CO₂](levers/6-choose-a-low-carbon-region.md#61-know-that-the-same-energy-emits-very-different-amounts-of-co₂)
+  - [6.2 Check whether you can choose a region](levers/6-choose-a-low-carbon-region.md#62-check-whether-you-can-choose-a-region)
   - [6.3 Find the carbon data of a region](levers/6-choose-a-low-carbon-region.md#63-find-the-carbon-data-of-a-region)
+  - [6.4 Choose a region with low-carbon electricity when you can](levers/6-choose-a-low-carbon-region.md#64-choose-a-region-with-low-carbon-electricity-when-you-can)
+  - [6.5 Check where your requests really run](levers/6-choose-a-low-carbon-region.md#65-check-where-your-requests-really-run)
 
 ## Licence
 
