@@ -21,12 +21,18 @@ makes it useless. The items below help you to keep it and to use it.
 | [2.6 Turn on fast mode at the start of a session](#26-turn-on-fast-mode-at-the-start-of-a-session) | Protect the cache: speed |
 | [2.7 Compact while the cache is warm](#27-compact-while-the-cache-is-warm) | Use the warm cache |
 
-Each item below has the same parts. The title is the recommendation. Then:
-**What** to do, **Why** it saves energy, **How** to do it, and **Where** it
-applies. **Where** lists the three ways to use Claude: the terminal (Claude Code
-CLI), the Code tab of the desktop app, and chat. If an item does not list a way,
-the docs do not describe it for that way: check in the app. Some items add a
-**Watch out**.
+Each item below has the same parts:
+
+- The **title** is the recommendation.
+- **What** to do.
+- **Why** it saves energy.
+- **How** to do it.
+- **Where** it applies. This lists the three ways to use Claude: the terminal
+  (Claude Code CLI), the Code tab of the desktop app, and chat.
+- **Watch out**: some items add this.
+
+If an item does not list a way, the docs do not describe it for that way: check
+in the app.
 
 ## 2.1 Keep the start of the conversation unchanged
 

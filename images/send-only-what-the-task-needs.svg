@@ -69,7 +69,7 @@
   <text class="inblock noisetext" x="522" y="105">file 5</text>
   <rect class="noise" x="556" y="82" width="62" height="38" rx="4"/>
   <text class="inblock noisetext" x="587" y="105">file 6</text>
-  <text class="row" x="40" y="168">Precise request: &#8220;change src/auth/login.ts&#8221;</text>
+  <text class="row" x="40" y="168">Precise request: &#8220;change @login.ts&#8221;</text>
   <text class="label muted right" x="680" y="168">Less context in every later request</text>
   <rect class="frame" x="40" y="178" width="640" height="46" rx="6"/>
   <rect class="inp" x="44" y="182" width="76" height="38" rx="4"/>

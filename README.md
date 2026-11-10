@@ -38,9 +38,9 @@ Find the settings and rules files of this tool yourself, for me and for this pro
 
 | | Lever | Why it matters |
 |---|---|---|
-| 1 | [Keep the context short](levers/1-keep-the-context-short.md) | The full conversation is sent again with every request. Noisy work (tests, logs, searches) fills it fast. A subagent (a helper agent with its own context) keeps that work out, and compaction (a summary that replaces the old conversation) shrinks what remains. |
+| 1 | [Keep the context short](levers/1-keep-the-context-short.md) | The full conversation is sent again with every request. Noisy work (tests, logs, searches) fills it fast. A subagent (a helper agent with its own context) keeps that work out, and compaction (a summary that replaces the old conversation) shrinks what remains. A long context also makes the answers less reliable. |
 | 2 | [Stay in the cache window](levers/2-stay-in-the-cache-window.md) | A cache read costs 0.1 times the normal input price or less. The cache lasts 5 minutes or 1 hour, depending on how you pay, and each model has its own cache. A change at the start of the conversation, such as a new model, makes the cache useless. Compact while the cache is warm. |
-| 3 | [Use a smaller model](levers/3-use-a-smaller-model.md) | The energy for each token grows with the size of the model. |
+| 3 | [Use a smaller model](levers/3-use-a-smaller-model.md) | The energy for each token grows with the size of the model. Many plans start on the largest model. Make Sonnet your default, and use Opus for the hardest tasks only. |
 | 4 | [Lower the effort](levers/4-lower-the-effort.md) | The same model can use 150 to 700 times more energy with reasoning on than off. |
 | 5 | [Make fewer round trips](levers/5-make-fewer-round-trips.md) | Each retry sends the full context again. |
 | 6 | [Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md) | Electricity production emits between 28 gCO₂/kWh (Norway) and 670 (India), more than 20 times more. This applies only if you can choose where requests run. |
@@ -63,11 +63,13 @@ Find the settings and rules files of this tool yourself, for me and for this pro
   - [2.6 Turn on fast mode at the start of a session](levers/2-stay-in-the-cache-window.md#26-turn-on-fast-mode-at-the-start-of-a-session)
   - [2.7 Compact while the cache is warm](levers/2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm)
 - [3 Use a smaller model](levers/3-use-a-smaller-model.md)
-  - [3.1 A larger model uses more energy for each token](levers/3-use-a-smaller-model.md#31-a-larger-model-uses-more-energy-for-each-token)
-  - [3.2 Make a mid-size model your default](levers/3-use-a-smaller-model.md#32-make-a-mid-size-model-your-default)
-  - [3.3 Change the model with `/model` at the start of a task](levers/3-use-a-smaller-model.md#33-change-the-model-with-model-at-the-start-of-a-task)
-  - [3.4 `/model` also changes your default](levers/3-use-a-smaller-model.md#34-model-also-changes-your-default)
-  - [3.5 Use `opusplan` for one plan and a long work phase](levers/3-use-a-smaller-model.md#35-use-opusplan-for-one-plan-and-a-long-work-phase)
+  - [3.1 Know that a larger model uses more energy for each token](levers/3-use-a-smaller-model.md#31-know-that-a-larger-model-uses-more-energy-for-each-token)
+  - [3.2 Check which model you use now](levers/3-use-a-smaller-model.md#32-check-which-model-you-use-now)
+  - [3.3 Make Sonnet your default model](levers/3-use-a-smaller-model.md#33-make-sonnet-your-default-model)
+  - [3.4 Try the smaller model first and go up only when needed](levers/3-use-a-smaller-model.md#34-try-the-smaller-model-first-and-go-up-only-when-needed)
+  - [3.5 Press `s` in the `/model` picker to switch for one session only](levers/3-use-a-smaller-model.md#35-press-s-in-the-model-picker-to-switch-for-one-session-only)
+  - [3.6 Use `opusplan` for one plan followed by a long work phase](levers/3-use-a-smaller-model.md#36-use-opusplan-for-one-plan-followed-by-a-long-work-phase)
+  - [3.7 Give simple subagent tasks to Haiku](levers/3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku)
 - [4 Lower the effort](levers/4-lower-the-effort.md)
   - [4.1 Thinking uses most of the energy](levers/4-lower-the-effort.md#41-thinking-uses-most-of-the-energy)
   - [4.2 On the newest Claude models, effort is your only control](levers/4-lower-the-effort.md#42-on-the-newest-claude-models-effort-is-your-only-control)
