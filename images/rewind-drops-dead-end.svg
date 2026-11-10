@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 362" width="720" height="362" role="img" aria-labelledby="t d">
+  <title id="t">/rewind cuts the conversation back to an earlier message</title>
+  <desc id="d">Two horizontal bars, each in a frame that shows the maximum context size. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then four dashed blocks that show the path that did not work: your message 2, reply 2, your message 3 and reply 3. The part before the rewind point stays in the cache, and the dashed part leaves the context. After /rewind, the bar holds only your message 1 and reply 1, and the next request continues from there. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">/rewind cuts the conversation back to an earlier message</text>
+  <text class="row" x="40" y="68">Before /rewind</text>
+  <text class="small muted" x="166" y="70">rewind point</text>
+  <rect class="frame" x="40" y="78" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="69" y="105">you 1</text>
+  <rect class="earl" x="97" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="126" y="105">reply 1</text>
+  <path class="arrow" d="M 159 72 L 159 130" stroke-dasharray="4 3"/>
+  <rect class="drop" x="164" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock droptext" x="189" y="106">you 2</text>
+  <rect class="drop" x="217" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock droptext" x="246" y="106">reply 2</text>
+  <rect class="drop" x="278" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock droptext" x="303" y="106">you 3</text>
+  <rect class="drop" x="331" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock droptext" x="360" y="106">reply 3</text>
+  <path class="cacheline" d="M 44 136 L 155 136"/>
+  <text class="label" x="44" y="154">stays in the cache</text>
+  <path class="arrow" d="M 164 136 L 387 136" stroke-dasharray="4 3"/>
+  <text class="label muted" x="164" y="154">path that did not work: leaves the context</text>
+  <path class="arrow" d="M 360 164 L 360 196"/>
+  <path class="arrowhead" d="M 354 195 L 360 204 L 366 195 Z"/>
+  <text class="label" x="374" y="190">/rewind</text>
+  <text class="row" x="40" y="226">After /rewind</text>
+  <text class="label muted right" x="680" y="226">The next request continues from here</text>
+  <rect class="frame" x="40" y="236" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="240" width="50" height="38" rx="4"/>
+  <text class="inblock " x="69" y="263">you 1</text>
+  <rect class="earl" x="97" y="240" width="58" height="38" rx="4"/>
+  <text class="inblock " x="126" y="263">reply 1</text>
+  <path class="cacheline" d="M 44 294 L 155 294"/>
+  <text class="label" x="44" y="312">stays in the cache</text>
+  <text class="label muted" x="360" y="346" text-anchor="middle">Sizes are illustrative, not measured.</text>
+</svg>

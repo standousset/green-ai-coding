@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 336" width="720" height="336" role="img" aria-labelledby="t d">
+  <title id="t">/compact replaces the old conversation with a summary</title>
+  <desc id="d">Two horizontal bars, each in a frame that shows the maximum context size. Before /compact, the bar holds five of your messages and five replies, and the frame is nearly full. After /compact, the bar holds one short summary block, and the frame has room again. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">/compact replaces the old conversation with a summary</text>
+  <text class="row" x="40" y="68">Before /compact</text>
+  <text class="label muted right" x="680" y="68">Context: nearly full</text>
+  <rect class="frame" x="40" y="78" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="69" y="105">you 1</text>
+  <rect class="earl" x="97" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="126" y="105">reply 1</text>
+  <rect class="inp" x="158" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="183" y="105">you 2</text>
+  <rect class="earl" x="211" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="240" y="105">reply 2</text>
+  <rect class="inp" x="272" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="297" y="105">you 3</text>
+  <rect class="earl" x="325" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="354" y="105">reply 3</text>
+  <rect class="inp" x="386" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="411" y="105">you 4</text>
+  <rect class="earl" x="439" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="468" y="105">reply 4</text>
+  <rect class="inp" x="500" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock " x="525" y="105">you 5</text>
+  <rect class="earl" x="553" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock " x="582" y="105">reply 5</text>
+  <path class="arrow" d="M 360 132 L 360 168"/>
+  <path class="arrowhead" d="M 354 167 L 360 176 L 366 167 Z"/>
+  <text class="label" x="374" y="160">/compact</text>
+  <text class="row" x="40" y="198">After /compact</text>
+  <text class="label muted right" x="680" y="198">Context: room again</text>
+  <rect class="frame" x="40" y="208" width="640" height="46" rx="6"/>
+  <rect class="earl" x="44" y="212" width="110" height="38" rx="4"/>
+  <text class="inblock " x="99" y="235">summary</text>
+  <rect class="inp" x="40" y="284" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="297">Input: your message</text>
+  <rect class="earl" x="214" y="284" width="16" height="16" rx="3"/>
+  <text class="label" x="238" y="297">Earlier reply or summary, now input</text>
+  <text class="label muted" x="40" y="318" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>

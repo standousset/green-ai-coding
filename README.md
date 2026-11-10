@@ -38,8 +38,8 @@ Find the settings and rules files of this tool yourself, for me and for this pro
 
 | | Lever | Why it matters |
 |---|---|---|
-| 1 | [Keep the context short](levers/1-keep-the-context-short.md) | The full conversation is sent again with every request. Noisy work (tests, logs, searches) fills it fast. A subagent (a helper agent with its own context) keeps that work out, and compaction (a summary that replaces the old conversation) shrinks what remains. Compact while the cache is warm. |
-| 2 | [Stay in the cache window](levers/2-stay-in-the-cache-window.md) | A cache read costs 0.1 times the normal input price or less. The cache lasts 5 minutes or 1 hour, depending on how you pay, and each model has its own cache. |
+| 1 | [Keep the context short](levers/1-keep-the-context-short.md) | The full conversation is sent again with every request. Noisy work (tests, logs, searches) fills it fast. A subagent (a helper agent with its own context) keeps that work out, and compaction (a summary that replaces the old conversation) shrinks what remains. |
+| 2 | [Stay in the cache window](levers/2-stay-in-the-cache-window.md) | A cache read costs 0.1 times the normal input price or less. The cache lasts 5 minutes or 1 hour, depending on how you pay, and each model has its own cache. A change at the start of the conversation, such as a new model, makes the cache useless. Compact while the cache is warm. |
 | 3 | [Use a smaller model](levers/3-use-a-smaller-model.md) | The energy for each token grows with the size of the model. |
 | 4 | [Lower the effort](levers/4-lower-the-effort.md) | The same model can use 150 to 700 times more energy with reasoning on than off. |
 | 5 | [Make fewer round trips](levers/5-make-fewer-round-trips.md) | Each retry sends the full context again. |
@@ -47,43 +47,43 @@ Find the settings and rules files of this tool yourself, for me and for this pro
 
 ## Contents
 
-- [1 · Keep the context short](levers/1-keep-the-context-short.md)
-  - [1.1 · The assistant sends the whole conversation with every request](levers/1-keep-the-context-short.md#11--the-assistant-sends-the-whole-conversation-with-every-request)
-  - [1.2 · A long context makes the answers less reliable](levers/1-keep-the-context-short.md#12--a-long-context-makes-the-answers-less-reliable)
-  - [1.3 · Compact while the cache is warm](levers/1-keep-the-context-short.md#13--compact-while-the-cache-is-warm)
-  - [1.4 · Choose when auto-compaction happens](levers/1-keep-the-context-short.md#14--choose-when-auto-compaction-happens)
-  - [1.5 · Go back with `/rewind` when a path did not work](levers/1-keep-the-context-short.md#15--go-back-with-rewind-when-a-path-did-not-work)
-  - [1.6 · Give noisy work to a subagent](levers/1-keep-the-context-short.md#16--give-noisy-work-to-a-subagent)
-  - [1.7 · Send only what the task needs](levers/1-keep-the-context-short.md#17--send-only-what-the-task-needs)
-- [2 · Stay in the cache window](levers/2-stay-in-the-cache-window.md)
-  - [2.1 · Prompt caching reuses the start of the conversation](levers/2-stay-in-the-cache-window.md#21--prompt-caching-reuses-the-start-of-the-conversation)
-  - [2.2 · The cache lasts 5 minutes or 1 hour](levers/2-stay-in-the-cache-window.md#22--the-cache-lasts-5-minutes-or-1-hour)
-  - [2.3 · Set the cache time yourself](levers/2-stay-in-the-cache-window.md#23--set-the-cache-time-yourself)
-  - [2.4 · Do not change the model in the middle of a task](levers/2-stay-in-the-cache-window.md#24--do-not-change-the-model-in-the-middle-of-a-task)
-  - [2.5 · A change of effort may keep the cache](levers/2-stay-in-the-cache-window.md#25--a-change-of-effort-may-keep-the-cache)
-  - [2.6 · Compact before you step away](levers/2-stay-in-the-cache-window.md#26--compact-before-you-step-away)
-- [3 · Use a smaller model](levers/3-use-a-smaller-model.md)
-  - [3.1 · A larger model uses more energy for each token](levers/3-use-a-smaller-model.md#31--a-larger-model-uses-more-energy-for-each-token)
-  - [3.2 · Make a mid-size model your default](levers/3-use-a-smaller-model.md#32--make-a-mid-size-model-your-default)
-  - [3.3 · Change the model with `/model` at the start of a task](levers/3-use-a-smaller-model.md#33--change-the-model-with-model-at-the-start-of-a-task)
-  - [3.4 · `/model` also changes your default](levers/3-use-a-smaller-model.md#34--model-also-changes-your-default)
-  - [3.5 · Use `opusplan` for one plan and a long work phase](levers/3-use-a-smaller-model.md#35--use-opusplan-for-one-plan-and-a-long-work-phase)
-- [4 · Lower the effort](levers/4-lower-the-effort.md)
-  - [4.1 · Thinking uses most of the energy](levers/4-lower-the-effort.md#41--thinking-uses-most-of-the-energy)
-  - [4.2 · On the newest Claude models, effort is your only control](levers/4-lower-the-effort.md#42--on-the-newest-claude-models-effort-is-your-only-control)
-  - [4.3 · Use a low level for most coding tasks](levers/4-lower-the-effort.md#43--use-a-low-level-for-most-coding-tasks)
-  - [4.4 · Check the default level](levers/4-lower-the-effort.md#44--check-the-default-level)
-  - [4.5 · Change the level for one task with `/effort`](levers/4-lower-the-effort.md#45--change-the-level-for-one-task-with-effort)
-  - [4.6 · Set a default level for a project](levers/4-lower-the-effort.md#46--set-a-default-level-for-a-project)
-- [5 · Make fewer round trips](levers/5-make-fewer-round-trips.md)
-  - [5.1 · A retry costs more than the first attempt](levers/5-make-fewer-round-trips.md#51--a-retry-costs-more-than-the-first-attempt)
-  - [5.2 · Ask precisely](levers/5-make-fewer-round-trips.md#52--ask-precisely)
-  - [5.3 · Plan large tasks first](levers/5-make-fewer-round-trips.md#53--plan-large-tasks-first)
-  - [5.4 · Do not use AI when a simple tool does the job](levers/5-make-fewer-round-trips.md#54--do-not-use-ai-when-a-simple-tool-does-the-job)
-- [6 · Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md)
-  - [6.1 · The same energy emits very different amounts of CO₂](levers/6-choose-a-low-carbon-region.md#61--the-same-energy-emits-very-different-amounts-of-co₂)
-  - [6.2 · Choose the region when you can](levers/6-choose-a-low-carbon-region.md#62--choose-the-region-when-you-can)
-  - [6.3 · Find the carbon data of a region](levers/6-choose-a-low-carbon-region.md#63--find-the-carbon-data-of-a-region)
+- [1 Keep the context short](levers/1-keep-the-context-short.md)
+  - [1.1 Drop old context that the task does not need](levers/1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)
+  - [1.2 Send only what the task needs](levers/1-keep-the-context-short.md#12-send-only-what-the-task-needs)
+  - [1.3 Give noisy work to a subagent](levers/1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent)
+  - [1.4 Go back with `/rewind` when a path did not work](levers/1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)
+  - [1.5 Compact when a long task must continue](levers/1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue)
+  - [1.6 Set when auto-compaction starts](levers/1-keep-the-context-short.md#16-set-when-auto-compaction-starts)
+- [2 Stay in the cache window](levers/2-stay-in-the-cache-window.md)
+  - [2.1 Keep the start of the conversation unchanged](levers/2-stay-in-the-cache-window.md#21-keep-the-start-of-the-conversation-unchanged)
+  - [2.2 Check your cache time before you take a break](levers/2-stay-in-the-cache-window.md#22-check-your-cache-time-before-you-take-a-break)
+  - [2.3 Set the cache time to 1 hour if you often come back after a break](levers/2-stay-in-the-cache-window.md#23-set-the-cache-time-to-1-hour-if-you-often-come-back-after-a-break)
+  - [2.4 Do not change the model in the middle of a task](levers/2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)
+  - [2.5 Change the effort level in the middle of a task only on a model that keeps the cache](levers/2-stay-in-the-cache-window.md#25-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache)
+  - [2.6 Turn on fast mode at the start of a session](levers/2-stay-in-the-cache-window.md#26-turn-on-fast-mode-at-the-start-of-a-session)
+  - [2.7 Compact while the cache is warm](levers/2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm)
+- [3 Use a smaller model](levers/3-use-a-smaller-model.md)
+  - [3.1 A larger model uses more energy for each token](levers/3-use-a-smaller-model.md#31-a-larger-model-uses-more-energy-for-each-token)
+  - [3.2 Make a mid-size model your default](levers/3-use-a-smaller-model.md#32-make-a-mid-size-model-your-default)
+  - [3.3 Change the model with `/model` at the start of a task](levers/3-use-a-smaller-model.md#33-change-the-model-with-model-at-the-start-of-a-task)
+  - [3.4 `/model` also changes your default](levers/3-use-a-smaller-model.md#34-model-also-changes-your-default)
+  - [3.5 Use `opusplan` for one plan and a long work phase](levers/3-use-a-smaller-model.md#35-use-opusplan-for-one-plan-and-a-long-work-phase)
+- [4 Lower the effort](levers/4-lower-the-effort.md)
+  - [4.1 Thinking uses most of the energy](levers/4-lower-the-effort.md#41-thinking-uses-most-of-the-energy)
+  - [4.2 On the newest Claude models, effort is your only control](levers/4-lower-the-effort.md#42-on-the-newest-claude-models-effort-is-your-only-control)
+  - [4.3 Use a low level for most coding tasks](levers/4-lower-the-effort.md#43-use-a-low-level-for-most-coding-tasks)
+  - [4.4 Check the default level](levers/4-lower-the-effort.md#44-check-the-default-level)
+  - [4.5 Change the level for one task with `/effort`](levers/4-lower-the-effort.md#45-change-the-level-for-one-task-with-effort)
+  - [4.6 Set a default level for a project](levers/4-lower-the-effort.md#46-set-a-default-level-for-a-project)
+- [5 Make fewer round trips](levers/5-make-fewer-round-trips.md)
+  - [5.1 A retry costs more than the first attempt](levers/5-make-fewer-round-trips.md#51-a-retry-costs-more-than-the-first-attempt)
+  - [5.2 Ask precisely](levers/5-make-fewer-round-trips.md#52-ask-precisely)
+  - [5.3 Plan large tasks first](levers/5-make-fewer-round-trips.md#53-plan-large-tasks-first)
+  - [5.4 Do not use AI when a simple tool does the job](levers/5-make-fewer-round-trips.md#54-do-not-use-ai-when-a-simple-tool-does-the-job)
+- [6 Choose a low-carbon region](levers/6-choose-a-low-carbon-region.md)
+  - [6.1 The same energy emits very different amounts of CO₂](levers/6-choose-a-low-carbon-region.md#61-the-same-energy-emits-very-different-amounts-of-co₂)
+  - [6.2 Choose the region when you can](levers/6-choose-a-low-carbon-region.md#62-choose-the-region-when-you-can)
+  - [6.3 Find the carbon data of a region](levers/6-choose-a-low-carbon-region.md#63-find-the-carbon-data-of-a-region)
 
 ## Licence
 

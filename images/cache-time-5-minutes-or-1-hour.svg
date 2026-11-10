@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 404" width="720" height="404" role="img" aria-labelledby="t d">
+  <title id="t">A break longer than the cache time ends the cache</title>
+  <desc id="d">Two timelines that start at your last request. With a cache time of 5 minutes, the cache is warm for 5 minutes and then expires. If you come back after a break of 10 minutes, the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, so the next request reads the conversation from the cache.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">A break longer than the cache time ends the cache</text>
+  <text class="row" x="40" y="64">Cache time: 5 minutes</text>
+  <rect class="cache" x="40" y="74" width="200" height="24" rx="4"/>
+  <text class="label" x="48" y="90">cache warm</text>
+  <rect class="dashed" x="240" y="74" width="440" height="24" rx="4"/>
+  <text class="label muted" x="248" y="90">cache expired</text>
+  <path class="arrow" d="M 440 98 L 440 108"/>
+  <rect class="inp" x="390" y="108" width="100" height="28" rx="4"/>
+  <text class="inblock " x="440" y="126">next request</text>
+  <text class="label mid" x="440" y="158">Processes the whole conversation again</text>
+  <text class="row" x="40" y="204">Cache time: 1 hour</text>
+  <rect class="cache" x="40" y="214" width="640" height="24" rx="4"/>
+  <text class="label" x="48" y="230">cache warm for up to 1 hour</text>
+  <path class="arrow" d="M 440 238 L 440 248"/>
+  <rect class="inp" x="390" y="248" width="100" height="28" rx="4"/>
+  <text class="inblock " x="440" y="266">next request</text>
+  <text class="label mid" x="440" y="298">Reads the conversation from the cache</text>
+  <path class="arrow" d="M 40 340 L 640 340"/>
+  <path class="arrow" d="M 40 336 L 40 344"/>
+  <text class="small muted mid" x="40" y="360">0 min</text>
+  <path class="arrow" d="M 240 336 L 240 344"/>
+  <text class="small muted mid" x="240" y="360">5 min</text>
+  <path class="arrow" d="M 440 336 L 440 344"/>
+  <text class="small muted mid" x="440" y="360">10 min</text>
+  <path class="arrow" d="M 640 336 L 640 344"/>
+  <text class="small muted mid" x="640" y="360">15 min</text>
+  <text class="small muted" x="660" y="344">time</text>
+  <text class="label muted" x="40" y="388">0 is your last request. Example: you come back after a break of 10 minutes.</text>
+</svg>

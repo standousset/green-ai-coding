@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 416" width="720" height="416" role="img" aria-labelledby="t d">
+  <title id="t">A subagent keeps noisy work out of the main context</title>
+  <desc id="d">Two horizontal bars for the main context, and one for the subagent. Without a subagent, the main context holds two of your messages, two earlier replies, and a large block of test logs and search results. It is nearly full. With a subagent, the main context holds the same messages and replies, and only a small block with the short result. The subagent has its own context: the task from the main agent as input, the test logs and search results, and its new output, the result. Only the result goes back to the main context. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b;
+      --muted: #6b6b66;
+      --inp-fill: #dcd9d2;
+      --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da;
+      --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50;
+      --out-stroke: #165c3b;
+      --out-text: #ffffff;
+      --noise-fill: #f0b04a;
+      --noise-stroke: #a8731a;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea;
+        --muted: #a3a39d;
+        --inp-fill: #4a4a47;
+        --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44;
+        --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a;
+        --out-stroke: #7bdcae;
+        --out-text: #0f2a1d;
+        --noise-fill: #d9a043;
+        --noise-stroke: #e0a850;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .subframe { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30" text-anchor="middle">A subagent keeps noisy work out of the main context</text>
+
+  <!-- Row A: without a subagent -->
+  <text class="row" x="40" y="68">Without a subagent</text>
+  <text class="label muted right" x="680" y="68">Main context: nearly full</text>
+  <rect class="frame" x="40" y="78" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="82" width="40" height="38" rx="4"/>
+  <text class="inblock" x="64" y="106">you</text>
+  <rect class="earl" x="87" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock" x="112" y="106">reply</text>
+  <rect class="inp" x="140" y="82" width="40" height="38" rx="4"/>
+  <text class="inblock" x="160" y="106">you</text>
+  <rect class="earl" x="183" y="82" width="50" height="38" rx="4"/>
+  <text class="inblock" x="208" y="106">reply</text>
+  <rect class="noise" x="238" y="82" width="436" height="38" rx="4"/>
+  <text class="inblock noisetext" x="456" y="106">test logs, searches</text>
+
+  <!-- Row B: with a subagent -->
+  <text class="row" x="40" y="182">With a subagent</text>
+  <text class="label muted right" x="680" y="182">Main context: still has room</text>
+  <rect class="frame" x="40" y="192" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="196" width="40" height="38" rx="4"/>
+  <text class="inblock" x="64" y="220">you</text>
+  <rect class="earl" x="87" y="196" width="50" height="38" rx="4"/>
+  <text class="inblock" x="112" y="220">reply</text>
+  <rect class="inp" x="140" y="196" width="40" height="38" rx="4"/>
+  <text class="inblock" x="160" y="220">you</text>
+  <rect class="earl" x="183" y="196" width="50" height="38" rx="4"/>
+  <text class="inblock" x="208" y="220">reply</text>
+  <rect class="earl" x="238" y="196" width="64" height="38" rx="4"/>
+  <text class="inblock" x="270" y="220">result</text>
+
+  <!-- Subagent context -->
+  <text class="label" x="40" y="308">Subagent</text>
+  <text class="label muted" x="40" y="326">own context</text>
+  <rect class="subframe" x="238" y="292" width="440" height="46" rx="6"/>
+  <rect class="inp" x="242" y="296" width="56" height="38" rx="4"/>
+  <text class="inblock" x="270" y="320">task</text>
+  <rect class="noise" x="301" y="296" width="300" height="38" rx="4"/>
+  <text class="inblock noisetext" x="451" y="320">test logs, searches</text>
+  <rect class="out" x="604" y="296" width="70" height="38" rx="4"/>
+  <text class="inblock outtext" x="639" y="320">result</text>
+
+  <!-- Arrow: the result goes back to the main context -->
+  <path class="arrow" d="M 639 292 L 639 266 L 270 266 L 270 250"/>
+  <path class="arrowhead" d="M 264 252 L 270 241 L 276 252 Z"/>
+  <text class="label" x="290" y="259">only the short result goes back</text>
+
+  <!-- legend -->
+  <rect class="inp" x="40" y="362" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="375">Input: your message</text>
+  <rect class="earl" x="215" y="362" width="16" height="16" rx="3"/>
+  <text class="label" x="239" y="375">Earlier reply, now input</text>
+  <rect class="out" x="425" y="362" width="16" height="16" rx="3"/>
+  <text class="label" x="449" y="375">Output: new reply</text>
+  <text class="label muted" x="680" y="408" text-anchor="end">The subagent still uses energy. Sizes are illustrative, not measured.</text>
+</svg>

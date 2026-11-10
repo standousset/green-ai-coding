@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 306" width="720" height="306" role="img" aria-labelledby="t d">
+  <title id="t">A precise request adds less to the context</title>
+  <desc id="d">Two horizontal bars, each in a frame that shows the maximum context size. With a vague request, the context holds the rules file, your message, a search, and six files that the assistant read, so it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message, and one file, so it stays small. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">A precise request adds less to the context</text>
+  <text class="row" x="40" y="68">Vague request: &#8220;find the login code&#8221;</text>
+  <text class="label muted right" x="680" y="68">More context in every later request</text>
+  <rect class="frame" x="40" y="78" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="82" width="76" height="38" rx="4"/>
+  <text class="inblock " x="82" y="105">rules file</text>
+  <rect class="inp" x="123" y="82" width="40" height="38" rx="4"/>
+  <text class="inblock " x="143" y="105">you</text>
+  <rect class="noise" x="166" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="197" y="105">search</text>
+  <rect class="noise" x="231" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="262" y="105">file 1</text>
+  <rect class="noise" x="296" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="327" y="105">file 2</text>
+  <rect class="noise" x="361" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="392" y="105">file 3</text>
+  <rect class="noise" x="426" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="457" y="105">file 4</text>
+  <rect class="noise" x="491" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="522" y="105">file 5</text>
+  <rect class="noise" x="556" y="82" width="62" height="38" rx="4"/>
+  <text class="inblock noisetext" x="587" y="105">file 6</text>
+  <text class="row" x="40" y="168">Precise request: &#8220;change src/auth/login.ts&#8221;</text>
+  <text class="label muted right" x="680" y="168">Less context in every later request</text>
+  <rect class="frame" x="40" y="178" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="182" width="76" height="38" rx="4"/>
+  <text class="inblock " x="82" y="205">rules file</text>
+  <rect class="inp" x="123" y="182" width="40" height="38" rx="4"/>
+  <text class="inblock " x="143" y="205">you</text>
+  <rect class="noise" x="166" y="182" width="72" height="38" rx="4"/>
+  <text class="inblock noisetext" x="202" y="205">login.ts</text>
+  <rect class="inp" x="40" y="254" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="267">Input: rules file and your message</text>
+  <rect class="noise" x="304" y="254" width="16" height="16" rx="3"/>
+  <text class="label" x="328" y="267">Tool output: files and search results</text>
+  <text class="label muted" x="40" y="288" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>

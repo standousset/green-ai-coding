@@ -1,11 +1,11 @@
-[← 2 · Stay in the cache window](2-stay-in-the-cache-window.md) · [All levers](../README.md) · [4 · Lower the effort →](4-lower-the-effort.md)
+[← 2 Stay in the cache window](2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [4 Lower the effort →](4-lower-the-effort.md)
 
-# 3 · Use a smaller model
+# 3 Use a smaller model
 
 **In one line:** make a mid-size model your default, and use the largest model
 for the hardest tasks only.
 
-## 3.1 · A larger model uses more energy for each token
+## 3.1 A larger model uses more energy for each token
 
 The energy to generate one token grows with the number of active parameters of
 the model ([EcoLogits method](https://ecologits.ai/latest/methodology/llm_inference/)).
@@ -14,7 +14,7 @@ A larger model uses more energy for each word that it writes. The
 and the [ML.ENERGY leaderboard](https://ml.energy/leaderboard) show measured
 energy of open models, by task and size.
 
-## 3.2 · Make a mid-size model your default
+## 3.2 Make a mid-size model your default
 
 The Claude Code documentation says: "Sonnet handles most coding tasks well". It
 keeps Opus for complex architecture and multi-step reasoning
@@ -28,14 +28,14 @@ Try the smaller model first on a type of task. Go to a larger model only when
 the result is not good enough. `/usage` shows the tokens of the session for each
 model.
 
-## 3.3 · Change the model with `/model` at the start of a task
+## 3.3 Change the model with `/model` at the start of a task
 
 Change the model for one task with `/model`, at the start of the task and after
 `/clear`. Each model has its own cache, so a change in the middle of a task reads
 the full conversation again (see [lever 2](2-stay-in-the-cache-window.md);
 [Claude Code docs](https://code.claude.com/docs/en/prompt-caching#switching-models)).
 
-## 3.4 · `/model` also changes your default
+## 3.4 `/model` also changes your default
 
 `/model` also saves your choice as the default for new sessions, in your user
 settings
@@ -46,7 +46,7 @@ If the project or local settings file also has a `model` key, that key wins over
 your user settings. The next session then starts on the project model, whatever
 you saved with `/model`.
 
-## 3.5 · Use `opusplan` for one plan and a long work phase
+## 3.5 Use `opusplan` for one plan and a long work phase
 
 `opusplan` uses Opus in plan mode and Sonnet for the work
 ([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
@@ -55,4 +55,4 @@ followed by a long work phase, and it costs more if you switch often.
 
 ---
 
-[← 2 · Stay in the cache window](2-stay-in-the-cache-window.md) · [All levers](../README.md) · [4 · Lower the effort →](4-lower-the-effort.md)
+[← 2 Stay in the cache window](2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [4 Lower the effort →](4-lower-the-effort.md)

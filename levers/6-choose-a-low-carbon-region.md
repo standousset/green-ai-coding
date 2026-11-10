@@ -1,6 +1,6 @@
-[← 5 · Make fewer round trips](5-make-fewer-round-trips.md) · [All levers](../README.md)
+[← 5 Make fewer round trips](5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)
 
-# 6 · Choose a low-carbon region
+# 6 Choose a low-carbon region
 
 **In one line:** when you can choose where your requests run, choose a region
 with low-carbon electricity.
@@ -8,7 +8,7 @@ with low-carbon electricity.
 This lever applies only if you can choose. Most coding assistants do not let you
 choose the region. The lever is for cloud providers and your own models.
 
-## 6.1 · The same energy emits very different amounts of CO₂
+## 6.1 The same energy emits very different amounts of CO₂
 
 The carbon emissions depend on the country of the data centre. Carbon intensity
 of electricity in 2025
@@ -28,7 +28,7 @@ of electricity in 2025
 
 From Norway to India, the gap is more than 20 times.
 
-## 6.2 · Choose the region when you can
+## 6.2 Choose the region when you can
 
 You can choose the region when:
 - you use a model through a cloud provider that lets you choose a region (for
@@ -38,7 +38,7 @@ You can choose the region when:
 Then choose a region with low-carbon electricity, if your rules on data location
 allow it. Prefer providers that publish data on their energy use and emissions.
 
-## 6.3 · Find the carbon data of a region
+## 6.3 Find the carbon data of a region
 
 Google Cloud publishes
 [carbon data for each of its regions](https://cloud.google.com/sustainability/region-carbon).
@@ -47,4 +47,4 @@ of electricity, live and for each zone.
 
 ---
 
-[← 5 · Make fewer round trips](5-make-fewer-round-trips.md) · [All levers](../README.md)
+[← 5 Make fewer round trips](5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)

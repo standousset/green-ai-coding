@@ -1,86 +1,179 @@
-[All levers](../README.md) · [2 · Stay in the cache window →](2-stay-in-the-cache-window.md)
+[All levers](../README.md) &emsp; [2 Stay in the cache window →](2-stay-in-the-cache-window.md)
 
-# 1 · Keep the context short
+# 1 Keep the context short
 
-**In one line:** give the assistant only what the task needs, give noisy work to
-a subagent, and compact while the cache is warm.
+### In one line: give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
 
-## 1.1 · The assistant sends the whole conversation with every request
-
-Each request sends the full conversation again. Each time the assistant uses a
-tool, it sends one more request with the tool results
-([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
-Old, unrelated context adds to the cost of each message. In Claude Code,
-`/context` shows what fills the context.
-
-## 1.2 · A long context makes the answers less reliable
-
-In a study of 18 models, the results became less reliable as the input got
-longer ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)).
-Less reliable answers lead to more retries (see
+**Why it matters:** A long context costs energy, because each request sends the
+whole conversation again (see 1.1). It also makes the answers less reliable. In a
+study of 18 models, the results became less reliable as the input got longer
+([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
+reliable answers lead to more retries (see
 [lever 5](5-make-fewer-round-trips.md)).
 
-## 1.3 · Compact while the cache is warm
+The items follow the order of use, from prevention to recovery:
 
-When a long task must continue, `/compact` replaces the old conversation with a
-short summary, so each later request is smaller. To make the summary, compacting
-sends the full conversation once. With a warm cache, this request reads the
-conversation from the cache and "costs a fraction of what the context size
-suggests". After a break longer than the cache lifetime, it processes the full
-history again, with no cache
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
-Compact at a natural break, before you step away (see
-[lever 2](2-stay-in-the-cache-window.md)).
+| Item | Role |
+|---|---|
+| [1.1 Drop old context that the task does not need](#11-drop-old-context-that-the-task-does-not-need) | Start clean |
+| [1.2 Send only what the task needs](#12-send-only-what-the-task-needs) | Prevent |
+| [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
+| [1.4 Go back with `/rewind` when a path did not work](#14-go-back-with-rewind-when-a-path-did-not-work) | Remove a dead end |
+| [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink |
+| [1.6 Set when auto-compaction starts](#16-set-when-auto-compaction-starts) | Set the automatic fallback |
 
-On the 1-hour cache, Claude Code also compacts an idle conversation of 200K
-tokens or more, about an hour after your last request and before the cache
-expires. The setting is `idleCompaction`, on by default
-([Claude Code docs](https://code.claude.com/docs/en/settings-reference#idlecompaction)).
+Each item below has the same parts. The title is the recommendation. Then:
+**What** to do, **Why** it saves energy, **How** to do it, and **Where** it
+applies. **Where** lists the three ways to use Claude: the terminal (Claude Code
+CLI), the Code tab of the desktop app, and chat. If an item does not list a way,
+the docs do not describe it for that way: check in the app. Some items add a
+**Watch out**.
 
-## 1.4 · Choose when auto-compaction happens
+## 1.1 Drop old context that the task does not need
 
-Claude Code also compacts by itself when the context is full enough. You do not
-choose the moment, and it can happen in the middle of a task. The window depends
-on the model and can be very large: the docs give about 967K tokens for Haiku
-5.5. To compact earlier, use `/autocompact 200k` (or the `autoCompactWindow`
-setting). `/autocompact auto` returns to the default. It needs Claude Code
-2.1.221 or later
-([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
+**What:** Keep only the conversation that the current task needs. Start a new
+conversation for an unrelated task.
 
-## 1.5 · Go back with `/rewind` when a path did not work
+**Why:** Each request sends the full conversation again. Each time the assistant
+uses a tool, it sends one more request with the tool results
+([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+Old, unrelated context adds to the cost of each message.
 
-`/rewind` goes back to an earlier message. It keeps the part of the
-conversation that is already in the cache
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
+![Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame.](../images/context-grows-each-request.svg)
 
-## 1.6 · Give noisy work to a subagent
+**How:** Use `/context` to see what fills the context. Use `/clear` to start a
+new conversation between unrelated tasks.
 
-Test runs, logs and documentation searches fill the context fast. A subagent is
-a helper agent with its own context. It does this work and sends back only a
-short result
+**Where:**
+- Terminal: `/context` shows what fills the context. `/clear` starts a new
+  conversation.
+- Desktop app, Code tab: type `/context` in the prompt box. The session details
+  also show how full the context window is. To start a new session, click
+  **+ New** or press Cmd+N (Ctrl+N on Windows)
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+- Chat: start a new chat when a long chat pushes you toward the usage limit
+  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+
+## 1.2 Send only what the task needs
+
+**What:** Give the assistant only the part of a log or a file that matters, and
+keep the rules file short.
+
+**Why:** What you send stays in the context and goes again with each request (see
+1.1). The rules file is part of every request.
+
+![Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small.](../images/send-only-what-the-task-needs.svg)
+
+**How:**
+- Point to the files: "change `src/auth/login.ts`" is better than "find the
+  login code".
+- Give only the part of a log or a file that matters.
+- Ask for short answers, for example "Be brief. Show only the code that
+  changes."
+- Keep `CLAUDE.md` or `AGENTS.md` short.
+
+**Where:**
+- Terminal and desktop app, Code tab: `CLAUDE.md` is the rules file of Claude
+  Code, and the two share it
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+  [AGENTS.md](https://agents.md/) is a shared format for the rules file of coding
+  assistants.
+- Chat: a project loads only the content that is relevant, so keep the project
+  instructions short and remove the files that you do not use. Turn off the
+  connected apps that you do not need. Ask Claude not to search the web when you
+  do not need current information
+  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+
+## 1.3 Give noisy work to a subagent
+
+**What:** A subagent is a helper agent with its own context. It does the noisy
+work and sends back only a short result.
+
+**Why:** Test runs, logs and documentation searches fill the context fast. In
+the context of a subagent, they stay out of your main conversation
 ([Claude Code docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
 
-The requests of a subagent use energy too. For simple work such as running
-tests, give it a small model, for example `model: haiku` in the subagent file
-([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model);
-see also [lever 3](3-use-a-smaller-model.md)).
+![Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back.](../images/subagent-keeps-noise-out.svg)
 
-A subagent does not use the warm cache of the main conversation. It starts its
-own cache, which lasts 5 minutes by default
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)).
-To write a subagent, see the
+**How:** For simple work such as running tests, give the subagent a small model,
+for example `model: haiku` in the subagent file
+([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model);
+see also [lever 3](3-use-a-smaller-model.md)). To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents).
 
-## 1.7 · Send only what the task needs
+**Where:**
+- Terminal: Claude Code subagents.
+- Desktop app, Code tab: the **Background tasks** pane, in the **⋮** menu of the
+  title bar, shows the subagents that run
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
-Give only the part of a log or a file that matters. Point to the files:
-"change `src/auth/login.ts`" is better than "find the login code". Ask for short
-answers, for example "Be brief. Show only the code that changes."
+**Watch out:** The requests of a subagent use energy too. A subagent does not
+use the warm cache of the main conversation. It starts its own cache, which
+lasts 5 minutes by default
+([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)).
 
-Keep `CLAUDE.md` or `AGENTS.md` short, because it is part of every request.
-[AGENTS.md](https://agents.md/) is a shared format for the rules file of coding
-assistants.
+## 1.4 Go back with `/rewind` when a path did not work
+
+**What:** `/rewind` goes back to an earlier message in the conversation.
+
+**Why:** `/rewind` cuts the conversation back to an earlier turn, so the dead end
+leaves the context. The part before that turn is already in the cache, and it
+stays there
+([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
+
+![Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it.](../images/rewind-drops-dead-end.svg)
+
+**How:** Type `/rewind`, then choose the earlier message.
+
+**Where:**
+- Terminal: `/rewind`.
+- Desktop app, Code tab: the Desktop docs do not list `/rewind`.
+
+## 1.5 Compact when a long task must continue
+
+**What:** `/compact` replaces the old conversation with a short summary.
+
+**Why:** The summary is shorter than the old conversation, so each later request
+is smaller.
+
+![Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again.](../images/compact-shrinks-context.svg)
+
+**How:** When a long task must continue, run `/compact` instead of carrying the
+full conversation. For the best moment, see
+[2.7 Compact while the cache is warm](2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm).
+
+**Where:**
+- Terminal: `/compact`.
+- Desktop app, Code tab: type `/compact` in the prompt box. When the context
+  fills up, Claude also summarizes the conversation by itself
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+- Chat: there is no command. If code execution is on, Claude summarizes the
+  earlier messages by itself when the chat nears the context limit, and keeps the
+  full history. A long chat that triggers this uses more of your usage limit, so
+  start a new chat at a natural break
+  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+
+## 1.6 Set when auto-compaction starts
+
+**What:** Choose the context size at which Claude Code compacts by itself.
+
+**Why:** Claude Code compacts by itself when the context is full enough. You do
+not choose the moment, and it can happen in the middle of a task. The window
+depends on the model and can be very large: the docs give about 967K tokens for
+Haiku 5.5.
+
+**How:** To compact earlier, use `/autocompact 200k` (or the `autoCompactWindow`
+setting). `/autocompact auto` returns to the default.
+
+**Where:**
+- Terminal: Claude Code 2.1.221 or later
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
+- Desktop app, Code tab: Claude compacts by itself when the context is full. The
+  Desktop docs do not list `/autocompact`
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+- Chat: the compaction is automatic. The help center gives no setting for it
+  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
 
 ---
 
-[All levers](../README.md) · [2 · Stay in the cache window →](2-stay-in-the-cache-window.md)
+[All levers](../README.md) &emsp; [2 Stay in the cache window →](2-stay-in-the-cache-window.md)
