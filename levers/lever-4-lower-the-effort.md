@@ -1,6 +1,6 @@
-[← 3 Use a smaller model](3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [5 Make fewer round trips →](5-make-fewer-round-trips.md)
+[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Make fewer round trips →](lever-5-make-fewer-round-trips.md)
 
-# 4 Lower the effort
+# Lever 4: Lower the effort
 
 > [!IMPORTANT]
 > Use a low or medium effort level for most coding tasks, and go up only for the hard ones.
@@ -114,7 +114,7 @@ The Claude Code docs suggest these levels
 
 **How:** Choose the level before the first message of a task. A change in the
 middle of a task can read the whole conversation again, with no cache (see
-[2.5](2-stay-in-the-cache-window.md#25-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache)).
+[2.5](lever-2-stay-in-the-cache-window.md#25-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache)).
 To check the level on your own code, run the same small task at two levels and
 compare the results.
 
@@ -217,7 +217,7 @@ The `effort` field in the file of the subagent overrides the level of the sessio
 ([Claude Code docs](https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields)).
 
 **How:** Add the field to the frontmatter of the subagent file, next to `model`
-(see [3.7](3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku)).
+(see [3.7](lever-3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku)).
 For example:
 
 ```markdown
@@ -232,7 +232,7 @@ effort: low
 The options are `low`, `medium`, `high`, `xhigh` and `max`. The levels that you can
 use depend on the model. To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). For the reason to
-use a subagent, see [1.3](1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent).
+use a subagent, see [1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent).
 
 **Where:**
 - Terminal: the subagent file above.
@@ -242,4 +242,4 @@ subagent (see 4.6).
 
 ---
 
-[← 3 Use a smaller model](3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [5 Make fewer round trips →](5-make-fewer-round-trips.md)
+[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Make fewer round trips →](lever-5-make-fewer-round-trips.md)

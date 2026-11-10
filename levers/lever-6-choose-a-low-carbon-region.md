@@ -1,6 +1,6 @@
-[← 5 Make fewer round trips](5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)
+[← Lever 5: Make fewer round trips](lever-5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)
 
-# 6 Choose a low-carbon region
+# Lever 6: Choose a low-carbon region
 
 > [!IMPORTANT]
 > When you can choose where your requests run, choose a region with low-carbon electricity, and check where they really run.
@@ -174,4 +174,4 @@ profile costs about 10% less than a geographic one, but it routes worldwide
 
 ---
 
-[← 5 Make fewer round trips](5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)
+[← Lever 5: Make fewer round trips](lever-5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)

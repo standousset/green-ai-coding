@@ -1,6 +1,6 @@
-[All levers](../README.md) &emsp; [2 Stay in the cache window →](2-stay-in-the-cache-window.md)
+[All levers](../README.md) &emsp; [Lever 2: Stay in the cache window →](lever-2-stay-in-the-cache-window.md)
 
-# 1 Keep the context short
+# Lever 1: Keep the context short
 
 > [!IMPORTANT]
 > Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
@@ -10,7 +10,7 @@ whole conversation again (see 1.1). It also makes the answers less reliable. In 
 study of 18 models, the results became less reliable as the input got longer
 ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
 reliable answers lead to more retries (see
-[lever 5](5-make-fewer-round-trips.md)).
+[lever 5](lever-5-make-fewer-round-trips.md)).
 
 | Item | Role |
 |---|---|
@@ -63,7 +63,14 @@ keep the rules file short.
 - Give only the part of a log or a file that matters.
 - Ask for short answers, for example "Be brief. Show only the code that
   changes."
-- Keep `CLAUDE.md` or `AGENTS.md` short.
+- Keep `CLAUDE.md` or `AGENTS.md` under 200 lines
+  ([Claude Code docs](https://code.claude.com/docs/en/memory#write-effective-instructions)).
+- Move specialized instructions to a skill. The body of a skill loads only when
+  the skill is used
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#move-instructions-from-claudemd-to-skills)).
+- Put the rules for one part of the project in a path-scoped rule (a rule file
+  with `paths` in its header). It loads only when Claude uses a matching file
+  ([Claude Code docs](https://code.claude.com/docs/en/memory#path-specific-rules)).
 
 **Where:**
 - Terminal: type `@` to open a menu of paths. The content of the file goes into
@@ -82,8 +89,12 @@ keep the rules file short.
   do not need current information
   ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
 
-**Watch out:** `@` adds the whole file to the context, up to 25,000 tokens by
-default. For a large file, give only the part that matters.
+**Watch out:**
+- `@` adds the whole file to the context, up to 25,000 tokens by default. For a
+  large file, give only the part that matters.
+- An `@` import inside `CLAUDE.md` loads at launch, together with the file that
+  names it. It does not make the context smaller
+  ([Claude Code docs](https://code.claude.com/docs/en/memory#import-additional-files)).
 
 ## 1.3 Give noisy work to a subagent
 
@@ -99,8 +110,8 @@ the context of a subagent, they stay out of your main conversation
 **How:** To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). To run it on a
 smaller model or at a lower effort, see
-[3.7](3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku) and
-[4.7](4-lower-the-effort.md#47-give-simple-subagent-tasks-a-low-effort).
+[3.7](lever-3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku) and
+[4.7](lever-4-lower-the-effort.md#47-give-simple-subagent-tasks-a-low-effort).
 
 **Where:**
 - Terminal: Claude Code subagents.
@@ -168,7 +179,7 @@ full conversation.
 - When the next task is unrelated, use `/clear` (see 1.1). It costs nothing.
 - To drop one dead end and keep the rest, see 1.4.
 - For the best moment to compact, see
-  [2.7 Compact while the cache is warm](2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm).
+  [2.7 Compact while the cache is warm](lever-2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm).
 
 **Where:**
 - Terminal: `/compact`, or `/compact` with instructions.
@@ -204,4 +215,4 @@ setting). `/autocompact auto` returns to the default.
 
 ---
 
-[All levers](../README.md) &emsp; [2 Stay in the cache window →](2-stay-in-the-cache-window.md)
+[All levers](../README.md) &emsp; [Lever 2: Stay in the cache window →](lever-2-stay-in-the-cache-window.md)

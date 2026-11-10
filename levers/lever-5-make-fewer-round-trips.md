@@ -1,17 +1,17 @@
-[← 4 Lower the effort](4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [6 Choose a low-carbon region →](6-choose-a-low-carbon-region.md)
+[← Lever 4: Lower the effort](lever-4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [Lever 6: Choose a low-carbon region →](lever-6-choose-a-low-carbon-region.md)
 
-# 5 Make fewer round trips
+# Lever 5: Make fewer round trips
 
 > [!IMPORTANT]
 > Say the task precisely, plan a large task first, stop a wrong path early, and use a simple tool when it does the job.
 
 **Why it matters:** Each request sends the whole conversation again (see
-[1.1](1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
+[1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
 so a retry costs more than the first attempt. A vague request also makes Claude
 scan more files than it needs
 ([Claude Code docs](https://code.claude.com/docs/en/costs#write-specific-prompts)).
 A long context makes the answers less reliable too (see
-[lever 1](1-keep-the-context-short.md)).
+[lever 1](lever-1-keep-the-context-short.md)).
 
 | Item | Role |
 |---|---|
@@ -55,7 +55,7 @@ scanning". A request that names the file lets Claude work with few file reads
 
 **How:**
 - Point to the file with `@` (see
-  [1.2](1-keep-the-context-short.md#12-send-only-what-the-task-needs)).
+  [1.2](lever-1-keep-the-context-short.md#12-send-only-what-the-task-needs)).
 - State the limits that Claude cannot read in the code, for example "no new
   libraries". Say which choice you prefer, up front.
 - Point to an example, such as "follow the pattern in HotDogWidget.php".
@@ -84,7 +84,7 @@ A choice that stays open until the build can come back later as a retry (see 5.1
 - Ask Claude to write the spec to a file, for example `SPEC.md`.
 - When the spec exists, start a fresh session to build from it. The interview
   then leaves the context (see
-  [1.1](1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
+  [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
 
 **Where:**
 - Terminal: a normal prompt.
@@ -158,7 +158,7 @@ not send those requests.
 **How:** Watch the first minute. When Claude drifts, press Esc, and then send a
 precise message (see 5.2). To go back to an earlier point and drop the dead end,
 use `/rewind`, or press Esc twice on an empty prompt (see
-[1.4](1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
 
 **Where:**
 - Terminal: Esc and `/rewind`.
@@ -184,7 +184,7 @@ and the limit (see 5.2). `/clear` costs nothing. To find the old session later, 
 `/rename` before `/clear`, and `/resume` to return to it
 ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-context-proactively)).
 If part of the conversation is good, use `/rewind` instead (see
-[1.4](1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
 
 **Where:**
 - Terminal: `/clear`.
@@ -212,7 +212,7 @@ of several files
   editor to rename a symbol. Run your formatter and your linter yourself.
 - For a typed language, install a code intelligence plugin.
 - To have Claude tell you when a tool can do the task, add the matching line of
-  the [permanent rules](../README.md#copy-this-permanent-rules) to your rules
+  the [permanent rules](../README.md#b---copy-this-permanent-rules) to your rules
   file.
 
 **Where:**
@@ -223,4 +223,4 @@ model request. The reason above is fewer tokens, not a measured energy saving.
 
 ---
 
-[← 4 Lower the effort](4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [6 Choose a low-carbon region →](6-choose-a-low-carbon-region.md)
+[← Lever 4: Lower the effort](lever-4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [Lever 6: Choose a low-carbon region →](lever-6-choose-a-low-carbon-region.md)

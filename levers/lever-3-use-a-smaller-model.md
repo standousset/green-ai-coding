@@ -1,6 +1,6 @@
-[← 2 Stay in the cache window](2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [4 Lower the effort →](4-lower-the-effort.md)
+[← Lever 2: Stay in the cache window](lever-2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [Lever 4: Lower the effort →](lever-4-lower-the-effort.md)
 
-# 3 Use a smaller model
+# Lever 3: Use a smaller model
 
 > [!IMPORTANT]
 > Make a mid-size model your default, and use the largest model for the hardest tasks only.
@@ -36,7 +36,7 @@ extrapolates. It is an estimate, not a measure of one given model.
 ![Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar.](../images/energy-per-token-grows-with-model-size.svg)
 
 **How:** Choose the model with the items below. For the effect of the model on
-the cache, see [2.4](2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
+the cache, see [2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
 
 **Where:** This applies to all three ways to use Claude.
 
@@ -116,7 +116,7 @@ The `haiku` alias is for simple tasks, and `sonnet` is for daily coding tasks
 not good enough, repeat the task on the next model. Choose the model before the
 first message of a task. A switch in the middle reads the whole conversation
 again, with no cache (see
-[2.4](2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)).
+[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)).
 
 **Where:**
 - Terminal: `/model sonnet`, `/model haiku` or `/model opus`.
@@ -170,7 +170,7 @@ work phase.
 
 **How:** Run `/model opusplan`. Make the plan, then leave plan mode and work. Do
 not toggle plan mode many times in one task. For the cost of a switch, see
-[2.4](2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
+[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
 
 **Where:**
 - Terminal: the steps above.
@@ -215,4 +215,4 @@ a default. A `model` key in a subagent file still wins over it.
 
 ---
 
-[← 2 Stay in the cache window](2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [4 Lower the effort →](4-lower-the-effort.md)
+[← Lever 2: Stay in the cache window](lever-2-stay-in-the-cache-window.md) &emsp; [All levers](../README.md) &emsp; [Lever 4: Lower the effort →](lever-4-lower-the-effort.md)

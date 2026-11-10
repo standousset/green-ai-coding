@@ -1,12 +1,12 @@
-[← 1 Keep the context short](1-keep-the-context-short.md) &emsp; [All levers](../README.md) &emsp; [3 Use a smaller model →](3-use-a-smaller-model.md)
+[← Lever 1: Keep the context short](lever-1-keep-the-context-short.md) &emsp; [All levers](../README.md) &emsp; [Lever 3: Use a smaller model →](lever-3-use-a-smaller-model.md)
 
-# 2 Stay in the cache window
+# Lever 2: Stay in the cache window
 
 > [!IMPORTANT]
 > Choose the model and the effort level at the start of a task, do not change them in the middle of it, and compact before a long break.
 
 **Why it matters:** Each request sends the whole conversation again (see
-[lever 1](1-keep-the-context-short.md)). Prompt caching lets the provider reuse
+[lever 1](lever-1-keep-the-context-short.md)). Prompt caching lets the provider reuse
 its work on the start of the conversation, so it fully processes only what
 changed ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching)).
 The cache lasts a short time, and a change at the start of the conversation
@@ -125,7 +125,7 @@ rate"
 ([source](https://code.claude.com/docs/en/prompt-caching#how-the-cache-is-organized)).
 
 **How:** Choose the model before the first message. To use a smaller model, see
-[lever 3](3-use-a-smaller-model.md).
+[lever 3](lever-3-use-a-smaller-model.md).
 
 **Where:**
 - Terminal: `/model` asks you to confirm the switch only while the cache is
@@ -157,7 +157,7 @@ of effort restarts the cache on every model
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#changing-effort-level)).
 
 **How:** Choose the effort level at the start (see
-[lever 4](4-lower-the-effort.md)). On a model that does not keep the cache,
+[lever 4](lever-4-lower-the-effort.md)). On a model that does not keep the cache,
 Claude Code asks you to confirm a change while the cache is warm.
 
 **Where:**
@@ -200,10 +200,10 @@ lifetime, it processes the full history again, with no cache
 
 **How:** Compact at a natural break, before you step away. Your cache time is in
 2.2. For the effect of compaction on the context, see
-[1.5](1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue).
+[1.5](lever-1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue).
 To abandon a path, `/rewind` is better than `/compact`: it goes back to a part
 that is already in the cache (see
-[1.4](1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
 
 **Where:**
 - Terminal: on the 1-hour cache, Claude Code also compacts an idle conversation
@@ -215,4 +215,4 @@ that is already in the cache (see
 
 ---
 
-[← 1 Keep the context short](1-keep-the-context-short.md) &emsp; [All levers](../README.md) &emsp; [3 Use a smaller model →](3-use-a-smaller-model.md)
+[← Lever 1: Keep the context short](lever-1-keep-the-context-short.md) &emsp; [All levers](../README.md) &emsp; [Lever 3: Use a smaller model →](lever-3-use-a-smaller-model.md)
