@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 342" width="720" height="342" role="img" aria-labelledby="t d">
+  <title id="t">A larger model uses more energy for each token</title>
+  <desc id="d">Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length, and a second part that grows with the number of active parameters. The large model has the longest bar. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">A larger model uses more energy for each token</text>
+  <text class="row" x="40" y="64">Small model</text>
+  <text class="label muted right" x="680" y="64">few active parameters</text>
+  <rect class="inp" x="40" y="74" width="90" height="34" rx="4"/>
+  <text class="inblock " x="85" y="95">fixed part</text>
+  <rect class="out" x="130" y="74" width="30" height="34" rx="4"/>
+  <text class="inblock outtext" x="145" y="95"></text>
+  <text class="row" x="40" y="138">Mid-size model</text>
+  <text class="label muted right" x="680" y="138">more active parameters</text>
+  <rect class="inp" x="40" y="148" width="90" height="34" rx="4"/>
+  <text class="inblock " x="85" y="169">fixed part</text>
+  <rect class="out" x="130" y="148" width="140" height="34" rx="4"/>
+  <text class="inblock outtext" x="200" y="169">grows</text>
+  <text class="row" x="40" y="212">Large model</text>
+  <text class="label muted right" x="680" y="212">many active parameters</text>
+  <rect class="inp" x="40" y="222" width="90" height="34" rx="4"/>
+  <text class="inblock " x="85" y="243">fixed part</text>
+  <rect class="out" x="130" y="222" width="330" height="34" rx="4"/>
+  <text class="inblock outtext" x="295" y="243">grows</text>
+  <rect class="inp" x="40" y="290" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="303">Fixed part of the energy</text>
+  <rect class="out" x="254" y="290" width="16" height="16" rx="3"/>
+  <text class="label" x="278" y="303">Part that grows with the active parameters</text>
+  <text class="label muted" x="40" y="324" text-anchor="start">Energy for one output token. Sizes are illustrative, not measured.</text>
+</svg>

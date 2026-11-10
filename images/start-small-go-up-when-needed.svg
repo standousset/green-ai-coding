@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 316" width="720" height="316" role="img" aria-labelledby="t d">
+  <title id="t">Start with the smaller model and go up only when needed</title>
+  <desc id="d">Three steps. Haiku is for simple tasks. Sonnet is for most coding tasks and is the place to start. Opus is for architecture decisions and multi-step reasoning. An arrow that points up says to go up one step only if the result is not good enough.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">Start with the smaller model and go up only when needed</text>
+  <rect class="out" x="40" y="60" width="110" height="44" rx="4"/>
+  <text class="inblock outtext" x="95" y="86">Opus</text>
+  <path class="arrow" d="M 150 82 L 182 82"/>
+  <path class="arrowhead" d="M 181 76 L 190 82 L 181 88 Z"/>
+  <text class="label" x="200" y="87">Architecture decisions, multi-step reasoning</text>
+  <rect class="earl" x="40" y="122" width="110" height="44" rx="4"/>
+  <text class="inblock " x="95" y="148">Sonnet</text>
+  <path class="arrow" d="M 150 144 L 182 144"/>
+  <path class="arrowhead" d="M 181 138 L 190 144 L 181 150 Z"/>
+  <text class="label" x="200" y="149">Most coding tasks: start here</text>
+  <rect class="inp" x="40" y="184" width="110" height="44" rx="4"/>
+  <text class="inblock " x="95" y="210">Haiku</text>
+  <path class="arrow" d="M 150 206 L 182 206"/>
+  <path class="arrowhead" d="M 181 200 L 190 206 L 181 212 Z"/>
+  <text class="label" x="200" y="211">Simple tasks</text>
+  <path class="arrow" d="M 640 188 L 640 78"/>
+  <path class="arrowhead" d="M 634 79 L 640 70 L 646 79 Z"/>
+  <text class="label muted right" x="628" y="110">Go up one step only</text>
+  <text class="label muted right" x="628" y="128">if the result is not good enough</text>
+  <text class="label muted" x="40" y="270">Larger model: more energy for each token. Start at the smallest model that can do the task.</text>
+  <text class="label muted" x="40" y="292">Guidance from the Claude Code docs, not measured data.</text>
+</svg>

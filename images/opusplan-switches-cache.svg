@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 392" width="720" height="392" role="img" aria-labelledby="t d">
+  <title id="t">Each switch with opusplan starts a fresh cache</title>
+  <desc id="d">Two timelines. With opusplan, plan mode runs on Opus and work mode runs on Sonnet, and each model has its own cache. In the first timeline, you make one plan and then work for a long time, so there is one switch and one fresh cache. In the second timeline, you switch between plan mode and work mode six times, so there are six fresh caches. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">Each switch with opusplan starts a fresh cache</text>
+  <text class="row" x="40" y="62">One plan, then a long work phase: one switch</text>
+  <rect class="inp" x="40" y="74" width="150" height="34" rx="4"/>
+  <text class="inblock " x="115" y="95">Plan mode: Opus</text>
+  <rect class="cache" x="40" y="114" width="150" height="24" rx="4"/>
+  <text class="inblock " x="115" y="130">own cache</text>
+  <rect class="inp" x="194" y="74" width="486" height="34" rx="4"/>
+  <text class="inblock " x="437" y="95">Work mode: Sonnet</text>
+  <rect class="cache" x="194" y="114" width="486" height="24" rx="4"/>
+  <text class="inblock " x="437" y="130">own cache</text>
+  <text class="label muted" x="194" y="164">Fresh cache at the switch, then the cache works for the whole work phase</text>
+  <text class="row" x="40" y="204">Many toggles between plan mode and work mode: many switches</text>
+  <rect class="inp" x="40" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="91" y="237">Plan: Opus</text>
+  <rect class="cache" x="40" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="91" y="272">own cache</text>
+  <rect class="inp" x="146" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="197" y="237">Work: Sonnet</text>
+  <rect class="cache" x="146" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="197" y="272">own cache</text>
+  <rect class="inp" x="252" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="303" y="237">Plan: Opus</text>
+  <rect class="cache" x="252" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="303" y="272">own cache</text>
+  <rect class="inp" x="358" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="409" y="237">Work: Sonnet</text>
+  <rect class="cache" x="358" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="409" y="272">own cache</text>
+  <rect class="inp" x="464" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="515" y="237">Plan: Opus</text>
+  <rect class="cache" x="464" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="515" y="272">own cache</text>
+  <rect class="inp" x="570" y="216" width="102" height="34" rx="4"/>
+  <text class="inblock " x="621" y="237">Work: Sonnet</text>
+  <rect class="cache" x="570" y="256" width="102" height="24" rx="4"/>
+  <text class="inblock " x="621" y="272">own cache</text>
+  <text class="label muted" x="40" y="306">Each switch starts a fresh cache and reads the whole conversation again.</text>
+  <rect class="inp" x="40" y="326" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="339">Model in use</text>
+  <rect class="cache" x="174" y="326" width="16" height="16" rx="3"/>
+  <text class="label" x="198" y="339">Cache of that model</text>
+  <text class="label muted" x="40" y="360" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>

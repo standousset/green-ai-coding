@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 336" width="720" height="336" role="img" aria-labelledby="t d">
+  <title id="t">A simple subagent task can run on Haiku</title>
+  <desc id="d">Two horizontal bars. The main conversation runs on Sonnet. It sends a task to a subagent that runs on Haiku. The subagent reads a search result and three files, which is noisy tool output, and writes a short summary. Only the summary returns to the main conversation, which then writes its reply. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #ececea; --muted: #a3a39d;
+        --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+        --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+        --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+        --noise-fill: #d9a043; --noise-stroke: #e0a850;
+        --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+        --frame: #8d8a82;
+      }
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">A simple subagent task can run on Haiku</text>
+  <text class="row" x="40" y="62">Main conversation: Sonnet</text>
+  <rect class="frame" x="40" y="72" width="640" height="50" rx="6"/>
+  <rect class="inp" x="44" y="77" width="80" height="40" rx="4"/>
+  <text class="inblock " x="84" y="101">you</text>
+  <rect class="earl" x="128" y="77" width="150" height="40" rx="4"/>
+  <text class="inblock " x="203" y="101">summary comes back</text>
+  <rect class="out" x="282" y="77" width="120" height="40" rx="4"/>
+  <text class="inblock outtext" x="342" y="101">reply</text>
+  <text class="row" x="40" y="188">Subagent: Haiku (model: haiku in the subagent file)</text>
+  <rect class="frame" x="40" y="198" width="640" height="50" rx="6"/>
+  <rect class="inp" x="44" y="203" width="80" height="40" rx="4"/>
+  <text class="inblock " x="84" y="227">task</text>
+  <rect class="noise" x="128" y="203" width="76" height="40" rx="4"/>
+  <text class="inblock noisetext" x="166" y="227">search</text>
+  <rect class="noise" x="208" y="203" width="76" height="40" rx="4"/>
+  <text class="inblock noisetext" x="246" y="227">file 1</text>
+  <rect class="noise" x="288" y="203" width="76" height="40" rx="4"/>
+  <text class="inblock noisetext" x="326" y="227">file 2</text>
+  <rect class="noise" x="368" y="203" width="76" height="40" rx="4"/>
+  <text class="inblock noisetext" x="406" y="227">file 3</text>
+  <rect class="out" x="448" y="203" width="130" height="40" rx="4"/>
+  <text class="inblock outtext" x="513" y="227">short summary</text>
+  <path class="arrow" d="M 640 196 L 640 136"/>
+  <path class="arrowhead" d="M 634 137 L 640 128 L 646 137 Z"/>
+  <text class="label right" x="628" y="166">Only the summary returns to the main context</text>
+  <rect class="inp" x="40" y="276" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="289">Input: your task</text>
+  <rect class="noise" x="194" y="276" width="16" height="16" rx="3"/>
+  <text class="label" x="218" y="289">Tool output: files, search</text>
+  <rect class="out" x="408" y="276" width="16" height="16" rx="3"/>
+  <text class="label" x="432" y="289">Output</text>
+  <text class="label muted" x="40" y="310" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>
