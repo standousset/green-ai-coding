@@ -108,11 +108,11 @@ the context of a subagent, they stay out of your main conversation
 
 ![Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back.](../images/subagent-keeps-noise-out.svg)
 
-**How:** For simple work such as running tests, give the subagent a small model,
-for example `model: haiku` in the subagent file
-([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model);
-see also [lever 3](3-use-a-smaller-model.md)). To write a subagent, see the
-[Claude Code docs](https://code.claude.com/docs/en/sub-agents).
+**How:** To write a subagent, see the
+[Claude Code docs](https://code.claude.com/docs/en/sub-agents). To run it on a
+smaller model or at a lower effort, see
+[3.7](3-use-a-smaller-model.md#37-give-simple-subagent-tasks-to-haiku) and
+[4.7](4-lower-the-effort.md#47-give-simple-subagent-tasks-a-low-effort).
 
 **Where:**
 - Terminal: Claude Code subagents.
