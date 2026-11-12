@@ -14,11 +14,11 @@ times
 So the CO₂ of a request depends on the electricity of the data centre that serves
 it.
 
-This lever applies only if you can choose where requests run. In the docs, only
-Amazon Bedrock and Google Cloud's Agent Platform give a region setting. A Claude
-subscription gives none, and the Claude API gives a choice of geography only (see
-6.1). This lever does not lower the energy of a request. It lowers the CO₂ of the
-same energy.
+This lever only applies if you can choose where your requests run. In the docs,
+only Amazon Bedrock and Google Cloud's Agent Platform give a region setting. A
+Claude subscription gives none, and the Claude API gives a choice of geography
+only (see 6.1). This lever doesn't lower the energy of a request. It lowers the
+CO₂ of the same energy.
 
 The table shows the carbon intensity of electricity in 2025. The data comes from
 Ember and the Energy Institute
@@ -57,8 +57,9 @@ These figures have two limits:
 
 **What:** Find out what your way of using Claude lets you choose.
 
-**Why:** You can act on the gap above only if you can choose where requests run.
-The docs give a setting for some ways and none for the others.
+**Why:** You can only act on the gap above if you can choose where requests run.
+For some ways of using Claude the docs give a setting, and for the others they
+give none.
 
 **How:**
 
@@ -76,7 +77,7 @@ The docs give a setting for some ways and none for the others.
 - Desktop app, Code tab: the docs give no region setting.
 
 **Watch out:**
-- On Bedrock, a region setting does not always keep your requests in that region
+- On Bedrock, a region setting doesn't always keep your requests in that region
   (see 6.4).
 - If you run your own models, you choose the region of your own cloud account.
 
@@ -108,7 +109,7 @@ about clean power contracts.
   [carbon page](https://cloud.google.com/sustainability/region-carbon), in a
   [GitHub repository](https://github.com/GoogleCloudPlatform/region-carbon-info)
   and in a BigQuery public dataset. Rank by the grid value. Google calls a region
-  low-carbon when carbon-free energy is at least 75%. If that value is not
+  low-carbon when carbon-free energy is at least 75%. If that value isn't
   available, the limit is a grid of at most 200 gCO₂eq per kWh.
 - For other providers, use the country data of
   [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
@@ -132,9 +133,9 @@ about clean power contracts.
   The Google figure is for a region, and it comes from the grid of its zone.
 - Providers also give figures for one prompt. For example, Google gives a
   market-based figure for a Gemini prompt. These figures count different things
-  and use different methods. Do not compare them, and do not use them to choose a
+  and use different methods. Don't compare them, and don't use them to choose a
   region.
-- Other providers, such as OpenAI or GitHub Copilot, are not covered.
+- Other providers, such as OpenAI or GitHub Copilot, aren't covered.
 
 ## 6.3 Choose a region with low-carbon electricity when you can
 
@@ -166,7 +167,7 @@ This is a gap in the grid, not a measure of one request.
    `aws bedrock list-inference-profiles --region your-region`
    ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock)).
 
-**Watch out:** `CLOUD_ML_REGION=global` does not choose a region: the docs
+**Watch out:** `CLOUD_ML_REGION=global` doesn't choose a region: the docs
 suggest it for better availability. On Bedrock, if you use a geography instead of
 a region, read 6.4.
 
@@ -194,8 +195,8 @@ guarantee"
   field in CloudTrail
   ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
-**Watch out:** The AWS docs do not say whether you can force one single Region.
-They also do not list every destination Region of each geography. A global
+**Watch out:** The AWS docs don't say whether you can force one single Region.
+They also don't list every destination Region of each geography. A global
 profile costs about 10% less than a geographic one, but it
 routes worldwide
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
