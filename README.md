@@ -1,16 +1,16 @@
 # Green AI coding: 6 levers to emit less carbon with your AI coding agent
 
-This guide is about the carbon that the AI emits while it helps you code. This carbon comes from the energy that the AI uses. So five levers reduce that energy, and one lever reduces the carbon of each unit of energy. The guide is not about the carbon that the code you ship emits when it runs.
+This guide is about the carbon your AI coding assistant emits while it helps you code. That carbon comes from the energy it uses. Five levers cut that energy, and one cuts the carbon of each unit of energy. It isn't about the carbon that the code you ship emits when it runs.
 
 > [!NOTE]
-> Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data. This guide does not measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
+> Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data. This guide doesn't measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
 
 ## The 6 levers
 
 Reading time: about 47 minutes for all six levers, and 7 to 9 minutes for each one. For a shorter read, see the quick path below.
 
 1. **[Keep the context short](levers/lever-1-keep-the-context-short.md)** (7 min): each request sends the whole conversation again. Run `/clear` between tasks, send only what the task needs, give noisy work to a subagent, and compact a long task.
-2. **[Stay in the cache window](levers/lever-2-stay-in-the-cache-window.md)** (9 min): for 5 minutes or 1 hour, the provider keeps its work on the start of the conversation and reuses it, so it processes only what changed. A change of model, or a long break, makes you lose it. So choose the model, the effort and the speed before the task, do not change them in the middle, and compact before a long break or set a 1-hour cache time.
+2. **[Stay in the cache window](levers/lever-2-stay-in-the-cache-window.md)** (9 min): for 5 minutes or 1 hour, the provider keeps its work on the start of the conversation and reuses it, so it processes only what changed. A change of model, or a long break, makes you lose it. So choose the model, the effort and the speed before the task, don't change them in the middle, and compact before a long break or set a 1-hour cache time.
 3. **[Use a smaller model](levers/lever-3-use-a-smaller-model.md)** (8 min): a larger model uses more energy for each token. Make Sonnet your default, and use Opus for the hardest tasks only.
 4. **[Lower the effort](levers/lever-4-lower-the-effort.md)** (8 min): before it answers, the model writes its reasoning, called thinking. Thinking is output, so each token uses energy, and a higher effort level means more thinking. Use a low or medium level for most tasks, and go up only when needed.
 5. **[Make fewer round trips](levers/lever-5-make-fewer-round-trips.md)** (8 min): each retry sends the whole conversation again, with the failed reply. Name the file, plan a large task first, run `/clear` after two failed corrections, and stop agents that run without you.
@@ -24,7 +24,7 @@ Short on time? Do these six things first. The six linked items take about 6 minu
 
 1. **Start a new conversation for each unrelated task.** Run `/clear` ([1.1](levers/lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
 2. **Compact before a long break.** Run `/compact` before a break that is longer than your cache time ([2.2](levers/lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time)).
-3. **Make Sonnet your default model.** Go up to Opus only when the result is not good enough ([3.1](levers/lever-3-use-a-smaller-model.md#31-make-sonnet-your-default-model-and-switch-for-one-session-with-s)).
+3. **Make Sonnet your default model.** Go up to Opus only when the result isn't good enough ([3.1](levers/lever-3-use-a-smaller-model.md#31-make-sonnet-your-default-model-and-switch-for-one-session-with-s)).
 4. **Use a low or medium effort level.** Go up only for the hard tasks ([4.1](levers/lever-4-lower-the-effort.md#41-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed)).
 5. **Name the file, the limit and the result in your first request.** This avoids retries ([5.1](levers/lever-5-make-fewer-round-trips.md#51-name-the-file-the-limit-and-the-result-in-your-first-request)).
 6. **Check whether you can choose where your requests run.** This applies on Amazon Bedrock and Google Cloud ([6.1](levers/lever-6-choose-a-low-carbon-region.md#61-check-whether-you-can-choose-a-region)).
@@ -62,7 +62,7 @@ Claude Code reads `AGENTS.md` only when no `CLAUDE.md` exists. If you have a `CL
 
 A rules file acts on levers 1 and 5. The other levers are settings: use the audit above for them.
 
-Optional, and a different topic: if you also want the code that you ship to be light to run, add this line. This guide does not cover that topic.
+Optional, and a different topic: if you also want the code that you ship to be light to run, add this line. This guide doesn't cover that topic.
 
 ```text
 - Write code that is light to run: avoid needless loops, queries, network calls and large data.
@@ -72,7 +72,7 @@ Optional, and a different topic: if you also want the code that you ship to be l
 
 - The pages cover Claude Code, in the terminal and in the desktop app. Other assistants have similar settings under other names.
 - Levers 1 and 2 follow from billing and from reliability more than from energy. In a test of local models, the output length and the model size explained most of the energy, and the length of the prompt explained little ([Alizadeh et al.](https://arxiv.org/abs/2412.00329)). Levers 3 and 4 act on those two factors.
-- Lever 3 relies on an estimate of the energy for each token, because the size of the Claude models is not public.
+- Lever 3 relies on an estimate of the energy for each token, because the size of the Claude models isn't public.
 - Agents that run alone have one short item (5.7). MCP servers have one bullet (in 1.2).
 
 ## Feedback
