@@ -45,8 +45,8 @@ What the docs and the tests say:
 <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output.svg#gh-light-mode-only">
 <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output-dark.svg#gh-dark-mode-only">
 
-These tests used open models, not Claude models. This guide has no energy figure
-for Claude, so the size of the saving for Claude is not known. The Claude Code docs
+These tests used open models, not Claude models. No energy figure exists for
+Claude, so the size of the saving for Claude is not known. The Claude Code docs
 confirm that you cannot turn thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and
 the Fable models
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#extended-thinking)).
@@ -116,13 +116,12 @@ The Claude Code docs suggest these levels
   does not lower the effort. With it on, Claude plans a workflow for each
   substantive task, at the level that your session uses
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
-  This guide has no measure of its token cost, so keep it off unless you want
-  workflows.
+  No token cost is published for it, so keep it off unless you want workflows.
 - A level that is too low can cost retries. A wrong result at `low` often needs
   corrections, and each correction sends the whole conversation again (see
   [lever 5](lever-5-make-fewer-round-trips.md)). If the result is wrong at a low
-  level, go up one level for a new attempt and do not send corrections. This guide
-  has no measure of where the break-even is.
+  level, go up one level for a new attempt and do not send corrections. No
+  measure exists of where the break-even is.
 - The docs here cover Claude only. In other assistants, look for a setting named
   effort, thinking or reasoning.
 

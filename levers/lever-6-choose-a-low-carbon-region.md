@@ -66,14 +66,14 @@ The docs give a setting for some ways and none for the others.
 |---|---|
 | Amazon Bedrock | The AWS Region, with `AWS_REGION`. If you set nothing, Claude Code uses `us-east-1` ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#3-configure-claude-code)). |
 | Google Cloud's Agent Platform | `CLOUD_ML_REGION`: `global`, a multi-region location such as `eu` or `us`, or one region. If you set nothing, Claude Code uses `us-east5` ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)). |
-| Microsoft Foundry | This guide found no region setting in the docs ([Claude Code docs](https://code.claude.com/docs/en/microsoft-foundry)). |
+| Microsoft Foundry | The docs give no region setting ([Claude Code docs](https://code.claude.com/docs/en/microsoft-foundry)). |
 | Claude API | `inference_geo`: `us` or `global`. This is a choice of geography, not of a low-carbon region ([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/data-residency)). |
-| Claude subscription | This guide found no region setting in the docs. |
+| Claude subscription | The docs give no region setting. |
 
 **Where:**
 - Terminal: on Bedrock, `/status` shows the region that Claude Code resolved
   ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#3-configure-claude-code)).
-- Desktop app, Code tab: this guide found no region setting in the docs.
+- Desktop app, Code tab: the docs give no region setting.
 
 **Watch out:**
 - On Bedrock, a region setting does not always keep your requests in that region
@@ -128,14 +128,13 @@ about clean power contracts.
 - The grid data of Google comes from Electricity Maps. The Google page says that
   Electricity Maps has an independent Letter of Assurance for its data pipeline
   and its calculation models.
-- This guide found no provider that publishes a location-based figure for each
-  data centre. The Google figure is for a region, and it comes from the grid of its
-  zone.
+- None of these providers publishes a location-based figure for each data centre.
+  The Google figure is for a region, and it comes from the grid of its zone.
 - Providers also give figures for one prompt. For example, Google gives a
   market-based figure for a Gemini prompt. These figures count different things
   and use different methods. Do not compare them, and do not use them to choose a
   region.
-- This guide did not look at other providers, such as OpenAI or GitHub Copilot.
+- Other providers, such as OpenAI or GitHub Copilot, are not covered.
 
 ## 6.3 Choose a region with low-carbon electricity when you can
 
@@ -195,9 +194,9 @@ guarantee"
   field in CloudTrail
   ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
-**Watch out:** This guide found no statement in the AWS docs on whether you can
-force one single Region. The docs also do not list every destination Region of each
-geography. A global profile costs about 10% less than a geographic one, but it
+**Watch out:** The AWS docs do not say whether you can force one single Region.
+They also do not list every destination Region of each geography. A global
+profile costs about 10% less than a geographic one, but it
 routes worldwide
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 

@@ -17,8 +17,8 @@ A vague request also makes Claude scan more files than it needs
 ([Claude Code docs](https://code.claude.com/docs/en/costs#write-specific-prompts)).
 A long context makes the answers less reliable too (see
 [lever 1](lever-1-keep-the-context-short.md)).
-The guide has no energy figure for this lever. It counts requests and tokens, not
-measured energy.
+No energy figure exists for this lever. The argument counts requests and tokens,
+not measured energy.
 
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg#gh-light-mode-only">
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt-dark.svg#gh-dark-mode-only">
@@ -189,8 +189,7 @@ of several files
   the [permanent rules](../README.md#permanent-rules) to your rules
   file.
 
-**Watch out:** This guide has no energy figure that compares a simple tool with a
-model request. The reason above is fewer tokens, not a measured energy saving.
+**Watch out:** No energy figure compares a simple tool with a model request. The reason above is fewer tokens, not a measured energy saving.
 
 ## 5.7 Stop work that runs without you
 
