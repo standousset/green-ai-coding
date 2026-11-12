@@ -127,8 +127,8 @@ The Claude Code docs suggest these levels
 
 ## 4.2 Use `ultrathink` for one hard turn instead of raising the level
 
-**What:** Keep your session at `low` or `medium`. For one hard turn, write the
-word `ultrathink` in the prompt.
+**What:** Keep your session at `low` or `medium`. For one hard turn (one prompt
+and its answer), write the word `ultrathink` in the prompt.
 
 **Why:** The word asks for deeper reasoning on that turn, "without changing your
 session effort setting"
@@ -200,8 +200,9 @@ settings. If `/effort` seems to do nothing, check that this variable isn't set
 
 ## 4.4 Give simple subagent tasks a low effort
 
-**What:** In the file of a subagent that does simple work, such as running tests
-or a search, set `effort: low`.
+**What:** In the file of a subagent (see
+[1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent)) that
+does simple work, such as running tests or a search, set `effort: low`.
 
 **Why:** A subagent that has no `effort` runs at the level of your session. If
 your session is at a high level, the subagent thinks as much as the main agent.

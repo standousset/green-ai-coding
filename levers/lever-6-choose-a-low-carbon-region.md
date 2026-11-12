@@ -8,11 +8,11 @@
 > When you can choose where your requests run, choose a region with low-carbon electricity, and check where they really run.
 
 **Why it matters:** The CO₂ that a kWh emits depends on where the electricity is
-made. In 2025, it was 28 gCO₂ per kWh in Norway and 670 in India, a gap of about 24
-times
-([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)).
-So the CO₂ of a request depends on the electricity of the data centre that serves
-it.
+made. In 2025, it was 28 gCO₂ per kWh in Norway and 670 in India, a gap of about
+24 times ([Our World in
+Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)). So the
+CO₂ of a request depends on the electricity of the data centre that serves it.
+That electricity comes from the local grid, the electricity network of the area.
 
 This lever only applies if you can choose where your requests run. In the docs,
 only Amazon Bedrock and Google Cloud's Agent Platform give a region setting. A
@@ -49,7 +49,7 @@ These figures have two limits:
 | Item | Role |
 |---|---|
 | [6.1 Check whether you can choose a region](#61-check-whether-you-can-choose-a-region) | Check your options |
-| [6.2 Find the carbon data of a region and rank regions by the grid](#62-find-the-carbon-data-of-a-region-and-rank-regions-by-the-grid) | Find and read the data |
+| [6.2 Find the carbon data of a region and rank regions by the carbon intensity of their grid](#62-find-the-carbon-data-of-a-region-and-rank-regions-by-the-carbon-intensity-of-their-grid) | Find and read the data |
 | [6.3 Choose a region with low-carbon electricity when you can](#63-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
 | [6.4 Check where your requests really run](#64-check-where-your-requests-really-run) | Check the result |
 
@@ -81,7 +81,7 @@ give none.
   (see 6.4).
 - If you run your own models, you choose the region of your own cloud account.
 
-## 6.2 Find the carbon data of a region and rank regions by the grid
+## 6.2 Find the carbon data of a region and rank regions by the carbon intensity of their grid
 
 **What:** Look up the carbon data of each region that you can use. Rank the regions
 by the carbon intensity of their grid, and not by a carbon-free share or a claim
@@ -173,8 +173,9 @@ a region, read 6.4.
 
 ## 6.4 Check where your requests really run
 
-**What:** On Bedrock, check which inference profile Claude Code uses, because it
-can send your requests to other AWS Regions.
+**What:** On Bedrock, check which inference profile Claude Code uses. The profile
+decides which AWS Regions can serve your requests, and it can send them to other
+Regions than yours.
 
 **Why:** Cross-region inference "routes your requests by using compute across
 different AWS Regions". A geographic profile stays inside its geography. For the

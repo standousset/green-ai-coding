@@ -79,8 +79,8 @@ docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
 
 ## 2.2 Compact before a break longer than your cache time
 
-**What:** Run `/compact` while the cache is warm, before a break that is longer
-than the cache time.
+**What:** Run `/compact` while the cache is still warm (not expired yet), before a
+break that is longer than the cache time.
 
 **Why:** To make the summary, compacting sends the full conversation once. With a
 warm cache, this request reads the conversation from the cache and "costs a
@@ -108,9 +108,9 @@ part that is already in the cache (see
 
 ## 2.3 Set the cache time to 1 hour if you often take a break
 
-**What:** Set `promptCacheTtl` to `1h`, or set the variable
-`CLAUDE_CODE_PROMPT_CACHE_TTL=1h`. If you need 1 hour only for a long session with
-many breaks, use the variable for that session only.
+**What:** Set the cache time to 1 hour: set `promptCacheTtl` to `1h`, or set the
+variable `CLAUDE_CODE_PROMPT_CACHE_TTL=1h`. If you need 1 hour only for a long
+session with many breaks, use the variable for that session only.
 
 **Why:** With an API key, a cloud provider or usage credits, the main conversation
 has a cache time of 5 minutes (see 2.1). A break of more than 5 minutes then
@@ -192,8 +192,9 @@ reads the whole conversation with no cache, even if the content is the same
 
 ## 2.5 Change the effort level, the speed and other settings only between tasks
 
-**What:** Choose the effort level and the speed at the start of a task. Before you
-change any other setting halfway through, check whether it resets the cache.
+**What:** Choose the effort level and the speed (standard or fast mode) at the
+start of a task. Before you change any other setting halfway through, check
+whether it resets the cache.
 
 **Why:** The model isn't the only part of the start of the request. Each of these
 changes can make the next request read the whole conversation again.

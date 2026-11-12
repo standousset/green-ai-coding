@@ -7,22 +7,23 @@
 > [!IMPORTANT]
 > Give the assistant only what the task needs, hand the noisy work to a subagent, and compact when a long task has to keep going.
 
-**Why it matters:** A long context means a lot more tokens, because every request
-sends the whole conversation again (see 1.1). It also makes the answers less
-reliable. In a study of 18 models, the results became less reliable as the input
-got longer ([Chroma, Context
+**Why it matters:** The context is everything the model reads with each request:
+your messages, its replies, the tool results and the rules file. A long context
+means a lot more tokens, because every request sends the whole conversation again
+(see 1.1). It also makes the answers less reliable. In a study of 18 models, the
+results became less reliable as the input got longer ([Chroma, Context
 Rot](https://www.trychroma.com/research/context-rot)). And less reliable answers
 mean more retries (see [lever 5](lever-5-make-fewer-round-trips.md)).
 
 | Item | Role |
 |---|---|
-| [1.1 Drop old context that the task does not need](#11-drop-old-context-that-the-task-does-not-need) | Start clean |
+| [1.1 Start a new conversation for each unrelated task](#11-start-a-new-conversation-for-each-unrelated-task) | Start clean |
 | [1.2 Send only what the task needs](#12-send-only-what-the-task-needs) | Prevent |
 | [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
 | [1.4 Go back with `/rewind` when an attempt failed](#14-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
 | [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink, by hand or by setting |
 
-## 1.1 Drop old context that the task does not need
+## 1.1 Start a new conversation for each unrelated task
 
 **What:** Keep only the conversation the current task needs, and start a new one
 when the task is unrelated.
@@ -52,7 +53,7 @@ new conversation between unrelated tasks.
 ## 1.2 Send only what the task needs
 
 **What:** Give the assistant only the part of a log or a file that matters, and
-keep the rules file short.
+keep the rules file (for example `CLAUDE.md`) short.
 
 **Why:** Whatever you send stays in the context and goes out again with every
 request (see 1.1). The rules file rides along on every request too.
@@ -118,8 +119,9 @@ request (see 1.1). The rules file rides along on every request too.
 
 ## 1.3 Give noisy work to a subagent
 
-**What:** A subagent is a helper agent with its own context. It does the noisy
-work and sends back only a short result.
+**What:** A subagent is a helper agent with its own context. Hand it work that
+produces a lot of output, such as test runs, logs and searches. It sends back only
+a short result.
 
 **Why:** Test runs, logs and documentation searches fill the context fast. Run
 them in a subagent and they stay out of your main conversation ([Claude Code

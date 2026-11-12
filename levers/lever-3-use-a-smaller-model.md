@@ -11,7 +11,8 @@
 many plans start you on the largest one. The Claude Code docs say that "Sonnet
 handles most coding tasks well and costs less than Opus" ([Claude Code
 docs](https://code.claude.com/docs/en/costs#choose-the-right-model)). A smaller
-default model is the simplest saving in this guide.
+default model is the simplest saving in this guide. In this lever, Haiku is the
+small model, Sonnet is the mid-size one and Opus is the largest.
 
 In the EcoLogits method, the energy for one output token is linear in the number
 of active parameters of the model. It also has a fixed part ([EcoLogits
@@ -106,7 +107,7 @@ default. Your next session can start on the project model.
 ## 3.2 Try the smaller model first and go up only when needed
 
 **What:** Start each type of task on Sonnet, or on Haiku if the task is simple. Go
-up one step only when the result isn't good enough.
+up one size only when the result isn't good enough.
 
 **Why:** The docs reserve Opus "for complex architectural decisions or multi-step
 reasoning"
@@ -140,8 +141,9 @@ again, with no cache (see
 
 ## 3.3 Plan with Opus and do the work on Sonnet
 
-**What:** For a task that needs a plan, plan with Opus and do the work on
-Sonnet. If you can, clear the planning context before the work starts.
+**What:** For a task that needs a plan, plan with Opus and do the work on Sonnet.
+If you can, clear the planning conversation before the work starts, so that Claude
+builds from the plan alone.
 
 **Why:**
 - The plan needs the most reasoning of the task. The docs reserve Opus "for
@@ -198,7 +200,9 @@ For the reasons to plan at all, and when a plan isn't worth it, see
 
 ## 3.4 Give simple subagent tasks to Haiku
 
-**What:** For a subagent that does a simple task, set `model: haiku` in its file.
+**What:** For a subagent that does a simple task (see
+[1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent)), set
+`model: haiku` in its file.
 
 **Why:** A subagent with no model of its own uses the model of the main
 conversation, unless a variable sets another one. A switch to Opus

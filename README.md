@@ -22,7 +22,7 @@ Levers 1 to 5 apply to everyone. Lever 6 applies only if you can choose where yo
 
 Short on time? Do these six things first. The six linked items take about 6 minutes to read.
 
-1. **Start a new conversation for each unrelated task.** Run `/clear` ([1.1](levers/lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
+1. **Start a new conversation for each unrelated task.** Run `/clear` ([1.1](levers/lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task)).
 2. **Compact before a long break.** Run `/compact` before a break that is longer than your cache time ([2.2](levers/lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time)).
 3. **Make Sonnet your default model.** Go up to Opus only when the result isn't good enough ([3.1](levers/lever-3-use-a-smaller-model.md#31-make-sonnet-your-default-model-and-switch-for-one-session-with-s)).
 4. **Use a low or medium effort level.** Go up only for the hard tasks ([4.1](levers/lever-4-lower-the-effort.md#41-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed)).

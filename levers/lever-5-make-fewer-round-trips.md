@@ -8,7 +8,7 @@
 > Say the task precisely, plan a big one first, and hand Claude a check to run. If a round goes wrong, stop it early, and after two failed corrections start fresh. And don't send requests that a simple tool or an unattended agent could save you.
 
 **Why it matters:** Every request sends the whole conversation again (see
-[1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
+[1.1](lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task)),
 so a retry always costs more than the first try. The failed reply stays in the
 conversation, and the retry carries it along. Each time Claude uses a tool, that's
 one more request, with the tool results attached
@@ -67,7 +67,8 @@ scanning". Tag the file, and Claude can work with far fewer file reads
 
 **What:** For a big task, settle the plan before Claude touches a file. If you
 haven't thought the task through yet, ask Claude to interview you and write a spec
-first. Then ask for a plan, read it, and fix what's wrong with it.
+(a written description of what to build) first. Then ask for a plan, read it, and
+fix what's wrong with it.
 
 **Why:** In the interview, Claude comes back with "multiple-choice questions about
 the parts you haven't pinned down"
@@ -90,7 +91,7 @@ is wrong"
   ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
 - Once the spec and the plan are ready, start a fresh session and build from the
   spec. That way the interview drops out of the context (see
-  [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
+  [1.1](lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task)).
   To plan on a larger model and build on a smaller one, see
   [3.3](lever-3-use-a-smaller-model.md#33-plan-with-opus-and-do-the-work-on-sonnet).
 
