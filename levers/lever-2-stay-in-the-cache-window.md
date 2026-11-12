@@ -37,7 +37,10 @@ This is a price, not a measure of energy. Other providers also cache the start
 of the prompt. OpenAI does it automatically for long prompts
 ([OpenAI docs](https://platform.openai.com/docs/guides/prompt-caching)).
 
-![Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again.](../images/cache-reuses-the-start.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/cache-reuses-the-start-dark.svg">
+  <img alt="Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again." src="../images/cache-reuses-the-start.svg">
+</picture>
 
 **How:** Choose the model, the effort level and the speed at the start of a
 task (see 2.4 to 2.6). Before you change another setting in the middle of a
@@ -65,7 +68,10 @@ same break causes no extra cost. The cache starts its time again with each
 request that uses it
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
 
-![Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache.](../images/cache-time-5-minutes-or-1-hour.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/cache-time-5-minutes-or-1-hour-dark.svg">
+  <img alt="Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache." src="../images/cache-time-5-minutes-or-1-hour.svg">
+</picture>
 
 **How:** In Claude Code, the cache time depends on how you pay
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)):
@@ -196,7 +202,10 @@ fraction of what the context size suggests". After a break longer than the cache
 lifetime, it processes the full history again, with no cache
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#compacting-the-conversation)).
 
-![Two timelines. When you run /compact while the cache is warm, the request reads the conversation from the cache, at a fraction of the cost of its size. When you run it after the cache expired, the request processes the full history again, with no cache.](../images/compact-before-cache-expires.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/compact-before-cache-expires-dark.svg">
+  <img alt="Two timelines. When you run /compact while the cache is warm, the request reads the conversation from the cache, at a fraction of the cost of its size. When you run it after the cache expired, the request processes the full history again, with no cache." src="../images/compact-before-cache-expires.svg">
+</picture>
 
 **How:** Compact at a natural break, before you step away. Your cache time is in
 2.2. For the effect of compaction on the context, see

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 366" width="720" height="366" role="img" aria-labelledby="t d">
+  <title id="t">The first setting that picks a model wins</title>
+  <desc id="d">Five rows from the strongest to the weakest way to set the model in Claude Code. First, /model during the session. Second, the --model option at startup. Third, the ANTHROPIC_MODEL variable. Fourth, the model key in a settings file, where local project settings win over project settings, and project settings win over user settings. Fifth, the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model.</desc>
+  <style>
+    :root {
+      --text: #ececea; --muted: #a3a39d;
+      --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+      --noise-fill: #d9a043; --noise-stroke: #e0a850;
+      --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">The first setting that picks a model wins</text>
+  <text class="label muted" x="40" y="62">Wins</text>
+  <text class="label muted" x="40" y="318">Loses</text>
+  <rect class="inp" x="40" y="70" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="93">1  /model in the session</text>
+  <rect class="inp" x="40" y="116" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="139">2  claude --model name</text>
+  <rect class="inp" x="40" y="162" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="185">3  ANTHROPIC_MODEL</text>
+  <rect class="inp" x="40" y="208" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="231">4  &quot;model&quot; in a settings file: local, then project, then user</text>
+  <rect class="drop" x="40" y="254" width="640" height="38" rx="4"/>
+  <text class="inblock" x="360" y="277">5  ANTHROPIC_DEFAULT_MODEL: used only if nothing above sets a model</text>
+  <text class="label muted" x="40" y="344">Order from the Claude Code docs, not measured data.</text>
+</svg>

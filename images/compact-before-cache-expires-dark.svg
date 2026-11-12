@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img" aria-labelledby="t d">
+  <title id="t">Compact while the cache is warm</title>
+  <desc id="d">Two timelines. Each shows a blue band for the time when the cache is warm after your last request, then a dashed band for the time after the cache expires. The cache time is 5 minutes or 1 hour. In the first timeline you run /compact inside the warm band, so the request reads the conversation from the cache, at a fraction of the cost of its size. In the second timeline you run /compact after the cache expired, so the request processes the full history again with no cache. The positions are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #ececea; --muted: #a3a39d;
+      --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+      --noise-fill: #d9a043; --noise-stroke: #e0a850;
+      --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">Compact while the cache is warm</text>
+  <text class="row" x="40" y="64">Compact before the break</text>
+  <rect class="cache" x="40" y="74" width="330" height="24" rx="4"/>
+  <text class="label" x="48" y="90">last request, cache warm</text>
+  <rect class="dashed" x="370" y="74" width="310" height="24" rx="4"/>
+  <text class="label muted" x="378" y="90">cache expired</text>
+  <text class="small muted mid" x="370" y="70">cache time: 5 minutes or 1 hour</text>
+  <path class="arrow" d="M 230 98 L 230 108"/>
+  <rect class="inp" x="190" y="108" width="80" height="30" rx="4"/>
+  <text class="inblock " x="230" y="127">/compact</text>
+  <text class="label mid" x="230" y="160">Reads the conversation from the cache</text>
+  <text class="label muted mid" x="230" y="178">a fraction of the cost of its size</text>
+  <text class="row" x="40" y="214">Compact after the break</text>
+  <rect class="cache" x="40" y="224" width="330" height="24" rx="4"/>
+  <text class="label" x="48" y="240">last request, cache warm</text>
+  <rect class="dashed" x="370" y="224" width="310" height="24" rx="4"/>
+  <text class="label muted" x="378" y="240">cache expired</text>
+  <text class="small muted mid" x="370" y="220">cache time: 5 minutes or 1 hour</text>
+  <path class="arrow" d="M 520 248 L 520 258"/>
+  <rect class="inp" x="480" y="258" width="80" height="30" rx="4"/>
+  <text class="inblock " x="520" y="277">/compact</text>
+  <text class="label mid" x="520" y="310">Processes the full history again</text>
+  <text class="label muted mid" x="520" y="328">no cache</text>
+  <text class="label muted" x="360" y="364" text-anchor="middle">Positions are illustrative, not measured.</text>
+</svg>

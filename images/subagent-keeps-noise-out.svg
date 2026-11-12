@@ -16,22 +16,6 @@
       --noise-stroke: #a8731a;
       --frame: #8d8a82;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text: #ececea;
-        --muted: #a3a39d;
-        --inp-fill: #4a4a47;
-        --inp-stroke: #6a6a65;
-        --earl-fill: #2f5a44;
-        --earl-stroke: #4cc38a;
-        --out-fill: #4cc38a;
-        --out-stroke: #7bdcae;
-        --out-text: #0f2a1d;
-        --noise-fill: #d9a043;
-        --noise-stroke: #e0a850;
-        --frame: #8d8a82;
-      }
-    }
     text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
     .title { font-size: 18px; font-weight: 600; }
     .row { font-size: 14px; font-weight: 600; }

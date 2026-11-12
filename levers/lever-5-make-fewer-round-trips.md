@@ -34,7 +34,10 @@ tool, it sends one more request with the tool results
 ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
 A failed reply stays in the conversation, so the retry sends it again.
 
-![Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input.](../images/retry-resends-the-failed-attempt.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/retry-resends-the-failed-attempt-dark.svg">
+  <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg">
+</picture>
 
 **How:** To get the result in fewer rounds, use 5.2 to 5.5. When a round fails,
 use 5.6 and 5.7.
@@ -177,7 +180,10 @@ two failed attempts". The docs say that `/clear` and one new prompt that has wha
 you learned works better almost every time
 ([Claude Code docs](https://code.claude.com/docs/en/best-practices#steer-the-session)).
 
-![Two horizontal bars, each in a frame. The first bar is the request after a third correction. It holds your request, three failed replies and three fixes as input, and a new reply 4 as output. The second bar is the request after /clear with a better prompt. It holds only the better prompt as input and a new reply as output. The second bar is much shorter.](../images/fresh-start-beats-a-third-correction.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/fresh-start-beats-a-third-correction-dark.svg">
+  <img alt="Two horizontal bars, each in a frame. The first bar is the request after a third correction. It holds your request, three failed replies and three fixes as input, and a new reply 4 as output. The second bar is the request after /clear with a better prompt. It holds only the better prompt as input and a new reply as output. The second bar is much shorter." src="../images/fresh-start-beats-a-third-correction.svg">
+</picture>
 
 **How:** Put what the failed tries showed into the new prompt: the file, the error
 and the limit (see 5.2). `/clear` costs nothing. To find the old session later, run

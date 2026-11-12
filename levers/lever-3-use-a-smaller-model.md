@@ -33,7 +33,10 @@ So a larger model uses more energy for each word that it writes. The method fits
 models up to 200B parameters. For larger models, the page says that it
 extrapolates. It is an estimate, not a measure of one given model.
 
-![Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar.](../images/energy-per-token-grows-with-model-size.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/energy-per-token-grows-with-model-size-dark.svg">
+  <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size.svg">
+</picture>
 
 **How:** Choose the model with the items below. For the effect of the model on
 the cache, see [2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
@@ -72,7 +75,10 @@ If you never chose a model, you may use the largest one for every task.
 **Why:** Most coding tasks do not need the largest model (see 3.4). If your
 default is Sonnet, you use a smaller model unless you choose another one.
 
-![Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model.](../images/model-setting-priority.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/model-setting-priority-dark.svg">
+  <img alt="Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model." src="../images/model-setting-priority.svg">
+</picture>
 
 **How:** Add `"model": "sonnet"` to a settings file. The alias `sonnet` always
 points to the latest Sonnet model
@@ -110,7 +116,10 @@ reasoning"
 The `haiku` alias is for simple tasks, and `sonnet` is for daily coding tasks
 ([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
 
-![Three steps. Haiku is for simple tasks. Sonnet is for most coding tasks and is the place to start. Opus is for architecture decisions and multi-step reasoning. An arrow that points up says to go up one step only if the result is not good enough.](../images/start-small-go-up-when-needed.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/start-small-go-up-when-needed-dark.svg">
+  <img alt="Three steps. Haiku is for simple tasks. Sonnet is for most coding tasks and is the place to start. Opus is for architecture decisions and multi-step reasoning. An arrow that points up says to go up one step only if the result is not good enough." src="../images/start-small-go-up-when-needed.svg">
+</picture>
 
 **How:** Start on Sonnet. Use Haiku for a simple, clear task. If the result is
 not good enough, repeat the task on the next model. Choose the model before the
@@ -137,7 +146,10 @@ unchanged. Typing `/model` with a model name behaves like Enter
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#setting-your-model)).
 If you try Opus once with Enter, all later sessions can start on Opus.
 
-![Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged.](../images/model-switch-saved-or-session-only.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/model-switch-saved-or-session-only-dark.svg">
+  <img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only.svg">
+</picture>
 
 **How:** Open `/model`, move to the model, and press `s`. In a session started
 with `-p`, the choice applies to the current session only and is not saved
@@ -166,7 +178,10 @@ starts a fresh cache
 With one plan and a long work phase, you pay for one switch, and Sonnet does the
 work phase.
 
-![Two timelines. With opusplan, plan mode runs on Opus and work mode runs on Sonnet, and each model has its own cache. With one plan and a long work phase, there is one switch. With six toggles between plan mode and work mode, there are six fresh caches.](../images/opusplan-switches-cache.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/opusplan-switches-cache-dark.svg">
+  <img alt="Two timelines. With opusplan, plan mode runs on Opus and work mode runs on Sonnet, and each model has its own cache. With one plan and a long work phase, there is one switch. With six toggles between plan mode and work mode, there are six fresh caches." src="../images/opusplan-switches-cache.svg">
+</picture>
 
 **How:** Run `/model opusplan`. Make the plan, then leave plan mode and work. Do
 not toggle plan mode many times in one task. For the cost of a switch, see
@@ -191,7 +206,10 @@ subagent also uses the model of the main conversation, so it runs on Opus when
 you work on Opus
 ([Claude Code docs](https://code.claude.com/docs/en/sub-agents#built-in-subagents)).
 
-![Two horizontal bars. The main conversation runs on Sonnet and sends a task to a subagent that runs on Haiku. The subagent reads a search result and three files, which is noisy tool output, and writes a short summary. Only the summary returns to the main conversation.](../images/subagent-on-haiku.svg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../images/subagent-on-haiku-dark.svg">
+  <img alt="Two horizontal bars. The main conversation runs on Sonnet and sends a task to a subagent that runs on Haiku. The subagent reads a search result and three files, which is noisy tool output, and writes a short summary. Only the summary returns to the main conversation." src="../images/subagent-on-haiku.svg">
+</picture>
 
 **How:** Add `model: haiku` to the front matter of the subagent file. The order
 of the docs has four steps. First, the model that Claude passes for one call.

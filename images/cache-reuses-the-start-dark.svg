@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 366" width="720" height="366" role="img" aria-labelledby="t d">
+  <title id="t">The cache reuses the start of the conversation</title>
+  <desc id="d">Two horizontal bars, each in a frame that shows the maximum context size. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start of the conversation, for example a new model, nothing can be read from the cache, and the whole conversation is processed again. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #ececea; --muted: #a3a39d;
+      --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+      --noise-fill: #d9a043; --noise-stroke: #e0a850;
+      --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">The cache reuses the start of the conversation</text>
+  <text class="row" x="40" y="68">Normal turn: only the new part is processed</text>
+  <rect class="frame" x="40" y="78" width="640" height="46" rx="6"/>
+  <rect class="cache" x="44" y="82" width="100" height="38" rx="4"/>
+  <text class="inblock " x="94" y="105">system, rules</text>
+  <rect class="cache" x="147" y="82" width="46" height="38" rx="4"/>
+  <text class="inblock " x="170" y="105">you 1</text>
+  <rect class="cache" x="196" y="82" width="56" height="38" rx="4"/>
+  <text class="inblock " x="224" y="105">reply 1</text>
+  <rect class="cache" x="255" y="82" width="46" height="38" rx="4"/>
+  <text class="inblock " x="278" y="105">you 2</text>
+  <rect class="cache" x="304" y="82" width="56" height="38" rx="4"/>
+  <text class="inblock " x="332" y="105">reply 2</text>
+  <rect class="inp" x="366" y="82" width="46" height="38" rx="4"/>
+  <text class="inblock " x="389" y="105">you 3</text>
+  <rect class="out" x="415" y="82" width="58" height="38" rx="4"/>
+  <text class="inblock outtext" x="444" y="105">reply 3</text>
+  <path class="cacheline" d="M 44 134 L 360 134"/>
+  <text class="label mid" x="202" y="154">Read from the cache</text>
+  <path class="arrow" d="M 366 134 L 473 134"/>
+  <text class="label mid" x="420" y="154">Processed</text>
+  <text class="row" x="40" y="198">After a change at the start: everything is processed</text>
+  <rect class="frame" x="40" y="208" width="640" height="46" rx="6"/>
+  <rect class="inp" x="44" y="212" width="100" height="38" rx="4"/>
+  <text class="inblock " x="94" y="235">new model</text>
+  <rect class="inp" x="147" y="212" width="46" height="38" rx="4"/>
+  <text class="inblock " x="170" y="235">you 1</text>
+  <rect class="earl" x="196" y="212" width="56" height="38" rx="4"/>
+  <text class="inblock " x="224" y="235">reply 1</text>
+  <rect class="inp" x="255" y="212" width="46" height="38" rx="4"/>
+  <text class="inblock " x="278" y="235">you 2</text>
+  <rect class="earl" x="304" y="212" width="56" height="38" rx="4"/>
+  <text class="inblock " x="332" y="235">reply 2</text>
+  <rect class="inp" x="366" y="212" width="46" height="38" rx="4"/>
+  <text class="inblock " x="389" y="235">you 3</text>
+  <rect class="out" x="415" y="212" width="58" height="38" rx="4"/>
+  <text class="inblock outtext" x="444" y="235">reply 3</text>
+  <path class="arrow" d="M 44 264 L 473 264"/>
+  <text class="label mid" x="258" y="284">Processed again, from the change to the end</text>
+  <rect class="cache" x="40" y="314" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="327">Read from the cache</text>
+  <rect class="inp" x="204" y="314" width="16" height="16" rx="3"/>
+  <text class="label" x="228" y="327">Input: processed</text>
+  <rect class="earl" x="338" y="314" width="16" height="16" rx="3"/>
+  <text class="label" x="362" y="327">Earlier reply, now input</text>
+  <rect class="out" x="522" y="314" width="16" height="16" rx="3"/>
+  <text class="label" x="546" y="327">Output: new reply</text>
+  <text class="label muted" x="40" y="348" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>

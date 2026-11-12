@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390" role="img" aria-labelledby="t d">
+  <title id="t">Each request sends the whole conversation again</title>
+  <desc id="d">Four horizontal bars, one for each request. Each bar shows the input of the request, then the new output of the model. Request 1 has one input message, then reply 1. Request 2 sends your message 1, reply 1 and your message 2 as input, then gives reply 2. Each earlier reply is now part of the input. Each bar sits in a frame that shows the maximum context size. The bars grow longer with every request and fill more of the frame. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #ececea;
+      --muted: #a3a39d;
+      --inp-fill: #4a4a47;
+      --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44;
+      --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a;
+      --out-stroke: #7bdcae;
+      --out-text: #0f2a1d;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .req { font-size: 13px; font-weight: 600; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .mid { text-anchor: middle; }
+    .right { text-anchor: end; }
+  </style>
+
+  <text class="title" x="360" y="30" text-anchor="middle">Each request sends the whole conversation again</text>
+  <text class="label muted" x="360" y="50" text-anchor="middle">The output of one request becomes input in the next request</text>
+
+  <!-- Request 1 -->
+  <text class="req" x="20" y="91">Request 1</text>
+  <text class="small muted" x="20" y="106">input: 1 message</text>
+  <rect class="frame" x="136" y="74" width="560" height="38" rx="6"/>
+  <text class="small muted right" x="696" y="69">Maximum context size</text>
+  <rect class="inp" x="140" y="78" width="50" height="30" rx="5"/>
+  <text class="inblock" x="165" y="97">you 1</text>
+  <rect class="out" x="193" y="78" width="58" height="30" rx="5"/>
+  <text class="inblock outtext" x="222" y="97">reply 1</text>
+  <text class="small muted mid" x="222" y="69">output</text>
+
+  <!-- Request 2 -->
+  <text class="req" x="20" y="151">Request 2</text>
+  <text class="small muted" x="20" y="166">input: 3 messages</text>
+  <rect class="frame" x="136" y="134" width="560" height="38" rx="6"/>
+  <rect class="inp" x="140" y="138" width="50" height="30" rx="5"/>
+  <text class="inblock" x="165" y="157">you 1</text>
+  <rect class="earl" x="193" y="138" width="58" height="30" rx="5"/>
+  <text class="inblock" x="222" y="157">reply 1</text>
+  <rect class="inp" x="254" y="138" width="50" height="30" rx="5"/>
+  <text class="inblock" x="279" y="157">you 2</text>
+  <rect class="out" x="307" y="138" width="58" height="30" rx="5"/>
+  <text class="inblock outtext" x="336" y="157">reply 2</text>
+  <text class="small muted mid" x="336" y="129">output</text>
+
+  <!-- Request 3 -->
+  <text class="req" x="20" y="211">Request 3</text>
+  <text class="small muted" x="20" y="226">input: 5 messages</text>
+  <rect class="frame" x="136" y="194" width="560" height="38" rx="6"/>
+  <rect class="inp" x="140" y="198" width="50" height="30" rx="5"/>
+  <text class="inblock" x="165" y="217">you 1</text>
+  <rect class="earl" x="193" y="198" width="58" height="30" rx="5"/>
+  <text class="inblock" x="222" y="217">reply 1</text>
+  <rect class="inp" x="254" y="198" width="50" height="30" rx="5"/>
+  <text class="inblock" x="279" y="217">you 2</text>
+  <rect class="earl" x="307" y="198" width="58" height="30" rx="5"/>
+  <text class="inblock" x="336" y="217">reply 2</text>
+  <rect class="inp" x="368" y="198" width="50" height="30" rx="5"/>
+  <text class="inblock" x="393" y="217">you 3</text>
+  <rect class="out" x="421" y="198" width="58" height="30" rx="5"/>
+  <text class="inblock outtext" x="450" y="217">reply 3</text>
+  <text class="small muted mid" x="450" y="189">output</text>
+
+  <!-- Request 4 -->
+  <text class="req" x="20" y="271">Request 4</text>
+  <text class="small muted" x="20" y="286">input: 7 messages</text>
+  <rect class="frame" x="136" y="254" width="560" height="38" rx="6"/>
+  <rect class="inp" x="140" y="258" width="50" height="30" rx="5"/>
+  <text class="inblock" x="165" y="277">you 1</text>
+  <rect class="earl" x="193" y="258" width="58" height="30" rx="5"/>
+  <text class="inblock" x="222" y="277">reply 1</text>
+  <rect class="inp" x="254" y="258" width="50" height="30" rx="5"/>
+  <text class="inblock" x="279" y="277">you 2</text>
+  <rect class="earl" x="307" y="258" width="58" height="30" rx="5"/>
+  <text class="inblock" x="336" y="277">reply 2</text>
+  <rect class="inp" x="368" y="258" width="50" height="30" rx="5"/>
+  <text class="inblock" x="393" y="277">you 3</text>
+  <rect class="earl" x="421" y="258" width="58" height="30" rx="5"/>
+  <text class="inblock" x="450" y="277">reply 3</text>
+  <rect class="inp" x="482" y="258" width="50" height="30" rx="5"/>
+  <text class="inblock" x="507" y="277">you 4</text>
+  <rect class="out" x="535" y="258" width="58" height="30" rx="5"/>
+  <text class="inblock outtext" x="564" y="277">reply 4</text>
+  <text class="small muted mid" x="564" y="249">output</text>
+
+  <!-- legend -->
+  <rect class="inp" x="140" y="332" width="16" height="16" rx="3"/>
+  <text class="label" x="164" y="345">Input: your message</text>
+  <rect class="earl" x="320" y="332" width="16" height="16" rx="3"/>
+  <text class="label" x="344" y="345">Earlier reply, now input</text>
+  <rect class="out" x="530" y="332" width="16" height="16" rx="3"/>
+  <text class="label" x="554" y="345">Output: new reply</text>
+  <text class="label muted" x="360" y="376" text-anchor="middle">Sizes are illustrative, not measured</text>
+</svg>

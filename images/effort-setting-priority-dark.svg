@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 366" width="720" height="366" role="img" aria-labelledby="t d">
+  <title id="t">The first setting that picks an effort level wins</title>
+  <desc id="d">Five rows from the strongest to the weakest way to set the effort level in Claude Code. First, the CLAUDE_CODE_EFFORT_LEVEL variable. Second, a level that you pick in the session with the /effort command or the /model picker. Third, the --effort option at startup. Fourth, a saved level or the effortLevel setting. Fifth, the default level of the model, which applies only when nothing above sets a level. The order is from the Claude Code docs, not measured data.</desc>
+  <style>
+    :root {
+      --text: #ececea; --muted: #a3a39d;
+      --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+      --noise-fill: #d9a043; --noise-stroke: #e0a850;
+      --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">The first setting that picks an effort level wins</text>
+  <text class="label muted" x="40" y="62">Wins</text>
+  <text class="label muted" x="40" y="318">Loses</text>
+  <rect class="inp" x="40" y="70" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="93">1  CLAUDE_CODE_EFFORT_LEVEL variable</text>
+  <rect class="inp" x="40" y="116" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="139">2  A level you pick in the session: /effort or the /model picker</text>
+  <rect class="inp" x="40" y="162" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="185">3  claude --effort level</text>
+  <rect class="inp" x="40" y="208" width="640" height="38" rx="4"/>
+  <text class="inblock " x="360" y="231">4  A saved level, or the effortLevel setting</text>
+  <rect class="drop" x="40" y="254" width="640" height="38" rx="4"/>
+  <text class="inblock" x="360" y="277">5  The default level of the model: used only if nothing above sets a level</text>
+  <text class="label muted" x="40" y="344">Order from the Claude Code docs, not measured data.</text>
+</svg>

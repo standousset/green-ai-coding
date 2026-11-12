@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 376" width="720" height="376" role="img" aria-labelledby="t d">
+  <title id="t">A retry sends the failed attempt again</title>
+  <desc id="d">Three horizontal bars, each in a frame. The first attempt holds your request as input and reply 1 as output. Retry 1 holds your request, reply 1 as earlier output now input, your note, and a new reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note, and a new reply 3. Each bar is longer than the one before, because the failed replies stay in the input. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #ececea; --muted: #a3a39d;
+      --inp-fill: #4a4a47; --inp-stroke: #6a6a65;
+      --earl-fill: #2f5a44; --earl-stroke: #4cc38a;
+      --out-fill: #4cc38a; --out-stroke: #7bdcae; --out-text: #0f2a1d;
+      --noise-fill: #d9a043; --noise-stroke: #e0a850;
+      --cache-fill: #2b4466; --cache-stroke: #7fb0ea;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">A retry sends the failed attempt again</text>
+  <text class="row" x="40" y="66">First attempt</text>
+  <rect class="frame" x="40" y="76" width="640" height="50" rx="6"/>
+  <rect class="inp" x="44" y="81" width="100" height="40" rx="4"/>
+  <text class="inblock " x="94" y="105">your request</text>
+  <rect class="out" x="148" y="81" width="90" height="40" rx="4"/>
+  <text class="inblock outtext" x="193" y="105">reply 1</text>
+  <text class="row" x="40" y="150">Retry 1</text>
+  <rect class="frame" x="40" y="160" width="640" height="50" rx="6"/>
+  <rect class="inp" x="44" y="165" width="100" height="40" rx="4"/>
+  <text class="inblock " x="94" y="189">your request</text>
+  <rect class="earl" x="148" y="165" width="90" height="40" rx="4"/>
+  <text class="inblock " x="193" y="189">reply 1</text>
+  <rect class="inp" x="242" y="165" width="70" height="40" rx="4"/>
+  <text class="inblock " x="277" y="189">your note</text>
+  <rect class="out" x="316" y="165" width="90" height="40" rx="4"/>
+  <text class="inblock outtext" x="361" y="189">reply 2</text>
+  <text class="row" x="40" y="234">Retry 2</text>
+  <rect class="frame" x="40" y="244" width="640" height="50" rx="6"/>
+  <rect class="inp" x="44" y="249" width="100" height="40" rx="4"/>
+  <text class="inblock " x="94" y="273">your request</text>
+  <rect class="earl" x="148" y="249" width="90" height="40" rx="4"/>
+  <text class="inblock " x="193" y="273">reply 1</text>
+  <rect class="inp" x="242" y="249" width="70" height="40" rx="4"/>
+  <text class="inblock " x="277" y="273">your note</text>
+  <rect class="earl" x="316" y="249" width="90" height="40" rx="4"/>
+  <text class="inblock " x="361" y="273">reply 2</text>
+  <rect class="inp" x="410" y="249" width="70" height="40" rx="4"/>
+  <text class="inblock " x="445" y="273">your note</text>
+  <rect class="out" x="484" y="249" width="90" height="40" rx="4"/>
+  <text class="inblock outtext" x="529" y="273">reply 3</text>
+  <rect class="inp" x="40" y="318" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="331">Input: your message</text>
+  <rect class="earl" x="254" y="318" width="16" height="16" rx="3"/>
+  <text class="label" x="278" y="331">Earlier reply, now input</text>
+  <rect class="out" x="488" y="318" width="16" height="16" rx="3"/>
+  <text class="label" x="512" y="331">Output: new reply</text>
+  <text class="label muted" x="40" y="352" text-anchor="start">Each bar is one request. Sizes are illustrative, not measured.</text>
+</svg>
