@@ -27,7 +27,7 @@ Short on time? Do these six things first. The six linked items take about 6 minu
 3. **Make Sonnet your default model.** Go up to Opus only when the result is not good enough ([3.1](levers/lever-3-use-a-smaller-model.md#31-make-sonnet-your-default-model-and-switch-for-one-session-with-s)).
 4. **Use a low or medium effort level.** Go up only for the hard tasks ([4.1](levers/lever-4-lower-the-effort.md#41-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed)).
 5. **Name the file, the limit and the result in your first request.** This avoids retries ([5.1](levers/lever-5-make-fewer-round-trips.md#51-name-the-file-the-limit-and-the-result-in-your-first-request)).
-6. **Check whether you can choose where your requests run.** This applies on Amazon Bedrock and Google Cloud ([6.2](levers/lever-6-choose-a-low-carbon-region.md#62-check-whether-you-can-choose-a-region)).
+6. **Check whether you can choose where your requests run.** This applies on Amazon Bedrock and Google Cloud ([6.1](levers/lever-6-choose-a-low-carbon-region.md#61-check-whether-you-can-choose-a-region)).
 
 ## Audit your setup
 

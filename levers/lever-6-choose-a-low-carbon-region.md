@@ -8,29 +8,16 @@
 > When you can choose where your requests run, choose a region with low-carbon electricity, and check where they really run.
 
 **Why it matters:** The CO₂ that a kWh emits depends on where the electricity is
-made. In 2025, it was 28 gCO₂ per kWh in Norway and 670 in India, a gap of more
-than 20 times
+made. In 2025, it was 28 gCO₂ per kWh in Norway and 670 in India, a gap of about 24
+times
 ([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)).
-This lever applies only if you can choose where requests run. Most ways to use
-Claude give no such setting in the docs (see 6.2).
+So the CO₂ of a request depends on the electricity of the data centre that serves
+it, and so on its country. This lever applies only if you can choose where
+requests run. Most ways to use Claude give no such setting in the docs (see 6.1).
 
-| Item | Role |
-|---|---|
-| [6.1 Know that the same energy emits very different amounts of CO₂](#61-know-that-the-same-energy-emits-very-different-amounts-of-co) | Learn the gap |
-| [6.2 Check whether you can choose a region](#62-check-whether-you-can-choose-a-region) | Check your options |
-| [6.3 Find the carbon data of a region](#63-find-the-carbon-data-of-a-region) | Find the data |
-| [6.4 Choose a region with low-carbon electricity when you can](#64-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
-| [6.5 Check where your requests really run](#65-check-where-your-requests-really-run) | Check the result |
-| [6.6 Trust the grid of the region more than a claim based on contracts](#66-trust-the-grid-of-the-region-more-than-a-claim-based-on-contracts) | Read the figures |
-
-## 6.1 Know that the same energy emits very different amounts of CO₂
-
-**What:** The CO₂ of a request depends on the electricity of the data centre that
-serves it, and so on its country.
-
-**Why:** Carbon intensity of electricity in 2025
-([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)).
-The data comes from Ember and the Energy Institute:
+The table shows the carbon intensity of electricity in 2025. The data comes from
+Ember and the Energy Institute
+([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)):
 
 | Country or region | gCO₂ per kWh |
 |---|---:|
@@ -44,20 +31,11 @@ The data comes from Ember and the Energy Institute:
 | Poland | 589 |
 | India | 670 |
 
-From Norway to India, the gap is about 24 times.
-
-**How:** Use the table to see the size of the gap. Items 6.3 and 6.4 show how to
-find the data of a region and how to use it.
-
-**Where:**
-- All ways: the table above. The grid at the place of the data centre that
-  serves a request applies to it.
-
-**Watch out:**
+These figures have three limits:
 - These are yearly averages for a whole country. A live value changes with the
   hour ([Electricity Maps](https://www.electricitymaps.com/)).
 - A country average can be far from the grid of one data centre. In the Google
-  data of 2025 (see 6.3), the grid of `us-west1` (Oregon) emits 98 gCO₂eq per kWh.
+  data of 2025 (see 6.2), the grid of `us-west1` (Oregon) emits 98 gCO₂eq per kWh.
   The grid of `us-east1` (South Carolina) emits 579. The average of the United
   States is 384. In Montréal the grid emits 11, and the average of Canada is 191.
   The two sources differ, so compare the size of the gaps and not the exact
@@ -65,13 +43,21 @@ find the data of a region and how to use it.
 - A data centre that is connected to the grid uses the mix of its local grid. A
   figure that is lower than the grid needs a power plant on site, a direct line to
   a power plant, or contracts. A figure that rests on contracts is market-based
-  (see 6.6).
+  (see 6.5).
 
-## 6.2 Check whether you can choose a region
+| Item | Role |
+|---|---|
+| [6.1 Check whether you can choose a region](#61-check-whether-you-can-choose-a-region) | Check your options |
+| [6.2 Find the carbon data of a region](#62-find-the-carbon-data-of-a-region) | Find the data |
+| [6.3 Choose a region with low-carbon electricity when you can](#63-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
+| [6.4 Check where your requests really run](#64-check-where-your-requests-really-run) | Check the result |
+| [6.5 Trust the grid of the region more than a claim based on contracts](#65-trust-the-grid-of-the-region-more-than-a-claim-based-on-contracts) | Read the figures |
+
+## 6.1 Check whether you can choose a region
 
 **What:** Find out what your way of using Claude lets you choose.
 
-**Why:** You can act on 6.1 only if you can choose where requests run. The docs
+**Why:** You can act on the gap above only if you can choose where requests run. The docs
 give a setting for some ways and none for the others.
 
 **How:**
@@ -92,7 +78,7 @@ give a setting for some ways and none for the others.
 **Watch out:** If you run your own models, you choose the region of your own cloud
 account.
 
-## 6.3 Find the carbon data of a region
+## 6.2 Find the carbon data of a region
 
 **What:** Look up the carbon data of a region before you choose it.
 
@@ -112,34 +98,31 @@ grid of `asia-south1` (Mumbai) emits 598. In the United States, `us-west1`
   is a grid of at most 200 gCO₂eq per kWh.
 - For other providers, use the country data of
   [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
-  (see 6.1). [Electricity Maps](https://www.electricitymaps.com/) shows live data
+  (see the table above). [Electricity Maps](https://www.electricitymaps.com/) shows live data
   on an interactive map. Its site offers a trial of its API: check the current
   terms.
-
-**Where:**
-- All ways: these are web pages, and not settings of Claude.
 
 **Watch out:** The data comes from Electricity Maps. The Google page says that
 Electricity Maps has an independent Letter of Assurance for its data pipeline and
 calculation models. The share of carbon-free energy and the grid intensity are
 two different values. In `us-central1` (Iowa), they are 88% and 432 gCO₂eq per
 kWh. The share takes into account the renewable investments of Google, so it
-does not show which electricity the data centre uses (see 6.6). To compare
+does not show which electricity the data centre uses (see 6.5). To compare
 regions, rank them by the grid value. This guide found no table of grid carbon
 intensity per region from AWS or Microsoft.
 
-## 6.4 Choose a region with low-carbon electricity when you can
+## 6.3 Choose a region with low-carbon electricity when you can
 
 **What:** If you use Claude through a cloud provider, set the region to one with
 low-carbon electricity.
 
-**Why:** The same energy emits less CO₂ in a region with a clean grid (see 6.1).
+**Why:** The same energy emits less CO₂ in a region with a clean grid (see the table above).
 Google tells you to "pick a cleaner region for your new applications"
 ([Google Cloud](https://cloud.google.com/sustainability/region-carbon)).
 
 **How:**
-1. Find a candidate region in 6.3. Rank the regions by the grid carbon intensity,
-   and not by the carbon-free share (see 6.6).
+1. Find a candidate region in 6.2. Rank the regions by the grid carbon intensity,
+   and not by the carbon-free share (see 6.5).
 2. Check what else matters: latency, price and your rules on data location
    ([Google Cloud](https://cloud.google.com/sustainability/region-carbon)). Check
    that the region has your Claude model, and that you have quota there.
@@ -152,14 +135,13 @@ Google tells you to "pick a cleaner region for your new applications"
    ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock)).
 
 **Where:**
-- Terminal: the variables above.
 - Desktop app, Code tab: the docs that I read give no region setting.
 
 **Watch out:** `CLOUD_ML_REGION=global` does not choose a region: the docs
 suggest it for better availability. If you use a geography instead of a region,
-read 6.5.
+read 6.4.
 
-## 6.5 Check where your requests really run
+## 6.4 Check where your requests really run
 
 **What:** On Bedrock, check which inference profile Claude Code uses, because it
 can send your requests to other AWS Regions.
@@ -183,15 +165,12 @@ guarantee"
   field in CloudTrail
   ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
-**Where:**
-- Terminal: the variable above.
-
 **Watch out:** The AWS docs that I read do not say if you can force one single
 Region. They also do not list every destination Region of each geography. A global
 profile costs about 10% less than a geographic one, but it routes worldwide
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
-## 6.6 Trust the grid of the region more than a claim based on contracts
+## 6.5 Trust the grid of the region more than a claim based on contracts
 
 **What:** Choose a region by its location-based figure. When a provider says that
 its data centres in a country are cleaner than the grid, check how the figure is
@@ -226,9 +205,6 @@ made.
 | AWS | Since June 2025, the Customer Carbon Footprint Tool shows location-based and market-based emissions for your own usage ([AWS](https://aws.amazon.com/about-aws/whats-new/2025/06/customer-carbon-footprint-tool-location-based-emissions)). This guide found no table of the carbon intensity of each region. |
 | Microsoft | The Emissions Impact Dashboard shows your emissions by datacenter region ([Microsoft](https://azure.microsoft.com/en-us/blog/empowering-cloud-sustainability-with-the-microsoft-emissions-impact-dashboard/)). This guide found no table of location-based intensity for each region. |
 | Mistral | A life-cycle analysis of Mistral Large 2, made with Carbone 4 and ADEME. It uses the location-based approach and counts the manufacturing of the servers. A response of 400 tokens in Le Chat has 1.14 gCO₂e ([Mistral](https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai)). The text that I read does not say where the data centres are. |
-
-**Where:**
-- All ways: these are published figures, not settings.
 
 **Watch out:**
 - This guide found no provider that publishes a location-based figure for each
