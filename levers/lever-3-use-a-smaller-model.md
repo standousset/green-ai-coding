@@ -5,23 +5,23 @@
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Make a mid-size model your default, and use the largest model for the hardest tasks only.
+> Make a mid-size model your default, and save the largest one for the hardest tasks.
 
-**Why it matters:** A larger model uses more energy for each token that it writes.
-Many plans start on the largest model. The Claude Code docs say that "Sonnet
-handles most coding tasks well and costs less than Opus"
-([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model)).
-A smaller default model is the simplest saving in this guide.
+**Why it matters:** A larger model uses more energy for each token it writes, and
+many plans start you on the largest one. The Claude Code docs say that "Sonnet
+handles most coding tasks well and costs less than Opus" ([Claude Code
+docs](https://code.claude.com/docs/en/costs#choose-the-right-model)). A smaller
+default model is the simplest saving in this guide.
 
-In the EcoLogits method, the energy for one output token is linear in
-the number of active parameters of the model. It also has a fixed part
-([EcoLogits method](https://ecologits.ai/latest/methodology/llm_inference/)).
-So a larger model uses more energy for each word that it writes. The method fits
-models up to 200B parameters. For larger models, the page says that it
-extrapolates. It is an estimate, not a measure of one given model.
+In the EcoLogits method, the energy for one output token is linear in the number
+of active parameters of the model. It also has a fixed part ([EcoLogits
+method](https://ecologits.ai/latest/methodology/llm_inference/)). So a larger
+model spends more energy on each word it writes. The method fits models up to 200B
+parameters, and for larger ones the page says it extrapolates. Treat it as an
+estimate, not a measure of any one model.
 
 A test of 26 families of language models, on software tasks, shows the same
-picture. More energy did not always bring a gain in accuracy of the same size.
+picture. More energy didn't always bring a gain in accuracy of the same size.
 Three factors explained more than 90% of the energy. They are the number of
 active parameters, the length of the output, and the quantization level (the
 precision of the numbers that the model stores). The test used models that run on
@@ -41,18 +41,18 @@ local hardware, not Claude
 ## 3.1 Make Sonnet your default model, and switch for one session with `s`
 
 **What:** Set Sonnet as the model that new sessions start on. To try another model
-in one session, press `s` in the `/model` picker. Do not press Enter.
+in one session, press `s` in the `/model` picker. Don't press Enter.
 
 **Why:**
-- The docs list Opus 5.5 as the default model on Pro, Max, Ultra, Team,
-  Enterprise and the Anthropic API
-  ([Claude Code docs](https://code.claude.com/docs/en/model-config#default-model-setting)).
-  The costs page names "Opus left as the default model" as a common cause of
-  limit problems
-  ([Claude Code docs](https://code.claude.com/docs/en/costs#when-a-developer-asks-about-a-limit)).
-  If you never chose a model, you may use the largest one for every task. Most
-  coding tasks do not need it (see 3.2). With Sonnet as your default, you use a
-  smaller model unless you choose another one.
+- The docs list Opus 5.5 as the default model on Pro, Max, Ultra, Team, Enterprise
+  and the Anthropic API ([Claude Code
+  docs](https://code.claude.com/docs/en/model-config#default-model-setting)). The
+  costs page names "Opus left as the default model" as a common cause of limit
+  problems ([Claude Code
+  docs](https://code.claude.com/docs/en/costs#when-a-developer-asks-about-a-limit)).
+  If you never chose a model, you may be using the largest one for every task, and
+  most coding tasks don't need it (see 3.2). With Sonnet as your default, you get
+  a smaller model unless you pick another one.
 - Enter in the `/model` picker switches the model and also saves it as the default
   of all your new sessions. The `s` key switches for the current session only. If
   you try Opus once with Enter, all later sessions can start on Opus
@@ -95,8 +95,8 @@ current session only
 - Desktop app, Code tab: choose the model with the picker in the row under the
   prompt box. Cmd+Shift+I opens the model menu
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
-  The docs do not say whether the picker saves your choice for new sessions, and
-  they do not describe the `s` key. A help center article says that `/model` works
+  The docs don't say whether the picker saves your choice for new sessions, and
+  they don't describe the `s` key. A help center article says that `/model` works
   in Claude Desktop
   ([Claude help center](https://support.claude.com/en/articles/11940350-claude-code-model-configuration)).
 
@@ -106,7 +106,7 @@ default. Your next session can start on the project model.
 ## 3.2 Try the smaller model first and go up only when needed
 
 **What:** Start each type of task on Sonnet, or on Haiku if the task is simple. Go
-up one step only when the result is not good enough.
+up one step only when the result isn't good enough.
 
 **Why:** The docs reserve Opus "for complex architectural decisions or multi-step
 reasoning"
@@ -154,7 +154,7 @@ Sonnet. If you can, clear the planning context before the work starts.
 - Each model has its own cache. So each switch between plan mode and execution
   mode starts a fresh cache
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#switching-models)).
-  One switch is fine. Many switches are not.
+  One switch is fine. Many switches aren't.
 - Planning fills the context with the files that Claude read to explore. If the
   work starts from the plan alone, each request of the work is smaller (see
   [lever 1](lever-1-keep-the-context-short.md)).
@@ -166,14 +166,14 @@ Sonnet. If you can, clear the planning context before the work starts.
 1. **One session.** Run `/model opusplan`. Press Shift+Tab to enter plan mode, or
    start a prompt with `/plan`. When you approve the plan, the work runs on
    Sonnet in the same conversation. It keeps the planning conversation, which
-   the new model reads once with no cache. Do not toggle plan mode many times
+   the new model reads once with no cache. Don't toggle plan mode many times
    ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode)).
 2. **One session, with a clean start.** Do the same, and set
    `showClearContextOnPlanAccept` to `true` in a settings file. The approval menu
    then gets a first option, **Yes, clear context and …**. It clears the
    conversation and starts the work from the plan alone
    ([Claude Code docs](https://code.claude.com/docs/en/settings-reference#showclearcontextonplanaccept)).
-   The docs describe this setting and `opusplan` separately. They do not say what
+   The docs describe this setting and `opusplan` separately. They don't say what
    the two do together.
 3. **Two sessions.** Plan in a session on Opus. Claude Code saves the plan as a
    file in `~/.claude/plans`, or in the folder of the `plansDirectory` setting
@@ -186,14 +186,14 @@ while it planned.
 
 **Where:** In the terminal, use any of the three ways. In the desktop app, Code tab,
 Plan is a permission mode
-([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
+([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs don't
 mention `opusplan` or the clear-context option there. Way 3 works: choose Opus in
 the model picker for the planning session, and Sonnet for the work session.
 
 **Watch out:** If the context is cleared, the plan is all that Claude keeps. Read
 the plan before you approve it. Press `Ctrl+G` to open it in your editor
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
-For the reasons to plan at all, and when a plan is not worth it, see
+For the reasons to plan at all, and when a plan isn't worth it, see
 [5.2](lever-5-make-fewer-round-trips.md#52-agree-on-a-plan-before-claude-edits-anything).
 
 ## 3.4 Give simple subagent tasks to Haiku
@@ -229,7 +229,7 @@ you work on Opus
 - Terminal: `/tasks` shows the model of each subagent (Claude Code 2.1.242 or
   later).
 - Desktop app, Code tab: the Background tasks pane lists subagents
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs don't
   describe the model of a subagent there.
 
 **Watch out:** Without the `FORCE` variable, `CLAUDE_CODE_SUBAGENT_MODEL` is only
