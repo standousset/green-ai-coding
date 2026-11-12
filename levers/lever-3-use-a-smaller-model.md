@@ -24,8 +24,8 @@ A test of 26 families of language models, on software tasks, shows the same
 picture. More energy did not always bring a gain in accuracy of the same size.
 Three factors explained more than 90% of the energy. They are the number of
 active parameters, the length of the output, and the quantization level (the
-precision of the numbers that the model stores). The test used models that run on local
-hardware, not Claude
+precision of the numbers that the model stores). The test used models that run on
+local hardware, not Claude
 ([Alizadeh et al., 2024](https://arxiv.org/abs/2412.00329)).
 
 <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size.svg#gh-light-mode-only">
@@ -61,19 +61,18 @@ in one session, press `s` in the `/model` picker. Do not press Enter.
 <img alt="Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model." src="../images/model-setting-priority.svg#gh-light-mode-only">
 <img alt="Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model." src="../images/model-setting-priority-dark.svg#gh-dark-mode-only">
 
-**How:** Add `"model": "sonnet"` to a settings file. The alias `sonnet` always
-points to the latest Sonnet model
-([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
-The settings files have an order. The local project file
-(`.claude/settings.local.json`) wins over the shared project file
-(`.claude/settings.json`), and that file wins over your user file
-(`~/.claude/settings.json`)
-([settings precedence](https://code.claude.com/docs/en/settings#settings-precedence)).
-If a project file sets a `model`, new sessions in that project start on it,
-whatever your user file says. For one run, use `claude --model sonnet`. The
-`ANTHROPIC_MODEL` variable also works, and it beats the settings files. The
-order is in the figure above
-([model configuration](https://code.claude.com/docs/en/model-config#setting-your-model)).
+**How:**
+- To set your default, add `"model": "sonnet"` to a settings file. The alias
+  `sonnet` always points to the latest Sonnet model
+  ([model aliases](https://code.claude.com/docs/en/model-config#model-aliases)).
+- The settings files have an order. The local project file
+  (`.claude/settings.local.json`) wins over the shared project file
+  (`.claude/settings.json`), and that file wins over your user file
+  (`~/.claude/settings.json`)
+  ([settings precedence](https://code.claude.com/docs/en/settings#settings-precedence)).
+- For one run, use `claude --model sonnet`. The `ANTHROPIC_MODEL` variable also
+  works, and it beats the settings files. The figure above shows the order
+  ([model configuration](https://code.claude.com/docs/en/model-config#setting-your-model)).
 
 <img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only.svg#gh-light-mode-only">
 <img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only-dark.svg#gh-dark-mode-only">
@@ -106,8 +105,8 @@ default. Your next session can start on the project model.
 
 ## 3.2 Try the smaller model first and go up only when needed
 
-**What:** Start each type of task on the smaller model. Go up one step only when
-the result is not good enough.
+**What:** Start each type of task on Sonnet, or on Haiku if the task is simple. Go
+up one step only when the result is not good enough.
 
 **Why:** The docs reserve Opus "for complex architectural decisions or multi-step
 reasoning"
@@ -125,7 +124,7 @@ again, with no cache (see
 [2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)).
 
 **Where:**
-- Terminal: `/model sonnet`, `/model haiku` or `/model opus`.
+- Terminal: the `/model` picker. Press `s` to keep your saved default (see 3.1).
 - Desktop app, Code tab: the model picker. You can change it during the session
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
 
@@ -178,13 +177,11 @@ Way 3 needs no special setting and works in every app. Ways 2 and 3 give the
 smallest context for the work. Choose way 1 if the work needs what Claude learned
 while it planned.
 
-**Where:**
-- Terminal: the three ways above.
-- Desktop app, Code tab: Plan is a permission mode there
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
-  mention `opusplan` or the clear-context option for the desktop app. Way 3 works:
-  choose Opus in the model picker for the planning session, and Sonnet for the
-  work session.
+**Where:** In the terminal, use any of the three ways. In the desktop app, Code tab,
+Plan is a permission mode
+([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
+mention `opusplan` or the clear-context option there. Way 3 works: choose Opus in
+the model picker for the planning session, and Sonnet for the work session.
 
 **Watch out:** If the context is cleared, the plan is all that Claude keeps. Read
 the plan before you approve it. Press `Ctrl+G` to open it in your editor
@@ -206,19 +203,22 @@ you work on Opus
 <img alt="Two horizontal bars. The main conversation runs on Sonnet and sends a task to a subagent that runs on Haiku. The subagent reads a search result and three files, which is noisy tool output, and writes a short summary. Only the summary returns to the main conversation." src="../images/subagent-on-haiku.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. The main conversation runs on Sonnet and sends a task to a subagent that runs on Haiku. The subagent reads a search result and three files, which is noisy tool output, and writes a short summary. Only the summary returns to the main conversation." src="../images/subagent-on-haiku-dark.svg#gh-dark-mode-only">
 
-**How:** Add `model: haiku` to the front matter of the subagent file. The order
-of the docs has four steps. First, the model that Claude passes for one call.
-Then the `model` key of the subagent file, then the
-`CLAUDE_CODE_SUBAGENT_MODEL` variable, and last the model of the main
-conversation ([Claude Code docs](https://code.claude.com/docs/en/sub-agents#choose-a-model)).
-To run Explore on a small model, define your own subagent named Explore with
-`model: haiku`: it replaces the built-in one. To run every subagent on one
-model, set `CLAUDE_CODE_SUBAGENT_MODEL` to `haiku` and
-`CLAUDE_CODE_SUBAGENT_MODEL_FORCE` to `1` (Claude Code 2.1.257 or later).
+**How:**
+- Add `model: haiku` to the front matter of the subagent file.
+- The docs give an order, from the strongest to the weakest
+  ([Claude Code docs](https://code.claude.com/docs/en/sub-agents#choose-a-model)):
+  1. The model that Claude passes for one call.
+  2. The `model` key of the subagent file.
+  3. The `CLAUDE_CODE_SUBAGENT_MODEL` variable.
+  4. The model of the main conversation.
+- To run Explore on a small model, define your own subagent named Explore with
+  `model: haiku`. It replaces the built-in one.
+- To run every subagent on one model, set `CLAUDE_CODE_SUBAGENT_MODEL` to `haiku`
+  and `CLAUDE_CODE_SUBAGENT_MODEL_FORCE` to `1` (Claude Code 2.1.257 or later).
 
 **Where:**
-- Terminal: `/tasks` shows the model of each subagent (Claude
-  Code 2.1.242 or later).
+- Terminal: `/tasks` shows the model of each subagent (Claude Code 2.1.242 or
+  later).
 - Desktop app, Code tab: the Background tasks pane lists subagents
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
   describe the model of a subagent there.
