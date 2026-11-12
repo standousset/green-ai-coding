@@ -73,9 +73,9 @@ keep the rules file short.
 - Put the rules for one part of the project in a path-scoped rule (a rule file
   with `paths` in its header). It loads only when Claude uses a matching file
   ([Claude Code docs](https://code.claude.com/docs/en/memory#path-specific-rules)).
-- Disable the MCP servers that you do not use: run `/mcp`. By default, only the
-  tool names and the server instructions enter the context until Claude uses a
-  tool, so the cost is small, but it is not zero
+- Disable the MCP servers that you do not use: run `/mcp`. Until Claude uses a
+  tool, only the tool names and the server instructions enter the context. So the
+  cost is small, but it is not zero
   ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 
 **Where:**

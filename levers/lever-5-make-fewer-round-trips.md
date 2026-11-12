@@ -233,9 +233,10 @@ the work is done.
 **Why:**
 - In an agent team, each teammate is a separate Claude instance with its own
   context. A team uses about 7 times more tokens than a standard session when the
-  teammates run in plan mode, and each active teammate keeps using tokens until it
-  exits
+  teammates run in plan mode
   ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-agent-team-costs)).
+  Each active teammate keeps using tokens until it exits
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#agent-team-token-costs)).
 - A session-scoped scheduled task fires on its interval even when the session is
   idle, and sends your full context each time. A goal check-in does the same, at
   most three times between your prompts
@@ -247,7 +248,7 @@ the work is done.
   small task that stands alone. Shut a teammate down when its work is done
   ([Claude Code docs](https://code.claude.com/docs/en/costs#agent-team-token-costs)).
 - To stop the idle goal check-ins, set `CLAUDE_CODE_GOAL_CHECKIN_MINUTES` to `0`.
-  It needs Claude Code 2.1.236 or later.
+  Idle check-ins need Claude Code 2.1.236 or later.
 - Stop a scheduled task when you no longer need it.
 
 **Where:**

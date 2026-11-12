@@ -55,13 +55,15 @@ find the data of a region and how to use it.
 - These are yearly averages for a whole country. A live value changes with the
   hour ([Electricity Maps](https://www.electricitymaps.com/)).
 - A country average can be far from the grid of one data centre. In the Google
-  data of 2025 (see 6.3), the grid of `us-west1` (Oregon) emits 98 gCO₂eq per kWh
-  and the grid of `us-east1` (South Carolina) emits 579, against 384 for the
-  United States. In Montréal it is 11, against 191 for Canada. The two sources
-  differ, so compare the size of the gaps and not the exact values.
+  data of 2025 (see 6.3), the grid of `us-west1` (Oregon) emits 98 gCO₂eq per kWh.
+  The grid of `us-east1` (South Carolina) emits 579. The average of the United
+  States is 384. In Montréal the grid emits 11, and the average of Canada is 191.
+  The two sources differ, so compare the size of the gaps and not the exact
+  values.
 - A data centre that is connected to the grid uses the mix of its local grid. A
-  figure that is lower than the grid can come only from a power plant on site (or
-  one with a direct line to the data centre) or from contracts. A figure that rests on contracts is market-based (see 6.6).
+  figure that is lower than the grid needs a power plant on site, a direct line to
+  a power plant, or contracts. A figure that rests on contracts is market-based
+  (see 6.6).
 
 ## 6.2 Check whether you can choose a region
 
@@ -104,8 +106,8 @@ grid of `asia-south1` (Mumbai) emits 598. In the United States, `us-west1`
   [carbon page](https://cloud.google.com/sustainability/region-carbon), in a
   [GitHub repository](https://github.com/GoogleCloudPlatform/region-carbon-info)
   and in a BigQuery public dataset. Google calls a region low-carbon when
-  carbon-free energy is at least 75%, or, when that value is not available, when
-  the grid emits at most 200 gCO₂eq per kWh.
+  carbon-free energy is at least 75%. If that value is not available, the limit
+  is a grid of at most 200 gCO₂eq per kWh.
 - For other providers, use the country data of
   [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
   (see 6.1). [Electricity Maps](https://www.electricitymaps.com/) shows live data
@@ -165,10 +167,10 @@ different AWS Regions". A geographic profile stays inside its geography. For the
 US profile, the AWS example lists `us-east-1`, `us-east-2` and `us-west-2`. A
 global profile can use any supported commercial Region
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
-Claude Code picks the profile from your region: `us-` gives `us.`, `us-gov-` gives
-`us-gov.`, `eu-` gives `eu.`, `ap-` gives `apac.`, and every other region gives
-`global.`. The docs call
-this "a preference, not a guarantee"
+Claude Code picks the profile from your region. A region that starts with `us-`
+gives `us.`, `us-gov-` gives `us-gov.`, `eu-` gives `eu.` and `ap-` gives `apac.`.
+Every other region gives `global.`. The docs call this "a preference, not a
+guarantee"
 ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#cross-region-inference-profile-prefixes)).
 
 **How:**
@@ -204,14 +206,14 @@ made.
   share takes into account the renewable investments of Google in that location
   ([Google region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
 - Ireland is an example. Its grid emitted 257 gCO₂ per kWh in 2025
-  ([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)),
-  and data centres used 23% of its metered electricity
+  ([Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)).
+  Data centres used 23% of its metered electricity
   ([Data Centre Review](https://datacentrereview.com/2026/07/data-centres-consumed-23-of-irelands-electricity-in-2025/),
   from the Central Statistics Office). A data centre that is connected to this
-  grid uses this mix. New rules ask new data centres to provide matching on-site
-  generation and to source at least 80% of their annual demand from new
-  renewable projects (same article). This guide found no published figure for the
-  effect of these rules.
+  grid uses this mix. New rules expect new data centres to provide matching
+  on-site generation. They also expect at least 80% of the annual demand to come
+  from new renewable projects (same article). This guide found no published
+  figure for the effect of these rules.
 
 **How:** Look at what the provider publishes, as in the table (checked on
 12 November 2026). Use a location-based figure when there is one.
