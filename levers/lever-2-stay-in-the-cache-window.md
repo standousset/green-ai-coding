@@ -5,7 +5,7 @@
 *Reading time: about 9 minutes.*
 
 > [!IMPORTANT]
-> Choose the model and the effort level at the start of a task, do not change them in the middle of it, and compact before a long break.
+> Choose the model, the effort level and the speed at the start of a task, and do not change them in the middle of it. Compact before a long break, or set a cache time of 1 hour.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [lever 1](lever-1-keep-the-context-short.md)). Prompt caching lets the provider
@@ -71,8 +71,8 @@ request that uses it
   ([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)).
 
 **Where:**
-- Terminal: the table above. `/usage` shows a **Prompt cache** line with the hit
-  ratio and whether the cache is warm. It needs Claude Code 2.1.251 or later
+- Terminal: `/usage` shows a **Prompt cache** line with the hit ratio and whether
+  the cache is warm. It needs Claude Code 2.1.251 or later
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#check-cache-performance)).
 - Desktop app, Code tab: the cache docs do not describe the desktop app. It runs
   Claude Code, so the table should apply there too.
@@ -91,8 +91,8 @@ lifetime, it processes the full history again, with no cache
 <img alt="Two timelines. When you run /compact while the cache is warm, the request reads the conversation from the cache, at a fraction of the cost of its size. When you run it after the cache expired, the request processes the full history again, with no cache." src="../images/compact-before-cache-expires.svg#gh-light-mode-only">
 <img alt="Two timelines. When you run /compact while the cache is warm, the request reads the conversation from the cache, at a fraction of the cost of its size. When you run it after the cache expired, the request processes the full history again, with no cache." src="../images/compact-before-cache-expires-dark.svg#gh-dark-mode-only">
 
-**How:** Compact at a natural break, before you step away. Your cache time is in
-2.1. For the effect of compaction on the context, see
+**How:** Compact at a natural break, before you step away. To learn your cache
+time, see 2.1. For the effect of compaction on the context, see
 [1.5](lever-1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue).
 To drop a failed attempt, `/rewind` is better than `/compact`: it goes back to a
 part that is already in the cache (see
@@ -109,8 +109,8 @@ part that is already in the cache (see
 ## 2.3 Set the cache time to 1 hour if you often take a break
 
 **What:** Set `promptCacheTtl` to `1h`, or set the variable
-`CLAUDE_CODE_PROMPT_CACHE_TTL=1h`. Set it for one session only if you need it
-just for a long session with many breaks.
+`CLAUDE_CODE_PROMPT_CACHE_TTL=1h`. If you need 1 hour only for a long session with
+many breaks, use the variable for that session only.
 
 **Why:** With an API key, a cloud provider or usage credits, the main
 conversation has a cache time of 5 minutes (see 2.1). A break of more than 5
