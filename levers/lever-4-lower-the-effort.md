@@ -15,12 +15,11 @@ reasoning of a model to train their own models, which is called distillation, an
 Anthropic summarizes or hides it to stop this
 ([Anthropic](https://www.anthropic.com/news/distillation-defenses)). But the
 hidden tokens still use energy and you still pay for them. On the newest Claude
-models you cannot turn thinking off, so the effort level is the control that you
-have. The Claude Code docs say: "Lower effort is faster and cheaper for
+models you cannot turn thinking off, so the effort level is your control. The Claude Code docs say: "Lower effort is faster and cheaper for
 straightforward tasks"
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#choose-an-effort-level)).
 
-The energy cost is large, and tests show it:
+What the docs and the tests say:
 - The effort level changes every output token: the thinking, the text of the
   answer and the tool calls. A lower level also gives fewer and shorter tool calls.
   The model follows the level as a guide, not as a limit. The docs call it "a
@@ -47,9 +46,9 @@ The energy cost is large, and tests show it:
 <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output-dark.svg#gh-dark-mode-only">
 
 These tests used open models, not Claude models. This guide has no energy figure
-for Claude, so the size of the saving for Claude is not known. You cannot turn
-thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and the Fable models. The effort
-level is your control there
+for Claude, so the size of the saving for Claude is not known. The Claude Code docs
+confirm that you cannot turn thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and
+the Fable models
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#extended-thinking)).
 
 | Item | Role |
@@ -138,10 +137,9 @@ of your prompt. It needs Claude Code 2.1.311 or later. In the terminal, the word
 can also raise that turn to `xhigh`. Phrases such as "think hard" are ordinary
 text and have no effect of this kind.
 
-**Where:**
-- Terminal: the word in the prompt, as above.
-- Desktop app, Code tab: the same word in the prompt box. The docs for the desktop
-  app do not describe it, so check the result on a test prompt.
+**Where:** In the terminal and in the desktop app, Code tab, write the word in
+the prompt. The docs for the desktop app do not describe it, so check the result
+on a test prompt.
 
 **Watch out:** On some providers, such as Amazon Bedrock, the word cannot raise
 the turn. Set the effort level instead.
@@ -153,12 +151,12 @@ project then start at a level that fits it. To change the level for one session
 only, press `s` in the `/effort` slider, and do not press Enter.
 
 **Why:**
-- Claude Code takes the first level that applies in the order below
-  ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
 - Enter saves the level as your default for the model, and it applies in all later
   sessions. A high level that you chose for one hard bug then stays on for every
   later session on that model. The `s` key applies the level to this session only
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-effort-level)).
+- Claude Code takes the first level that applies in the order of the figure
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
 
 <img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority.svg#gh-light-mode-only">
 <img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority-dark.svg#gh-dark-mode-only">
@@ -174,23 +172,21 @@ Opus 5.5
   you)
   ([settings reference](https://code.claude.com/docs/en/settings-reference#effortlevel)).
   The values are `low`, `medium`, `high` and `xhigh`.
-- For all your projects, run `/effort medium` and press Enter once. Claude Code
-  saves the level for the current model.
+- For all your projects, run `/effort medium`. Claude Code saves the level for the
+  current model.
 - For one session only:
   1. Run `/effort` with no argument. The slider opens. In the `/model` picker, the
      same slider is next to the model.
   2. Move the slider to the level that you want.
   3. Press `s`. Do not press Enter.
 
-Do not type the level after the command. A level that you type, for example
-`/effort high`, is saved in the same way as Enter. Claude Code saves the level for
-each model, under `modelSettings` in your user settings. It needs Claude Code
+A level that you type after the command, for example `/effort high`, is saved in
+the same way as Enter. Claude Code saves the level for each model, under `modelSettings` in your user settings. It needs Claude Code
 2.1.257 or later. To clear a level that you saved, run `/effort auto`. The level
 `max` applies to the current session only, whatever key you use.
 
 **Where:**
-- Terminal: the settings files for a project, and the slider with the `s` key for
-  one session.
+- Terminal: the settings files and the slider above.
 - Desktop app, Code tab: the docs do not describe an `s` key in the effort menu
   (Cmd+Shift+E). Check in the menu how long your choice lasts.
 
@@ -215,7 +211,6 @@ The `effort` field in the file of the subagent overrides the level of the sessio
 For example:
 
 ```markdown
-
 ---
 name: test-runner
 description: Runs the tests and reports the failures
@@ -228,9 +223,6 @@ The options are `low`, `medium`, `high`, `xhigh` and `max`. The levels that you 
 use depend on the model. To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). For the reason to
 use a subagent, see [1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent).
-
-**Where:**
-- Terminal: the subagent file above.
 
 **Watch out:** `CLAUDE_CODE_EFFORT_LEVEL` also beats the `effort` field of a
 subagent (see 4.3).
