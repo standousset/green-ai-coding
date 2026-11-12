@@ -224,7 +224,10 @@ Haiku 5.5.
 setting). `/autocompact auto` returns to the default.
 
 **Where:**
-- Terminal: Claude Code 2.1.221 or later
+- Terminal: `/autocompact`, the `--autocompact` option or the `autoCompactWindow`
+  setting. The window can be from 100K to 1M tokens. From Claude Code 2.1.288,
+  `/autocompact` saves the value for the current model only. Before that, it
+  saved one window for every model
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
 - Desktop app, Code tab: Claude compacts by itself when the context is full. The
   Desktop docs do not list `/autocompact`
