@@ -23,6 +23,7 @@ A long context makes the answers less reliable too (see
 | [5.6 Press Esc as soon as Claude goes the wrong way](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
 | [5.7 After two failed corrections, run `/clear` and write a better prompt](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
 | [5.8 Use a simple tool when it does the job](#58-use-a-simple-tool-when-it-does-the-job) | Skip the model |
+| [5.9 Stop work that runs without you](#59-stop-work-that-runs-without-you) | Skip the hidden requests |
 
 ## 5.1 Know that a retry costs more than the first attempt
 
@@ -226,6 +227,38 @@ of several files
 
 **Watch out:** This guide has no energy figure that compares a simple tool with a
 model request. The reason above is fewer tokens, not a measured energy saving.
+
+## 5.9 Stop work that runs without you
+
+**What:** Agent teams, scheduled tasks and idle check-ins send requests while you
+do nothing. Use them only when you need them, keep them small, and stop them when
+the work is done.
+
+**Why:**
+- In an agent team, each teammate is a separate Claude instance with its own
+  context. A team uses about 7 times more tokens than a standard session when the
+  teammates run in plan mode, and each active teammate keeps using tokens until it
+  exits
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-agent-team-costs)).
+- A session-scoped scheduled task fires on its interval even when the session is
+  idle, and sends your full context each time. A goal check-in does the same, at
+  most three times between your prompts
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+
+**How:**
+- Agent teams are off by default. Turn them on only for work that needs them.
+- Use Sonnet for the teammates, keep the team small, and give each teammate a
+  small task that stands alone. Shut a teammate down when its work is done
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#agent-team-token-costs)).
+- To stop the idle goal check-ins, set `CLAUDE_CODE_GOAL_CHECKIN_MINUTES` to `0`.
+  It needs Claude Code 2.1.236 or later.
+- Stop a scheduled task when you no longer need it.
+
+**Where:**
+- Terminal: the steps above. The docs page that I read covers Claude Code.
+
+**Watch out:** The figure of 7 times is for teammates in plan mode. The docs give
+no figure for other cases.
 
 ---
 

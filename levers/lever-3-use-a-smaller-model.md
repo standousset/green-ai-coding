@@ -33,6 +33,13 @@ So a larger model uses more energy for each word that it writes. The method fits
 models up to 200B parameters. For larger models, the page says that it
 extrapolates. It is an estimate, not a measure of one given model.
 
+A test of 26 families of language models on software tasks points the same way.
+Larger models did not always give accuracy gains in proportion to their energy.
+The number of active parameters, the output length and the quantization level
+together explained more than 90% of the energy. The test used models that run on
+local hardware, not Claude
+([Alizadeh et al., 2024](https://arxiv.org/abs/2412.00329)).
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../images/energy-per-token-grows-with-model-size-dark.svg">
   <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size.svg">

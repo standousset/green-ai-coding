@@ -5,8 +5,8 @@
 > [!IMPORTANT]
 > Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
 
-**Why it matters:** A long context costs energy, because each request sends the
-whole conversation again (see 1.1). It also makes the answers less reliable. In a
+**Why it matters:** A long context means many more tokens, because each request
+sends the whole conversation again (see 1.1). It also makes the answers less reliable. In a
 study of 18 models, the results became less reliable as the input got longer
 ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
 reliable answers lead to more retries (see
@@ -77,6 +77,10 @@ keep the rules file short.
 - Put the rules for one part of the project in a path-scoped rule (a rule file
   with `paths` in its header). It loads only when Claude uses a matching file
   ([Claude Code docs](https://code.claude.com/docs/en/memory#path-specific-rules)).
+- Disable the MCP servers that you do not use: run `/mcp`. By default, only the
+  tool names and the server instructions enter the context until Claude uses a
+  tool, so the cost is small, but it is not zero
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 
 **Where:**
 - Terminal: type `@` to open a menu of paths. The content of the file goes into
