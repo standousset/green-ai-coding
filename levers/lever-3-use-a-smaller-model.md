@@ -2,7 +2,7 @@
 
 # Lever 3: Use a smaller model
 
-*Reading time: about 8 minutes.*
+*Reading time: about 7 minutes.*
 
 > [!IMPORTANT]
 > Make a mid-size model your default, and use the largest model for the hardest tasks only.

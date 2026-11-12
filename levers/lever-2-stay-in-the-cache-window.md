@@ -2,7 +2,7 @@
 
 # Lever 2: Stay in the cache window
 
-*Reading time: about 10 minutes.*
+*Reading time: about 9 minutes.*
 
 > [!IMPORTANT]
 > Choose the model and the effort level at the start of a task, do not change them in the middle of it, and compact before a long break.
