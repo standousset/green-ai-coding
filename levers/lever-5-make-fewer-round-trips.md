@@ -5,7 +5,7 @@
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Say the task precisely, plan a large task first, and give Claude a check to run. When a round fails, stop it early and start fresh instead of correcting a third time. Skip the requests that a simple tool, or an agent that runs without you, adds for no gain.
+> Say the task precisely, plan a large task first, and give Claude a check to run. When a round goes wrong, stop it early, and after two failed corrections start fresh. Do not send requests that a simple tool or an unattended agent adds for no gain.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
@@ -46,7 +46,7 @@ scanning". A request that names the file lets Claude work with few file reads
 - Point to the file with `@` (see
   [1.2](lever-1-keep-the-context-short.md#12-send-only-what-the-task-needs)).
 - State the limits that Claude cannot read in the code, for example "no new
-  libraries". Say which choice you prefer, up front.
+  libraries". If you prefer one of several ways, say which.
 - Point to an example, such as "follow the pattern in HotDogWidget.php".
 - Hand over what Claude needs, such as the error text, the failing test or a
   screenshot. Do not describe it
@@ -71,7 +71,7 @@ mode, Claude "does not edit your source" until you approve the plan
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode)).
 The docs say that plan mode prevents "expensive re-work when the initial direction
 is wrong"
-([source](https://code.claude.com/docs/en/costs#work-efficiently-on-complex-tasks)).
+([Claude Code docs](https://code.claude.com/docs/en/costs#work-efficiently-on-complex-tasks)).
 
 **How:**
 - If the task is not clear, use a prompt like the one in the docs. It says:
@@ -131,13 +131,10 @@ finish.
 Each tool use sends one more request (see the intro), so work that you stop early
 does not send those requests.
 
-**How:** Watch the first minute. When Claude drifts, press Esc, and then send a
+**How:** Watch the first steps of Claude. When it drifts, press Esc, and then send a
 precise message (see 5.1). To go back to an earlier point and drop the dead end,
 use `/rewind`, or press Esc twice on an empty prompt (see
 [1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
-
-**Where:**
-- Terminal: Esc and `/rewind`.
 
 **Watch out:** The checkpoints cover only the files that Claude edited with its
 own file tools. A file that a Bash command changed is not restored
@@ -175,8 +172,8 @@ If part of the conversation is good, use `/rewind` instead (see
 and do not write a prompt.
 
 **Why:** Each prompt starts requests that send the whole conversation (see the
-intro). The Claude Code docs give two cases where a plain tool costs less context. CLI
-tools such as `gh` and `aws` are "more context-efficient than MCP servers"
+intro). The Claude Code docs give two cases where a plain tool costs less
+context. CLI tools such as `gh` and `aws` are "more context-efficient than MCP servers"
 ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 For typed languages, one "go to definition" call replaces a grep and the reading
 of several files
@@ -219,9 +216,6 @@ the work is done.
 - To stop the idle goal check-ins, set `CLAUDE_CODE_GOAL_CHECKIN_MINUTES` to `0`.
   Idle check-ins need Claude Code 2.1.236 or later.
 - Stop a scheduled task when you no longer need it.
-
-**Where:**
-- Terminal: the docs page that I read covers Claude Code only.
 
 **Watch out:** The figure of 7 times is for teammates in plan mode. The docs give
 no figure for other cases.
