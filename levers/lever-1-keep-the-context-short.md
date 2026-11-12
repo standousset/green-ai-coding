@@ -5,14 +5,14 @@
 *Reading time: about 7 minutes.*
 
 > [!IMPORTANT]
-> Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
+> Give the assistant only what the task needs, hand the noisy work to a subagent, and compact when a long task has to keep going.
 
-**Why it matters:** A long context means many more tokens, because each request
+**Why it matters:** A long context means a lot more tokens, because every request
 sends the whole conversation again (see 1.1). It also makes the answers less
-reliable. In a study of 18 models, the results became less reliable as the input got longer
-([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
-reliable answers lead to more retries (see
-[lever 5](lever-5-make-fewer-round-trips.md)).
+reliable. In a study of 18 models, the results became less reliable as the input
+got longer ([Chroma, Context
+Rot](https://www.trychroma.com/research/context-rot)). And less reliable answers
+mean more retries (see [lever 5](lever-5-make-fewer-round-trips.md)).
 
 | Item | Role |
 |---|---|
@@ -24,13 +24,13 @@ reliable answers lead to more retries (see
 
 ## 1.1 Drop old context that the task does not need
 
-**What:** Keep only the conversation that the current task needs. Start a new
-conversation for an unrelated task.
+**What:** Keep only the conversation the current task needs, and start a new one
+when the task is unrelated.
 
 **Why:** Each request sends the full conversation again. Each time the assistant
-uses a tool, it sends one more request with the tool results
-([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
-Old, unrelated context adds to the cost of each message.
+uses a tool, it sends one more request with the tool results ([Claude Code
+docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+Old, unrelated context makes every message cost more.
 
 <img alt="Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame." src="../images/context-grows-each-request.svg#gh-light-mode-only">
 <img alt="Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame." src="../images/context-grows-each-request-dark.svg#gh-dark-mode-only">
@@ -54,15 +54,15 @@ new conversation between unrelated tasks.
 **What:** Give the assistant only the part of a log or a file that matters, and
 keep the rules file short.
 
-**Why:** What you send stays in the context and goes again with each request (see
-1.1). The rules file is part of every request.
+**Why:** Whatever you send stays in the context and goes out again with every
+request (see 1.1). The rules file rides along on every request too.
 
 <img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs-dark.svg#gh-dark-mode-only">
 
 **How:**
 - Point to the file with `@`. Type `@login.ts` and accept the file in the menu,
-  instead of writing "find the login code". Claude then has the file and does not
+  instead of writing "find the login code". Claude then has the file and doesn't
   need to search for it.
 - If only a part of a file matters, name the lines in your prompt, for example
   "Read lines 40 to 80 of src/login.ts". Claude can read part of a file with an
@@ -87,9 +87,9 @@ keep the rules file short.
   file with `paths` in its header). Claude loads them when it reads or edits a
   matching file
   ([Claude Code docs](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
-- Disable the MCP servers that you do not use: run `/mcp`. Until Claude uses a
+- Disable the MCP servers that you don't use: run `/mcp`. Until Claude uses a
   tool, only the tool names and the server instructions enter the context. So the
-  cost is small, but it is not zero
+  cost is small, but it isn't zero
   ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 
 **Where:**
@@ -121,9 +121,9 @@ keep the rules file short.
 **What:** A subagent is a helper agent with its own context. It does the noisy
 work and sends back only a short result.
 
-**Why:** Test runs, logs and documentation searches fill the context fast. In
-the context of a subagent, they stay out of your main conversation
-([Claude Code docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
+**Why:** Test runs, logs and documentation searches fill the context fast. Run
+them in a subagent and they stay out of your main conversation ([Claude Code
+docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
 
 <img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out.svg#gh-light-mode-only">
 <img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out-dark.svg#gh-dark-mode-only">
@@ -141,25 +141,25 @@ smaller model or at a lower effort, see
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
 **Watch out:**
-- A subagent cannot ask you questions. Claude Code removes the
-  `AskUserQuestion` tool from every subagent. Permission prompts still reach you
-  in the main session. Put everything the subagent needs in its task, or it
-  must guess
+- A subagent can't ask you questions. Claude Code removes the `AskUserQuestion`
+  tool from every subagent. Permission prompts still reach you in the main
+  session. Put everything the subagent needs in its task, or it has to guess
   ([Claude Code docs](https://code.claude.com/docs/en/sub-agents)).
-- The requests of a subagent use energy too. A subagent does not use the warm
+- The requests of a subagent use energy too. A subagent doesn't use the warm
   cache of the main conversation. It starts its own cache, which lasts 5 minutes
   by default
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)).
 
 ## 1.4 Go back with `/rewind` when an attempt failed
 
-**What:** Return the conversation to the message before a failed attempt. The
-attempt leaves the context. You choose if the code changes stay or go back too.
+**What:** Take the conversation back to the message before a failed attempt. The
+attempt drops out of the context, and you choose whether the code changes stay or
+go back too.
 
-**Why:** After a failed attempt, the next requests carry the whole attempt: the
-wrong replies and the tool results. `/rewind` cuts them out. The part before that
-turn is already in the cache, and it stays there
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
+**Why:** After a failed attempt, every next request carries the whole attempt: the
+wrong replies and the tool results. `/rewind` cuts them out, and the part before
+that turn is already in the cache and stays there ([Claude Code
+docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
 
 <img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the attempt that failed. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the attempt that failed. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end-dark.svg#gh-dark-mode-only">
@@ -188,11 +188,12 @@ also choose when Claude Code compacts by itself.
   requests send about 5K tokens plus the new messages, and not 100K. The saving
   repeats on every request, so it grows as the task continues. The numbers are an
   example, not a measure.
-- The summary costs one request. The model reads the full conversation once more
-  and writes the summary. Compacting a large context is itself a large request
-  ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+- The summary itself costs one request: the model reads the full conversation once
+  more and writes the summary. Compacting a large context is a large request in
+  itself ([Claude Code
+  docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
 - The summary keeps less than the full conversation. The `CLAUDE.md` at the
-  project root is read from disk again, so it is not lost
+  project root is read from disk again, so it isn't lost
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-survives-compaction)).
 
 <img alt="Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again." src="../images/compact-shrinks-context.svg#gh-light-mode-only">
@@ -208,7 +209,7 @@ full conversation.
 - To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
   [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
-- Claude Code also compacts by itself when the context is full enough. You do not
+- Claude Code also compacts by itself when the context is full enough. You don't
   choose the moment, and it can happen in the middle of a task. The window depends
   on the model and can be very large: the docs give about 967K tokens for Haiku
   5.5.
@@ -225,7 +226,7 @@ full conversation.
   `/autocompact` saves the value for the current model. Before Claude Code
   2.1.288, it saved one window for every model.
 - Terminal, for one launch: start Claude Code with `claude --autocompact 200k`.
-  The option does not change your saved setting.
+  The option doesn't change your saved setting.
 - Settings file, for every model: set `"autoCompactWindow": 200000` in
   `~/.claude/settings.json`. A value that you saved with `/autocompact` for a
   model wins over this key for that model
