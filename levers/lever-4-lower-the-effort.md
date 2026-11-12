@@ -118,6 +118,11 @@ The Claude Code docs suggest these levels
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
   This guide has no measure of its token cost, so keep it off unless you want
   workflows.
+- A level that is too low can cost retries. A wrong result at `low` often needs
+  corrections, and each correction sends the whole conversation again (see
+  [lever 5](lever-5-make-fewer-round-trips.md)). If the result is wrong at a low
+  level, go up one level for a new attempt and do not send corrections. This guide
+  has no measure of where the break-even is.
 - The docs here cover Claude only. In other assistants, look for a setting named
   effort, thinking or reasoning.
 

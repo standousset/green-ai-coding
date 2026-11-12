@@ -85,6 +85,8 @@ is wrong"
 - When the spec and the plan are ready, start a fresh session to build from the
   spec. The interview then leaves the context (see
   [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
+  To plan on a larger model and build on a smaller one, see
+  [3.3](lever-3-use-a-smaller-model.md#33-plan-with-opus-and-do-the-work-on-sonnet).
 
 **Where:**
 - Terminal: Shift+Tab, `/plan` or `--permission-mode plan`.

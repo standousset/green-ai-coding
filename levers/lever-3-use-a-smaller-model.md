@@ -2,7 +2,7 @@
 
 # Lever 3: Use a smaller model
 
-*Reading time: about 7 minutes.*
+*Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
 > Make a mid-size model your default, and use the largest model for the hardest tasks only.
@@ -128,8 +128,15 @@ again, with no cache (see
 - Desktop app, Code tab: the model picker. You can change it during the session
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
 
-**Watch out:** The docs describe the aliases, not a test for your own tasks. Check
-the result on your own code before you trust the smaller model.
+**Watch out:**
+- The docs describe the aliases, not a test for your own tasks. Check the result on
+  your own code before you trust the smaller model.
+- A smaller model that needs several corrections can cost more than a larger model
+  that gets it right the first time. Each correction sends the whole conversation
+  again (see [lever 5](lever-5-make-fewer-round-trips.md)). If the smaller model
+  fails twice on a task, start the task again on the next model (see
+  [5.5](lever-5-make-fewer-round-trips.md#55-after-two-failed-corrections-run-clear-and-write-a-better-prompt)).
+  This guide has no measure of where the break-even is.
 
 ## 3.3 Plan with Opus and do the work on Sonnet
 
@@ -186,6 +193,8 @@ the model picker for the planning session, and Sonnet for the work session.
 **Watch out:** If the context is cleared, the plan is all that Claude keeps. Read
 the plan before you approve it. Press `Ctrl+G` to open it in your editor
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
+For the reasons to plan at all, and when a plan is not worth it, see
+[5.2](lever-5-make-fewer-round-trips.md#52-agree-on-a-plan-before-claude-edits-anything).
 
 ## 3.4 Give simple subagent tasks to Haiku
 
