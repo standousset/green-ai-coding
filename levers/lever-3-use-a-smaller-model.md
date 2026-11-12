@@ -47,7 +47,7 @@ hardware, not Claude
 
 **How:** Make Sonnet your default model (3.2), and go up only when the result is
 not good enough (3.3). For the cost of a switch in the middle of a task, see
-[2.5](lever-2-stay-in-the-cache-window.md#25-do-not-change-the-model-in-the-middle-of-a-task).
+[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
 
 **Where:** This applies to the terminal and to the desktop app, Code tab.
 
@@ -109,7 +109,7 @@ The `haiku` alias is for simple tasks, and `sonnet` is for daily coding tasks
 not good enough, repeat the task on the next model. Choose the model before the
 first message of a task. A switch in the middle reads the whole conversation
 again, with no cache (see
-[2.5](lever-2-stay-in-the-cache-window.md#25-do-not-change-the-model-in-the-middle-of-a-task)).
+[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)).
 
 **Where:**
 - Terminal: `/model sonnet`, `/model haiku` or `/model opus`.
