@@ -5,7 +5,7 @@
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Say the task precisely, plan a large task first, stop a wrong path early, and use a simple tool when it does the job.
+> Say the task precisely, plan a large task first, and give Claude a check to run. When a try fails, stop it early and start fresh instead of correcting a third time. Skip the requests that a simple tool, or an agent that runs without you, adds for no gain.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
@@ -14,6 +14,8 @@ scan more files than it needs
 ([Claude Code docs](https://code.claude.com/docs/en/costs#write-specific-prompts)).
 A long context makes the answers less reliable too (see
 [lever 1](lever-1-keep-the-context-short.md)).
+The guide has no energy figure for this lever. It counts requests and tokens, not
+measured energy.
 
 | Item | Role |
 |---|---|
@@ -29,7 +31,7 @@ A long context makes the answers less reliable too (see
 
 ## 5.1 Know that a retry costs more than the first attempt
 
-**What:** Count the rounds that a typical task needs. Each retry is a new request
+**What:** Count the tries that a typical task needs. Each retry is a new request
 with a longer context.
 
 **Why:** Each request sends the full conversation again. Each time Claude uses a
@@ -40,9 +42,9 @@ A failed reply stays in the conversation, so the retry sends it again.
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg#gh-light-mode-only">
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt-dark.svg#gh-dark-mode-only">
 
-**How:** To get the result in fewer rounds, use
+**How:** To get the result in fewer tries, use
 [5.2](#52-name-the-file-the-limit-and-the-result-in-your-first-request) to
-[5.5](#55-give-claude-a-check-to-run). When a round fails, use
+[5.5](#55-give-claude-a-check-to-run). When a try fails, use
 [5.6](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) and
 [5.7](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt).
 
@@ -124,8 +126,8 @@ in your editor before Claude continues
   Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#choose-a-permission-mode)).
 
-**Watch out:** The docs recommend plan mode for complex tasks. A plan is a round
-of requests too, so for a small task, ask directly.
+**Watch out:** The docs recommend plan mode for complex tasks. A plan costs
+requests too, so for a small task, ask directly.
 
 ## 5.5 Give Claude a check to run
 
