@@ -44,10 +44,8 @@ more tokens use more energy.
   10 times more output tokens
   ([ML.ENERGY](https://ml.energy/blog/measurement/energy/diagnosing-inference-energy-consumption-with-the-mlenergy-leaderboard-v30/)).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/more-thinking-more-output-dark.svg">
-  <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output.svg">
-</picture>
+<img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output.svg#gh-light-mode-only">
+<img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output-dark.svg#gh-dark-mode-only">
 
 **How:** Choose the level with the items below.
 
@@ -186,10 +184,8 @@ project then start at a level that fits it.
 **Why:** Claude Code takes the first level that applies in the order below
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/effort-setting-priority-dark.svg">
-  <img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority.svg">
-</picture>
+<img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority.svg#gh-light-mode-only">
+<img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority-dark.svg#gh-dark-mode-only">
 
 A top-level `effortLevel` in the project, local or managed settings applies to
 every model. In your user file `~/.claude/settings.json`, it does not count for

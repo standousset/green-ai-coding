@@ -31,10 +31,8 @@ uses a tool, it sends one more request with the tool results
 ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
 Old, unrelated context adds to the cost of each message.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/context-grows-each-request-dark.svg">
-  <img alt="Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame." src="../images/context-grows-each-request.svg">
-</picture>
+<img alt="Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame." src="../images/context-grows-each-request.svg#gh-light-mode-only">
+<img alt="Four horizontal bars, one for each request, each in a frame that shows the maximum context size. Each bar shows the input, then the new output. The reply of one request is part of the input of the next request, so the bars grow longer and fill more of the frame." src="../images/context-grows-each-request-dark.svg#gh-dark-mode-only">
 
 **How:** Use `/context` to see what fills the context. Use `/clear` to start a
 new conversation between unrelated tasks.
@@ -57,10 +55,8 @@ keep the rules file short.
 **Why:** What you send stays in the context and goes again with each request (see
 1.1). The rules file is part of every request.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/send-only-what-the-task-needs-dark.svg">
-  <img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs.svg">
-</picture>
+<img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs.svg#gh-light-mode-only">
+<img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs-dark.svg#gh-dark-mode-only">
 
 **How:**
 - Point to the file with `@`. Type `@login.ts` and accept the file in the menu,
@@ -115,10 +111,8 @@ work and sends back only a short result.
 the context of a subagent, they stay out of your main conversation
 ([Claude Code docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subagents)).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/subagent-keeps-noise-out-dark.svg">
-  <img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out.svg">
-</picture>
+<img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out.svg#gh-light-mode-only">
+<img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out-dark.svg#gh-dark-mode-only">
 
 **How:** To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). To run it on a
@@ -152,10 +146,8 @@ leaves the context. The part before that turn is already in the cache, and it
 stays there
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/rewind-drops-dead-end-dark.svg">
-  <img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end.svg">
-</picture>
+<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end.svg#gh-light-mode-only">
+<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end-dark.svg#gh-dark-mode-only">
 
 **How:** Type `/rewind`, then choose the earlier message.
 
@@ -185,10 +177,8 @@ stays there
   read from disk again, so it is not lost
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-survives-compaction)).
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../images/compact-shrinks-context-dark.svg">
-  <img alt="Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again." src="../images/compact-shrinks-context.svg">
-</picture>
+<img alt="Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again." src="../images/compact-shrinks-context.svg#gh-light-mode-only">
+<img alt="Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again." src="../images/compact-shrinks-context-dark.svg#gh-dark-mode-only">
 
 **How:** When a long task must continue, run `/compact` instead of carrying the
 full conversation.
