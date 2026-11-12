@@ -10,7 +10,7 @@
 **Why it matters:** The effort level sets how much the model thinks before it
 answers. Thinking is the reasoning that the model writes before its answer. It is
 not the answer itself. Each token of thinking uses energy, like each token of the
-answer (see 4.1). You often cannot read this reasoning. Other labs copy the
+answer. You often cannot read this reasoning. Other labs copy the
 reasoning of a model to train their own models, which is called distillation, and
 Anthropic summarizes or hides it to stop this
 ([Anthropic](https://www.anthropic.com/news/distillation-defenses)). But the
@@ -20,21 +20,7 @@ have. The Claude Code docs say: "Lower effort is faster and cheaper for
 straightforward tasks"
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#choose-an-effort-level)).
 
-| Item | Role |
-|---|---|
-| [4.1 Know that more thinking means more tokens and more energy](#41-know-that-more-thinking-means-more-tokens-and-more-energy) | Learn the rule |
-| [4.2 Use a low or medium level for most coding tasks and go up only when needed](#42-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed) | Use |
-| [4.3 Use `ultrathink` for one hard turn instead of raising the level](#43-use-ultrathink-for-one-hard-turn-instead-of-raising-the-level) | Use for one turn |
-| [4.4 Press `s` to change the level for this session only](#44-press-s-to-change-the-level-for-this-session-only) | Protect your default |
-| [4.5 Set a default level for a project](#45-set-a-default-level-for-a-project) | Set your default |
-| [4.6 Give simple subagent tasks a low effort](#46-give-simple-subagent-tasks-a-low-effort) | Use a low effort for subagents |
-
-## 4.1 Know that more thinking means more tokens and more energy
-
-**What:** Treat the effort level as a cost, in money and in energy. A higher level
-means more tokens, and more tokens cost more money and use more energy.
-
-**Why:**
+The energy cost is large, and tests show it:
 - The effort level changes every output token: the thinking, the text of the
   answer and the tool calls. A lower level also gives fewer and shorter tool calls.
   The model follows the level as a guide, not as a limit. The docs call it "a
@@ -60,19 +46,20 @@ means more tokens, and more tokens cost more money and use more energy.
 <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output.svg#gh-light-mode-only">
 <img alt="Two horizontal bars, each in a frame. At a low effort level, the model writes a short thinking part and then the answer. At a high effort level, the model writes a much longer thinking part and then an answer of the same size. The thinking and the answer are both output tokens." src="../images/more-thinking-more-output-dark.svg#gh-dark-mode-only">
 
-**How:** Choose the level with 4.2. Keep your choice for one session with 4.4, or
-for a project with 4.5.
+These tests used open models, not Claude models. This guide has no energy figure
+for Claude, so the size of the saving for Claude is not known. You cannot turn
+thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and the Fable models. The effort
+level is your control there
+([Claude Code docs](https://code.claude.com/docs/en/model-config#extended-thinking)).
 
-**Where:** This applies to the terminal and to the desktop app, Code tab.
+| Item | Role |
+|---|---|
+| [4.1 Use a low or medium level for most coding tasks and go up only when needed](#41-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed) | Use |
+| [4.2 Use `ultrathink` for one hard turn instead of raising the level](#42-use-ultrathink-for-one-hard-turn-instead-of-raising-the-level) | Use for one turn |
+| [4.3 Set a default level, and press `s` to change it for one session only](#43-set-a-default-level-and-press-s-to-change-it-for-one-session-only) | Set your default |
+| [4.4 Give simple subagent tasks a low effort](#44-give-simple-subagent-tasks-a-low-effort) | Use a low effort for subagents |
 
-**Watch out:**
-- These tests used open models, not Claude models. This guide has no energy
-  figure for Claude, so the size of the saving for Claude is not known.
-- You cannot turn thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and the Fable
-  models. The effort level is your control there
-  ([Claude Code docs](https://code.claude.com/docs/en/model-config#extended-thinking)).
-
-## 4.2 Use a low or medium level for most coding tasks and go up only when needed
+## 4.1 Use a low or medium level for most coding tasks and go up only when needed
 
 **What:** Start each task at `low` or `medium`. Go up one level only when the
 result is not good enough.
@@ -83,9 +70,9 @@ The docs say that `low` gives "significant token savings with some capability
 reduction", and that `medium` gives moderate savings
 ([Claude API docs](https://platform.claude.com/docs/en/build-with-claude/effort#effort-levels)).
 Most coding tasks do not need deep reasoning. The default level depends on the
-model. It is `medium` on Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5, `xhigh` on
-Opus 4.7, and `high` on the other models that support effort. A saved level, a
-project setting or a variable can change it (see 4.5).
+model. It is `medium` on Fable 5.2, Opus 5.5, Sonnet 5.5 and Haiku 5.5. It is
+`xhigh` on Opus 4.7, and `high` on the other models that support effort. A saved
+level, a project setting or a variable can change it (see 4.3).
 
 The levels are `low`, `medium`, `high`, `xhigh` and `max`. Opus 4.6 and Sonnet 4.6
 have no `xhigh`. A model that does not support effort has no levels
@@ -113,7 +100,7 @@ The Claude Code docs suggest these levels
 - Terminal: `/effort status` prints the level. `/effort` with no argument opens a
   slider, and you choose the level there
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-effort-level)).
-  See 4.4 for the difference between one session and a saved default.
+  See 4.3 for the difference between one session and a saved default.
 - Desktop app, Code tab: Cmd+Shift+E opens the effort menu, with the levels `Low`,
   `Medium`, `High`, `Extra` and `Max`. On Windows and Linux, press Ctrl instead of
   Cmd
@@ -135,7 +122,7 @@ The Claude Code docs suggest these levels
 - The docs here cover Claude only. In other assistants, look for a setting named
   effort, thinking or reasoning.
 
-## 4.3 Use `ultrathink` for one hard turn instead of raising the level
+## 4.2 Use `ultrathink` for one hard turn instead of raising the level
 
 **What:** Keep your session at `low` or `medium`. For one hard turn, write the
 word `ultrathink` in the prompt.
@@ -159,41 +146,19 @@ text and have no effect of this kind.
 **Watch out:** On some providers, such as Amazon Bedrock, the word cannot raise
 the turn. Set the effort level instead.
 
-## 4.4 Press `s` to change the level for this session only
-
-**What:** When you choose a level in the `/effort` slider or in the `/model`
-picker, press `s`. Do not press Enter.
-
-**Why:** Enter saves the level as your default for the model, and it applies in
-all later sessions. A high level that you chose for one hard bug then stays on for
-every later session on that model. The `s` key applies the level to this session
-only
-([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-effort-level)).
-
-**How:**
-1. Run `/effort` with no argument. The slider opens. In the `/model` picker, the
-   same slider is next to the model.
-2. Move the slider to the level that you want.
-3. Press `s`. Do not press Enter.
-
-Do not type the level after the command. A level that you type, for example
-`/effort high`, is saved in the same way as Enter. Claude Code saves the level for
-each model, under `modelSettings` in your user settings. It needs Claude Code
-2.1.257 or later. To clear a level that you saved, run `/effort auto`. The level
-`max` applies to the current session only, whatever key you use.
-
-**Where:**
-- Terminal: the slider and the `s` key, as above.
-- Desktop app, Code tab: the docs do not describe an `s` key in the effort menu
-  (Cmd+Shift+E). Check in the menu how long your choice lasts.
-
-## 4.5 Set a default level for a project
+## 4.3 Set a default level, and press `s` to change it for one session only
 
 **What:** Set `effortLevel` in the settings of a project. New sessions in the
-project then start at a level that fits it.
+project then start at a level that fits it. To change the level for one session
+only, press `s` in the `/effort` slider, and do not press Enter.
 
-**Why:** Claude Code takes the first level that applies in the order below
-([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
+**Why:**
+- Claude Code takes the first level that applies in the order below
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
+- Enter saves the level as your default for the model, and it applies in all later
+  sessions. A high level that you chose for one hard bug then stays on for every
+  later session on that model. The `s` key applies the level to this session only
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-effort-level)).
 
 <img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority.svg#gh-light-mode-only">
 <img alt="Five rows from the strongest to the weakest way to set the effort level: the CLAUDE_CODE_EFFORT_LEVEL variable, a level that you pick in the session with /effort or the /model picker, the --effort option, a saved level or the effortLevel setting, and the default level of the model." src="../images/effort-setting-priority-dark.svg#gh-dark-mode-only">
@@ -203,21 +168,37 @@ every model. In your user file `~/.claude/settings.json`, it does not count for
 Opus 5.5
 ([Claude Code docs](https://code.claude.com/docs/en/model-config#adjust-effort-level)).
 
-**How:** Add `"effortLevel": "medium"` to `.claude/settings.json` (shared with
-everyone on the project) or to `.claude/settings.local.json` (only for you)
-([settings reference](https://code.claude.com/docs/en/settings-reference#effortlevel)).
-The values are `low`, `medium`, `high` and `xhigh`. For all your projects, use
-`/effort medium` and press Enter once. Claude Code saves the level for the
-current model.
+**How:**
+- For a project, add `"effortLevel": "medium"` to `.claude/settings.json` (shared
+  with everyone on the project) or to `.claude/settings.local.json` (only for
+  you)
+  ([settings reference](https://code.claude.com/docs/en/settings-reference#effortlevel)).
+  The values are `low`, `medium`, `high` and `xhigh`.
+- For all your projects, run `/effort medium` and press Enter once. Claude Code
+  saves the level for the current model.
+- For one session only:
+  1. Run `/effort` with no argument. The slider opens. In the `/model` picker, the
+     same slider is next to the model.
+  2. Move the slider to the level that you want.
+  3. Press `s`. Do not press Enter.
+
+Do not type the level after the command. A level that you type, for example
+`/effort high`, is saved in the same way as Enter. Claude Code saves the level for
+each model, under `modelSettings` in your user settings. It needs Claude Code
+2.1.257 or later. To clear a level that you saved, run `/effort auto`. The level
+`max` applies to the current session only, whatever key you use.
 
 **Where:**
-- Terminal: the settings files above.
+- Terminal: the settings files for a project, and the slider with the `s` key for
+  one session.
+- Desktop app, Code tab: the docs do not describe an `s` key in the effort menu
+  (Cmd+Shift+E). Check in the menu how long your choice lasts.
 
 **Watch out:** `CLAUDE_CODE_EFFORT_LEVEL` beats `/effort`, `--effort` and the
 settings. If `/effort` seems to do nothing, check that this variable is not set
 ([Claude Code docs](https://code.claude.com/docs/en/env-vars)).
 
-## 4.6 Give simple subagent tasks a low effort
+## 4.4 Give simple subagent tasks a low effort
 
 **What:** In the file of a subagent that does simple work, such as running tests
 or a search, set `effort: low`.
@@ -234,6 +215,7 @@ The `effort` field in the file of the subagent overrides the level of the sessio
 For example:
 
 ```markdown
+
 ---
 name: test-runner
 description: Runs the tests and reports the failures
@@ -251,7 +233,7 @@ use a subagent, see [1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-t
 - Terminal: the subagent file above.
 
 **Watch out:** `CLAUDE_CODE_EFFORT_LEVEL` also beats the `effort` field of a
-subagent (see 4.5).
+subagent (see 4.3).
 
 ---
 
