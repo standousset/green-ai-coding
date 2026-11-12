@@ -8,8 +8,8 @@
 > Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
 
 **Why it matters:** A long context means many more tokens, because each request
-sends the whole conversation again (see 1.1). It also makes the answers less reliable. In a
-study of 18 models, the results became less reliable as the input got longer
+sends the whole conversation again (see 1.1). It also makes the answers less
+reliable. In a study of 18 models, the results became less reliable as the input got longer
 ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
 reliable answers lead to more retries (see
 [lever 5](lever-5-make-fewer-round-trips.md)).
@@ -20,7 +20,7 @@ reliable answers lead to more retries (see
 | [1.2 Send only what the task needs](#12-send-only-what-the-task-needs) | Prevent |
 | [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
 | [1.4 Go back with `/rewind` when an attempt failed](#14-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
-| [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink |
+| [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink, by hand or by setting |
 
 ## 1.1 Drop old context that the task does not need
 
@@ -62,8 +62,8 @@ keep the rules file short.
 
 **How:**
 - Point to the file with `@`. Type `@login.ts` and accept the file in the menu,
-  and not "find the login code". Claude then has the file and does not need to
-  search for it.
+  instead of writing "find the login code". Claude then has the file and does not
+  need to search for it.
 - If only a part of a file matters, name the lines in your prompt, for example
   "Read lines 40 to 80 of src/login.ts". Claude can read part of a file with an
   `offset` and a `limit`
@@ -97,7 +97,7 @@ keep the rules file short.
   of paths. The content of the file goes into the context, and so does the
   `CLAUDE.md` of its folder
   ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
-  The two share `CLAUDE.md`
+  The terminal and the desktop app use the same `CLAUDE.md`
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
   [AGENTS.md](https://agents.md/) is a shared format for the rules file of coding
   assistants.
@@ -177,8 +177,8 @@ turn is already in the cache, and it stays there
 
 ## 1.5 Compact when a long task must continue
 
-**What:** `/compact` replaces the old conversation with a short summary. You can also
-choose when Claude Code compacts by itself.
+**What:** `/compact` replaces the old conversation with a short summary. You can
+also choose when Claude Code compacts by itself.
 
 **Why:**
 - In a long task, each request is large, because it sends the whole conversation
@@ -211,15 +211,15 @@ full conversation.
 - Claude Code also compacts by itself when the context is full enough. You do not
   choose the moment, and it can happen in the middle of a task. The window depends
   on the model and can be very large: the docs give about 967K tokens for Haiku
-  5.5. To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to
-  return to the default. Run `/autocompact` alone to see the current window. The
-  window can be from 100K to 1M tokens
+  5.5.
+- To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to return
+  to the default. Run `/autocompact` alone to see the current window. The window
+  can be from 100K to 1M tokens
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
 
 **Where:**
 - Terminal and desktop app, Code tab: type `/compact`, with or without
-  instructions, in the prompt box. When the context fills up, Claude also
-  summarizes the conversation by itself
+  instructions, in the prompt box
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 - Terminal and desktop app, Code tab: type `/autocompact` in the prompt box.
   `/autocompact` saves the value for the current model. Before Claude Code
