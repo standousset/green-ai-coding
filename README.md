@@ -1,8 +1,6 @@
-# Green AI coding
+# Green AI coding: 6 levers to emit less carbon with your AI coding agent
 
-Emit less carbon when you code with AI agents.
-
-This guide is about the energy that the AI uses while it helps you code, and so the carbon that this energy emits. It is not about the energy that the code you ship uses when it runs.
+This guide is about the carbon that the AI emits while it helps you code. This carbon comes from the energy that the AI uses. So five levers reduce that energy, and one lever reduces the carbon of each unit of energy. The guide is not about the carbon that the code you ship emits when it runs.
 
 > [!NOTE]
 > Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data. This guide does not measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
