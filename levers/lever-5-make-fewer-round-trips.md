@@ -48,10 +48,6 @@ A failed reply stays in the conversation, so the retry sends it again.
 [5.6](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) and
 [5.7](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt).
 
-**Where:**
-- Terminal and desktop app, Code tab: nothing to set. Each request sends the
-  conversation in both.
-
 ## 5.2 Name the file, the limit and the result in your first request
 
 **What:** Say which file, which limit and which result you expect. Do not write
@@ -146,9 +142,6 @@ linter, and a script that compares the output to a fixture. Ask Claude to show t
 command and its output. For a long task, the docs advise: "Write one file, test
 it, then continue."
 
-**Where:**
-- Terminal: write the check in your prompt.
-
 **Watch out:** A check does not remove the retries. Claude makes them in place of
 you. Each run of the check and each fix is still a request that sends the whole
 conversation again (see 5.1). The check pays off when it catches an error before
@@ -223,9 +216,6 @@ of several files
 - To have Claude tell you when a tool can do the task, add the matching line of
   the [permanent rules](../README.md#permanent-rules) to your rules
   file.
-
-**Where:**
-- Terminal: run the tool in your shell, outside Claude.
 
 **Watch out:** This guide has no energy figure that compares a simple tool with a
 model request. The reason above is fewer tokens, not a measured energy saving.
