@@ -205,7 +205,7 @@ full conversation.
 - When the next task is unrelated, use `/clear` (see 1.1). It costs nothing.
 - To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
-  [2.7 Compact while the cache is warm](lever-2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm).
+  [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
 
 **Where:**
 - Terminal and desktop app, Code tab: type `/compact`, with or without

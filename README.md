@@ -7,6 +7,17 @@ This guide is about the energy that the AI uses while it helps you code, and so 
 > [!NOTE]
 > Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data. This guide does not measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
 
+## The 6 levers
+
+1. **[Keep the context short](levers/lever-1-keep-the-context-short.md)**: each request sends the whole conversation again. Run `/clear` between tasks, send only what the task needs, give noisy work to a subagent, and compact a long task.
+2. **[Stay in the cache window](levers/lever-2-stay-in-the-cache-window.md)**: for 5 minutes or 1 hour, the provider keeps its work on the start of the conversation and reuses it, so it processes only what changed. A change of model, or a long break, makes you lose it. So choose the model and the effort before the task, do not change them in the middle, and compact before a long break.
+3. **[Use a smaller model](levers/lever-3-use-a-smaller-model.md)**: a larger model uses more energy for each token. Make Sonnet your default, and use Opus for the hardest tasks only.
+4. **[Lower the effort](levers/lever-4-lower-the-effort.md)**: before it answers, the model writes its reasoning, called thinking. Thinking is output, so each token uses energy, and a higher effort level means more thinking. Use a low or medium level for most tasks, and go up only when needed.
+5. **[Make fewer round trips](levers/lever-5-make-fewer-round-trips.md)**: each retry sends the whole conversation again, with the failed reply. Name the file, plan a large task first, run `/clear` after two failed corrections, and stop agents that run without you.
+6. **[Choose a low-carbon region](levers/lever-6-choose-a-low-carbon-region.md)**: in 2025, electricity emitted 28 gCO₂/kWh in Norway and 670 in India. Use this lever on Amazon Bedrock or Google Cloud, where you can choose the region.
+
+Levers 1 to 5 apply to everyone. Lever 6 applies only if you can choose where your requests run.
+
 ## Audit your setup
 
 Paste this into a prompt. The assistant checks your settings and your habits against the levers, and tells you what to change:
@@ -45,17 +56,6 @@ Optional, and a different topic: if you also want the code that you ship to be l
 ```text
 - Write code that is light to run: avoid needless loops, queries, network calls and large data.
 ```
-
-## The 6 levers
-
-1. **[Keep the context short](levers/lever-1-keep-the-context-short.md)**: each request sends the whole conversation again. Run `/clear` between tasks, send only what the task needs, give noisy work to a subagent, and compact a long task.
-2. **[Stay in the cache window](levers/lever-2-stay-in-the-cache-window.md)**: for 5 minutes or 1 hour, the provider keeps its work on the start of the conversation and reuses it, so it processes only what changed. A change of model, or a long break, makes you lose it. So choose the model and the effort before the task, do not change them in the middle, and compact before a long break.
-3. **[Use a smaller model](levers/lever-3-use-a-smaller-model.md)**: a larger model uses more energy for each token. Make Sonnet your default, and use Opus for the hardest tasks only.
-4. **[Lower the effort](levers/lever-4-lower-the-effort.md)**: before it answers, the model writes its reasoning, called thinking. Thinking is output, so each token uses energy, and a higher effort level means more thinking. Use a low or medium level for most tasks, and go up only when needed.
-5. **[Make fewer round trips](levers/lever-5-make-fewer-round-trips.md)**: each retry sends the whole conversation again, with the failed reply. Name the file, plan a large task first, run `/clear` after two failed corrections, and stop agents that run without you.
-6. **[Choose a low-carbon region](levers/lever-6-choose-a-low-carbon-region.md)**: in 2025, electricity emitted 28 gCO₂/kWh in Norway and 670 in India. Use this lever on Amazon Bedrock or Google Cloud, where you can choose the region.
-
-Levers 1 to 5 apply to everyone. Lever 6 applies only if you can choose where your requests run.
 
 ## Limits
 

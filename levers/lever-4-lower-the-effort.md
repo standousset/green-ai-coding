@@ -110,7 +110,7 @@ The Claude Code docs suggest these levels
 
 **How:** Choose the level before the first message of a task. A change in the
 middle of a task can read the whole conversation again, with no cache (see
-[2.5](lever-2-stay-in-the-cache-window.md#25-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache)).
+[2.6](lever-2-stay-in-the-cache-window.md#26-change-the-effort-level-in-the-middle-of-a-task-only-on-a-model-that-keeps-the-cache)).
 To check the level on your own code, run the same small task at two levels and
 compare the results.
 

@@ -44,7 +44,7 @@ local hardware, not Claude
 <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size-dark.svg#gh-dark-mode-only">
 
 **How:** Choose the model with the items below. For the effect of the model on
-the cache, see [2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
+the cache, see [2.5](lever-2-stay-in-the-cache-window.md#25-do-not-change-the-model-in-the-middle-of-a-task).
 
 **Where:** This applies to the terminal and to the desktop app, Code tab.
 
@@ -118,7 +118,7 @@ The `haiku` alias is for simple tasks, and `sonnet` is for daily coding tasks
 not good enough, repeat the task on the next model. Choose the model before the
 first message of a task. A switch in the middle reads the whole conversation
 again, with no cache (see
-[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task)).
+[2.5](lever-2-stay-in-the-cache-window.md#25-do-not-change-the-model-in-the-middle-of-a-task)).
 
 **Where:**
 - Terminal: `/model sonnet`, `/model haiku` or `/model opus`.
@@ -173,7 +173,7 @@ work phase.
 
 **How:** Run `/model opusplan`. Make the plan, then leave plan mode and work. Do
 not toggle plan mode many times in one task. For the cost of a switch, see
-[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
+[2.5](lever-2-stay-in-the-cache-window.md#25-do-not-change-the-model-in-the-middle-of-a-task).
 
 **Where:**
 - Terminal: the steps above.
