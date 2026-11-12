@@ -17,8 +17,8 @@ it.
 This lever applies only if you can choose where requests run. In the docs, only
 Amazon Bedrock and Google Cloud's Agent Platform give a region setting. A Claude
 subscription gives none, and the Claude API gives a choice of geography only (see
-6.1). For those who can choose, it is the one lever that does not lower the energy
-of a request. It lowers the CO₂ of the same energy.
+6.1). This lever does not lower the energy of a request. It lowers the CO₂ of the
+same energy.
 
 The table shows the carbon intensity of electricity in 2025. The data comes from
 Ember and the Energy Institute
@@ -66,7 +66,7 @@ The docs give a setting for some ways and none for the others.
 |---|---|
 | Amazon Bedrock | The AWS Region, with `AWS_REGION`. If you set nothing, Claude Code uses `us-east-1` ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#3-configure-claude-code)). |
 | Google Cloud's Agent Platform | `CLOUD_ML_REGION`: `global`, a multi-region location such as `eu` or `us`, or one region. If you set nothing, Claude Code uses `us-east5` ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)). |
-| Microsoft Foundry | The docs give no region setting ([Claude Code docs](https://code.claude.com/docs/en/microsoft-foundry)). |
+| Microsoft Foundry | This guide found no region setting in the docs ([Claude Code docs](https://code.claude.com/docs/en/microsoft-foundry)). |
 | Claude API | `inference_geo`: `us` or `global`. This is a choice of geography, not of a low-carbon region ([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/data-residency)). |
 | Claude subscription | This guide found no region setting in the docs. |
 
@@ -99,7 +99,8 @@ about clean power contracts.
   uses. A data centre that is connected to the grid uses the mix of its local grid.
   In the Google data of 2025, `us-central1` (Iowa) has a carbon-free share of 88%
   and a grid of 432 gCO₂eq per kWh. The README of the data says that the share
-  takes into account the renewable investments of Google in that location.
+  takes into account the renewable investments of Google in that location
+  ([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
 
 **How:**
 - Google Cloud publishes, for each of its regions, the share of carbon-free energy
@@ -125,8 +126,8 @@ about clean power contracts.
 
 **Watch out:**
 - The grid data of Google comes from Electricity Maps. The Google page says that
-  Electricity Maps has an independent Letter of Assurance for its data pipeline and
-  calculation models.
+  Electricity Maps has an independent Letter of Assurance for its data pipeline
+  and its calculation models.
 - This guide found no provider that publishes a location-based figure for each
   data centre. The Google figure is for a region, and it comes from the grid of its
   zone.
@@ -150,8 +151,7 @@ Cloud, `us-east5` (Columbus), has a grid of 343 gCO₂eq per kWh. The grid of
 `us-west1` (Oregon) emits 98, about 3.5 times less. The grid of `europe-north1`
 (Finland) emits 30, more than 11 times less
 ([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
-This is a gap in the grid, not a measure of one request. Check that your Claude
-model is offered in the region that you choose (step 2).
+This is a gap in the grid, not a measure of one request.
 
 **How:**
 1. Find a candidate region in 6.2. Rank the regions by the grid carbon intensity.
@@ -163,12 +163,13 @@ model is offered in the region that you choose (step 2).
 4. On Google Cloud, some models are offered only on `global` or multi-region
    locations, so you may need `VERTEX_REGION_CLAUDE_*` for one model
    ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)).
-   On Bedrock, list the profiles of a region with `aws bedrock list-inference-profiles --region your-region`
+   On Bedrock, list the profiles of a region with
+   `aws bedrock list-inference-profiles --region your-region`
    ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock)).
 
 **Watch out:** `CLOUD_ML_REGION=global` does not choose a region: the docs
-suggest it for better availability. If you use a geography instead of a region,
-read 6.4.
+suggest it for better availability. On Bedrock, if you use a geography instead of
+a region, read 6.4.
 
 ## 6.4 Check where your requests really run
 
@@ -196,7 +197,8 @@ guarantee"
 
 **Watch out:** This guide found no statement in the AWS docs on whether you can
 force one single Region. The docs also do not list every destination Region of each
-geography. A global profile costs about 10% less than a geographic one, but it routes worldwide
+geography. A global profile costs about 10% less than a geographic one, but it
+routes worldwide
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
 ---
