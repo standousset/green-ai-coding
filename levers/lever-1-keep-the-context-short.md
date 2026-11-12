@@ -12,7 +12,7 @@ sends the whole conversation again (see 1.1). It also makes the answers less rel
 study of 18 models, the results became less reliable as the input got longer
 ([Chroma, Context Rot](https://www.trychroma.com/research/context-rot)). Less
 reliable answers lead to more retries (see
-[lever 5](lever-5-make-fewer-round-trips.md)).
+[lever 5](lever-5-get-it-right-in-fewer-tries.md)).
 
 | Item | Role |
 |---|---|

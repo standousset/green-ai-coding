@@ -1,6 +1,6 @@
 [← Lever 4: Lower the effort](lever-4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [Lever 6: Choose a low-carbon region →](lever-6-choose-a-low-carbon-region.md)
 
-# Lever 5: Make fewer round trips
+# Lever 5: Get it right in fewer tries
 
 *Reading time: about 8 minutes.*
 
@@ -40,11 +40,15 @@ A failed reply stays in the conversation, so the retry sends it again.
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg#gh-light-mode-only">
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt-dark.svg#gh-dark-mode-only">
 
-**How:** To get the result in fewer rounds, use 5.2 to 5.5. When a round fails,
-use 5.6 and 5.7.
+**How:** To get the result in fewer rounds, use
+[5.2](#52-name-the-file-the-limit-and-the-result-in-your-first-request) to
+[5.5](#55-give-claude-a-check-to-run). When a round fails, use
+[5.6](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) and
+[5.7](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt).
 
 **Where:**
-- Terminal and desktop app, Code tab: the rule above.
+- Terminal and desktop app, Code tab: nothing to set. Each request sends the
+  conversation in both.
 
 ## 5.2 Name the file, the limit and the result in your first request
 
@@ -113,7 +117,7 @@ in your editor before Claude continues
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
 
 **Where:**
-- Terminal: the steps above.
+- Terminal: Shift+Tab, `/plan` or `--permission-mode plan`.
 - Desktop app, Code tab: choose **Plan** with the mode selector in the row under
   the prompt box. It applies to this session only. Shift+Tab does not cycle the
   modes there. Cmd+Shift+M opens the permission mode menu (Ctrl+Shift+M on
@@ -141,11 +145,13 @@ command and its output. For a long task, the docs advise: "Write one file, test
 it, then continue."
 
 **Where:**
-- Terminal: the steps above.
+- Terminal: write the check in your prompt.
 
-**Watch out:** This moves the retry into the loop of Claude. Each run and each fix
-is still a request that sends the whole conversation (see 5.1). It saves your
-prompts. The docs give no figure for the tokens.
+**Watch out:** A check does not remove the retries. Claude makes them in place of
+you. Each run of the check and each fix is still a request that sends the whole
+conversation again (see 5.1). The check pays off when it catches an error before
+you read the result, because then you do not need to send a correction. The docs
+give no token figure for this loop.
 
 ## 5.6 Press Esc as soon as Claude goes the wrong way
 
@@ -217,7 +223,7 @@ of several files
   file.
 
 **Where:**
-- Terminal: the steps above.
+- Terminal: run the tool in your shell, outside Claude.
 
 **Watch out:** This guide has no energy figure that compares a simple tool with a
 model request. The reason above is fewer tokens, not a measured energy saving.
@@ -250,7 +256,7 @@ the work is done.
 - Stop a scheduled task when you no longer need it.
 
 **Where:**
-- Terminal: the steps above. The docs page that I read covers Claude Code.
+- Terminal: the docs page that I read covers Claude Code only.
 
 **Watch out:** The figure of 7 times is for teammates in plan mode. The docs give
 no figure for other cases.

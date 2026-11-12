@@ -237,7 +237,7 @@ model, set `CLAUDE_CODE_SUBAGENT_MODEL` to `haiku` and
 `CLAUDE_CODE_SUBAGENT_MODEL_FORCE` to `1` (Claude Code 2.1.257 or later).
 
 **Where:**
-- Terminal: the steps above. `/tasks` shows the model of each subagent (Claude
+- Terminal: `/tasks` shows the model of each subagent (Claude
   Code 2.1.242 or later).
 - Desktop app, Code tab: the Background tasks pane lists subagents
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The docs do not
