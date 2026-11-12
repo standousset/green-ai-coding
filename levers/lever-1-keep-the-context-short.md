@@ -76,7 +76,8 @@ request (see 1.1). The rules file rides along on every request too.
   ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
 - Ask for short answers, for example "Be brief. Show only the code that
   changes."
-- Keep `CLAUDE.md` or `AGENTS.md` under 200 lines
+- Keep `CLAUDE.md` or `AGENTS.md` under 200 lines. [AGENTS.md](https://agents.md/)
+  is a shared format for the rules file of coding assistants
   ([Claude Code docs](https://code.claude.com/docs/en/memory#write-effective-instructions)).
 - Move the instructions of one workflow, for example a pull request review, from
   `CLAUDE.md` to a skill. The body of a skill loads only when the skill is used.
@@ -100,8 +101,6 @@ request (see 1.1). The rules file rides along on every request too.
   ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
   The terminal and the desktop app use the same `CLAUDE.md`
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-  [AGENTS.md](https://agents.md/) is a shared format for the rules file of coding
-  assistants.
 - VS Code and JetBrains extensions: select lines in the editor. The extension
   adds a reference with the line range, for example `@src/auth.ts#L1-99`
   ([JetBrains docs](https://code.claude.com/docs/en/jetbrains),
@@ -136,11 +135,9 @@ smaller model or at a lower effort, see
 [3.4](lever-3-use-a-smaller-model.md#34-give-simple-subagent-tasks-to-haiku) and
 [4.4](lever-4-lower-the-effort.md#44-give-simple-subagent-tasks-a-low-effort).
 
-**Where:**
-- Terminal: Claude Code subagents.
-- Desktop app, Code tab: the **Background tasks** pane, in the **⋮** menu of the
-  title bar, shows the subagents that run
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+**Where:** In the desktop app, Code tab, the **Background tasks** pane shows the
+subagents that run. Open it from the **⋮** menu of the title bar
+([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
 **Watch out:**
 - A subagent can't ask you questions. Claude Code removes the `AskUserQuestion`
@@ -211,10 +208,10 @@ full conversation.
 - To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
   [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
-- Claude Code also compacts by itself when the context is full enough. You don't
-  choose the moment, and it can happen in the middle of a task. The window depends
-  on the model and can be very large: the docs give about 967K tokens for Haiku
-  5.5.
+- Claude Code also compacts by itself when the context is full enough. The window,
+  which is the context size at which this happens, depends on the model and can be
+  very large: the docs give about 967K tokens for Haiku 5.5. You don't choose the
+  moment, and it can happen in the middle of a task.
 - To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to return
   to the default. Run `/autocompact` alone to see the current window. The window
   can be from 100K to 1M tokens
