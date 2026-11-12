@@ -2,6 +2,8 @@
 
 # Lever 4: Lower the effort
 
+*Reading time: about 8 minutes.*
+
 > [!IMPORTANT]
 > Use a low or medium effort level for most coding tasks, and go up only for the hard ones.
 

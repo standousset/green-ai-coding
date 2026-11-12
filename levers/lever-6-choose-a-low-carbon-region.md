@@ -2,6 +2,8 @@
 
 # Lever 6: Choose a low-carbon region
 
+*Reading time: about 9 minutes.*
+
 > [!IMPORTANT]
 > When you can choose where your requests run, choose a region with low-carbon electricity, and check where they really run.
 

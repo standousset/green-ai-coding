@@ -2,6 +2,8 @@
 
 # Lever 1: Keep the context short
 
+*Reading time: about 7 minutes.*
+
 > [!IMPORTANT]
 > Give the assistant only what the task needs, give noisy work to a subagent, and compact when a long task must continue.
 

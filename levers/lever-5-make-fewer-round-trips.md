@@ -2,6 +2,8 @@
 
 # Lever 5: Make fewer round trips
 
+*Reading time: about 8 minutes.*
+
 > [!IMPORTANT]
 > Say the task precisely, plan a large task first, stop a wrong path early, and use a simple tool when it does the job.
 
