@@ -17,7 +17,7 @@ reliable answers lead to more retries (see
 | [1.1 Drop old context that the task does not need](#11-drop-old-context-that-the-task-does-not-need) | Start clean |
 | [1.2 Send only what the task needs](#12-send-only-what-the-task-needs) | Prevent |
 | [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
-| [1.4 Go back with `/rewind` when a path did not work](#14-go-back-with-rewind-when-a-path-did-not-work) | Remove a dead end |
+| [1.4 Go back with `/rewind` when an attempt failed](#14-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
 | [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink |
 | [1.6 Set when auto-compaction starts](#16-set-when-auto-compaction-starts) | Set the automatic fallback |
 
@@ -38,14 +38,15 @@ Old, unrelated context adds to the cost of each message.
 new conversation between unrelated tasks.
 
 **Where:**
-- Terminal: `/context` shows what fills the context. `/clear` starts a new
-  conversation.
-- Desktop app, Code tab: type `/context` in the prompt box. The session details
-  also show how full the context window is. To start a new session, click
-  **+ New** or press Cmd+N (Ctrl+N on Windows)
+- Terminal and desktop app, Code tab: `/context` shows what fills the context,
+  and `/clear` starts a new conversation. In the desktop app, type `/` in the
+  prompt box to list the built-in commands
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- Chat: start a new chat when a long chat pushes you toward the usage limit
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+- Desktop app, Code tab: the **Context** card in the session details panel shows
+  how full the context window is. To show the panel, click **Show session rail**
+  in the title bar. To start a new session, click **+ New** or press Cmd+N
+  (Ctrl+N on Windows)
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop#see-session-details)).
 
 ## 1.2 Send only what the task needs
 
@@ -62,45 +63,57 @@ keep the rules file short.
 - Point to the file with `@`. Type `@login.ts` and accept the file in the menu,
   and not "find the login code". Claude then has the file and does not need to
   search for it.
-- Give only the part of a log or a file that matters.
+- If only a part of a file matters, name the lines in your prompt, for example
+  "Read lines 40 to 80 of src/login.ts". Claude can read part of a file with an
+  `offset` and a `limit`
+  ([Claude Code docs](https://code.claude.com/docs/en/tools-reference#read-tool-behavior)).
+- Filter a log before Claude sees it. For example, run `tail -n 100 build.log`
+  or `grep ERROR build.log | head -50`, and give Claude the result. You can also
+  ask Claude to run the filtered command. A hook can trim the output of every
+  command for you
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
 - Ask for short answers, for example "Be brief. Show only the code that
   changes."
 - Keep `CLAUDE.md` or `AGENTS.md` under 200 lines
   ([Claude Code docs](https://code.claude.com/docs/en/memory#write-effective-instructions)).
-- Move specialized instructions to a skill. The body of a skill loads only when
-  the skill is used
+- Move the instructions of one workflow, for example a pull request review, from
+  `CLAUDE.md` to a skill. The body of a skill loads only when the skill is used.
+  A skill is also a way to repeat a workflow: you write it once, and you can call
+  it by name
   ([Claude Code docs](https://code.claude.com/docs/en/costs#move-instructions-from-claudemd-to-skills)).
-- Put the rules for one part of the project in a path-scoped rule (a rule file
-  with `paths` in its header). It loads only when Claude uses a matching file
-  ([Claude Code docs](https://code.claude.com/docs/en/memory#path-specific-rules)).
+- Put the rules for one part of the project where they load only when needed.
+  Use a `CLAUDE.md` or `AGENTS.md` in that folder, or a path-scoped rule (a rule
+  file with `paths` in its header). Claude loads them when it reads or edits a
+  matching file
+  ([Claude Code docs](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
 - Disable the MCP servers that you do not use: run `/mcp`. Until Claude uses a
   tool, only the tool names and the server instructions enter the context. So the
   cost is small, but it is not zero
   ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 
 **Where:**
-- Terminal: type `@` to open a menu of paths. The content of the file goes into
-  the context, and so does the `CLAUDE.md` of its folder
+- Terminal and desktop app, Code tab: type `@` in the prompt box to open a menu
+  of paths. The content of the file goes into the context, and so does the
+  `CLAUDE.md` of its folder
   ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
-- Desktop app, Code tab: type `@` followed by a file name in the prompt box
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- Terminal and desktop app, Code tab: `CLAUDE.md` is the rules file of Claude
-  Code, and the two share it
+  The two share `CLAUDE.md`
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
   [AGENTS.md](https://agents.md/) is a shared format for the rules file of coding
   assistants.
-- Chat: a project loads only the content that is relevant, so keep the project
-  instructions short and remove the files that you do not use. Turn off the
-  connected apps that you do not need. Ask Claude not to search the web when you
-  do not need current information
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+- VS Code and JetBrains extensions: select lines in the editor. The extension
+  adds a reference with the line range, for example `@src/auth.ts#L1-99`
+  ([JetBrains docs](https://code.claude.com/docs/en/jetbrains),
+  [VS Code docs](https://code.claude.com/docs/en/vs-code)).
 
 **Watch out:**
-- `@` adds the whole file to the context, up to 25,000 tokens by default. For a
-  large file, give only the part that matters.
-- An `@` import inside `CLAUDE.md` loads at launch, together with the file that
-  names it. It does not make the context smaller
-  ([Claude Code docs](https://code.claude.com/docs/en/memory#import-additional-files)).
+- `@` adds the whole file to the context, up to 25,000 tokens by default. To send
+  only some lines, select them in your IDE, or name the lines in your prompt
+  without `@`
+  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+- After a compaction, Claude loads a path-scoped rule or a `CLAUDE.md` of a
+  folder again only when it touches a matching file. If a rule must always
+  apply, keep it in the `CLAUDE.md` at the project root
+  ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-survives-compaction)).
 
 ## 1.3 Give noisy work to a subagent
 
@@ -137,44 +150,47 @@ smaller model or at a lower effort, see
   by default
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)).
 
-## 1.4 Go back with `/rewind` when a path did not work
+## 1.4 Go back with `/rewind` when an attempt failed
 
-**What:** `/rewind` goes back to an earlier message in the conversation.
+**What:** Return the conversation to the message before a failed attempt. The
+attempt leaves the context. You choose if the code changes stay or go back too.
 
-**Why:** `/rewind` cuts the conversation back to an earlier turn, so the dead end
-leaves the context. The part before that turn is already in the cache, and it
-stays there
+**Why:** After a failed attempt, the next requests carry the whole attempt: the
+wrong replies and the tool results. `/rewind` cuts them out. The part before that
+turn is already in the cache, and it stays there
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)).
 
-<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end.svg#gh-light-mode-only">
-<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the path that did not work. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end-dark.svg#gh-dark-mode-only">
+<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the attempt that failed. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end.svg#gh-light-mode-only">
+<img alt="Two horizontal bars. Before /rewind, the bar holds your message 1 and reply 1, then a rewind point, then the attempt that failed. The part before the rewind point stays in the cache. After /rewind, only that part remains, and the next request continues from it." src="../images/rewind-drops-dead-end-dark.svg#gh-dark-mode-only">
 
-**How:** Type `/rewind`, then choose the earlier message.
+**How:** Type `/rewind`, then choose the message. Then choose an action
+([Claude Code docs](https://code.claude.com/docs/en/checkpointing#rewind-and-summarize)):
+- **Restore conversation** goes back and keeps the current code.
+- **Restore code and conversation** goes back for both.
+- **Summarize from here** replaces the attempt with a short summary. Use it if
+  Claude must remember what failed.
 
 **Where:**
-- Terminal: `/rewind`.
-- Desktop app, Code tab: the Desktop docs do not list `/rewind`.
+- Terminal and desktop app, Code tab: type `/rewind` in the prompt box. In the
+  terminal, you can also press `Esc` twice when the prompt box is empty.
 
 ## 1.5 Compact when a long task must continue
 
 **What:** `/compact` replaces the old conversation with a short summary.
 
 **Why:**
-- Each request sends the whole conversation again (see 1.1). In a long task,
-  every request is large.
-- `/compact` replaces the old messages with a summary. Each later request sends
-  the summary, not the full conversation.
+- In a long task, each request is large, because it sends the whole conversation
+  again (see 1.1). `/compact` replaces the old messages with a summary. Each
+  later request sends the summary and the new messages only.
 - Example: 100K tokens of conversation become a summary of 5K tokens. The next
-  requests send about 5K tokens plus the new messages, and not 100K. The numbers
-  are an example, not a measure.
-- The saving repeats on every later request. The longer the task continues, the
-  more you save.
-- The summary costs one request. Claude Code sends the full conversation once
-  more, and the model writes the summary. Compacting a large context is itself a
-  large request
+  requests send about 5K tokens plus the new messages, and not 100K. The saving
+  repeats on every request, so it grows as the task continues. The numbers are an
+  example, not a measure.
+- The summary costs one request. The model reads the full conversation once more
+  and writes the summary. Compacting a large context is itself a large request
   ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
-- The summary keeps less than the full conversation. Your project `CLAUDE.md` is
-  read from disk again, so it is not lost
+- The summary keeps less than the full conversation. The `CLAUDE.md` at the
+  project root is read from disk again, so it is not lost
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-survives-compaction)).
 
 <img alt="Two horizontal bars. Before /compact, five messages and five replies fill most of the frame. After /compact, one short summary block replaces them, and the frame has room again." src="../images/compact-shrinks-context.svg#gh-light-mode-only">
@@ -183,23 +199,19 @@ stays there
 **How:** When a long task must continue, run `/compact` instead of carrying the
 full conversation.
 - To choose what the summary keeps, add instructions: `/compact focus on the
-  auth bug fix`
+  auth bug fix`. The summary then keeps what you choose, and not what the
+  automatic pass guesses is important
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#when-your-context-fills-up)).
 - When the next task is unrelated, use `/clear` (see 1.1). It costs nothing.
-- To drop one dead end and keep the rest, see 1.4.
+- To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
   [2.7 Compact while the cache is warm](lever-2-stay-in-the-cache-window.md#27-compact-while-the-cache-is-warm).
 
 **Where:**
-- Terminal: `/compact`, or `/compact` with instructions.
-- Desktop app, Code tab: type `/compact` in the prompt box. When the context
-  fills up, Claude also summarizes the conversation by itself
+- Terminal and desktop app, Code tab: type `/compact`, with or without
+  instructions, in the prompt box. When the context fills up, Claude also
+  summarizes the conversation by itself
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- Chat: there is no command. If code execution is on, Claude summarizes the
-  earlier messages by itself when the chat nears the context limit, and keeps the
-  full history. A long chat that triggers this uses more of your usage limit, so
-  start a new chat at a natural break
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
 
 ## 1.6 Set when auto-compaction starts
 
@@ -210,20 +222,21 @@ not choose the moment, and it can happen in the middle of a task. The window
 depends on the model and can be very large: the docs give about 967K tokens for
 Haiku 5.5.
 
-**How:** To compact earlier, use `/autocompact 200k` (or the `autoCompactWindow`
-setting). `/autocompact auto` returns to the default.
+**How:** To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to
+return to the default. Run `/autocompact` alone to see the current window. The
+window can be from 100K to 1M tokens
+([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
 
 **Where:**
-- Terminal: `/autocompact`, the `--autocompact` option or the `autoCompactWindow`
-  setting. The window can be from 100K to 1M tokens. From Claude Code 2.1.288,
-  `/autocompact` saves the value for the current model only. Before that, it
-  saved one window for every model
+- Terminal and desktop app, Code tab: type `/autocompact` in the prompt box.
+  `/autocompact` saves the value for the current model. Before Claude Code
+  2.1.288, it saved one window for every model.
+- Terminal, for one launch: start Claude Code with `claude --autocompact 200k`.
+  The option does not change your saved setting.
+- Settings file, for every model: set `"autoCompactWindow": 200000` in
+  `~/.claude/settings.json`. A value that you saved with `/autocompact` for a
+  model wins over this key for that model
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
-- Desktop app, Code tab: Claude compacts by itself when the context is full. The
-  Desktop docs do not list `/autocompact`
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- Chat: the compaction is automatic. The help center gives no setting for it
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
 
 ---
 

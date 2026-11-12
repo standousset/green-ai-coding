@@ -46,7 +46,7 @@ local hardware, not Claude
 **How:** Choose the model with the items below. For the effect of the model on
 the cache, see [2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
 
-**Where:** This applies to all three ways to use Claude.
+**Where:** This applies to the terminal and to the desktop app, Code tab.
 
 ## 3.2 Check which model you use now
 
@@ -70,8 +70,6 @@ If you never chose a model, you may use the largest one for every task.
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
   Cmd+Shift+I opens the model menu
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#keyboard-shortcuts)).
-- Chat: the model name is next to the send button. Click it to see the other
-  models ([Claude help center](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings)).
 
 ## 3.3 Make Sonnet your default model
 
@@ -101,12 +99,6 @@ order is in the figure above
 - Terminal: the settings and the option above.
 - Desktop app, Code tab: choose the model with the picker under the prompt box.
   The docs do not say whether the picker saves your choice for new sessions.
-- Chat: choose the model with the model menu next to the send button. A change
-  applies from the next reply of Claude
-  ([Claude help center](https://support.claude.com/en/articles/8664678-change-the-model-effort-and-thinking-settings)).
-  The model you choose has an effect on how fast you reach the usage limit
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
-  The help center gives no advice on the size of the model.
 
 ## 3.4 Try the smaller model first and go up only when needed
 
@@ -132,7 +124,6 @@ again, with no cache (see
 - Terminal: `/model sonnet`, `/model haiku` or `/model opus`.
 - Desktop app, Code tab: the model picker. You can change it during the session
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
-- Chat: the model menu next to the send button.
 
 **Watch out:** The docs describe the aliases, not a test for your own tasks. Check
 the result on your own code before you trust the smaller model.

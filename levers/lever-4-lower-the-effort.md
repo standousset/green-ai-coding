@@ -49,7 +49,7 @@ more tokens use more energy.
 
 **How:** Choose the level with the items below.
 
-**Where:** This applies to all three ways to use Claude.
+**Where:** This applies to the terminal and to the desktop app, Code tab.
 
 **Watch out:**
 - These tests used open models, not Claude models. This guide has no energy
@@ -57,8 +57,6 @@ more tokens use more energy.
 - You cannot turn thinking off on Opus 5.5, Sonnet 5.5, Haiku 5.5 and the Fable
   models. The effort level is your control there
   ([Claude Code docs](https://code.claude.com/docs/en/model-config#extended-thinking)).
-  In chat, the thinking switch does not appear for a model that always thinks
-  ([Claude help center](https://support.claude.com/en/articles/10574485-using-extended-thinking)).
 
 ## 4.2 Check your effort level now
 
@@ -86,9 +84,6 @@ setting or a variable can change the default. The order is in 4.6.
 - Desktop app, Code tab: Cmd+Shift+E opens the effort menu. On Windows and Linux,
   press Ctrl instead of Cmd
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#keyboard-shortcuts)).
-- Chat: click the model name next to the send button, then **Effort**. The
-  selector exists for the current models, for example Sonnet 5.5 and Opus 5.5
-  ([Claude help center](https://support.claude.com/en/articles/10574485-using-extended-thinking)).
 
 ## 4.3 Use a low or medium level for most coding tasks and go up only when needed
 
@@ -123,9 +118,6 @@ compare the results.
 - Terminal: `/effort`, then choose the level. See 4.5 for the difference between
   one session and a saved default.
 - Desktop app, Code tab: Cmd+Shift+E opens the effort menu.
-- Chat: **Effort** in the model menu. A higher level uses more tokens, so you
-  reach your usage limit faster
-  ([Claude help center](https://support.claude.com/en/articles/10574485-using-extended-thinking)).
 
 **Watch out:**
 - Test `max` before you use it often. The docs say that it "may show diminishing

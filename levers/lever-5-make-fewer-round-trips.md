@@ -42,9 +42,7 @@ A failed reply stays in the conversation, so the retry sends it again.
 use 5.6 and 5.7.
 
 **Where:**
-- Terminal: the rule above.
-- Chat: a long chat pushes you toward the usage limit
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
+- Terminal and desktop app, Code tab: the rule above.
 
 ## 5.2 Name the file, the limit and the result in your first request
 
@@ -160,7 +158,7 @@ not send those requests.
 **How:** Watch the first minute. When Claude drifts, press Esc, and then send a
 precise message (see 5.2). To go back to an earlier point and drop the dead end,
 use `/rewind`, or press Esc twice on an empty prompt (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
 - Terminal: Esc and `/rewind`.
@@ -187,15 +185,13 @@ and the limit (see 5.2). `/clear` costs nothing. To find the old session later, 
 `/rename` before `/clear`, and `/resume` to return to it
 ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-context-proactively)).
 If part of the conversation is good, use `/rewind` instead (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
 - Terminal: `/clear`.
 - Desktop app, Code tab: the Desktop docs do not list `/clear`. To start a new
   session, click **+ New** or press Cmd+N (Ctrl+N on Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- Chat: start a new chat
-  ([Claude help center](https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work)).
 
 ## 5.8 Use a simple tool when it does the job
 
@@ -215,7 +211,7 @@ of several files
   editor to rename a symbol. Run your formatter and your linter yourself.
 - For a typed language, install a code intelligence plugin.
 - To have Claude tell you when a tool can do the task, add the matching line of
-  the [permanent rules](../README.md#copy-this-permanent-rules) to your rules
+  the [permanent rules](../README.md#permanent-rules) to your rules
   file.
 
 **Where:**

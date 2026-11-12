@@ -206,7 +206,7 @@ lifetime, it processes the full history again, with no cache
 [1.5](lever-1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue).
 To abandon a path, `/rewind` is better than `/compact`: it goes back to a part
 that is already in the cache (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-a-path-did-not-work)).
+[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
 - Terminal: on the 1-hour cache, Claude Code also compacts an idle conversation

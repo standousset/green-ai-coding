@@ -85,7 +85,7 @@ give a setting for some ways and none for the others.
 **Where:**
 - Terminal: on Bedrock, `/status` shows the region that Claude Code resolved
   ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#3-configure-claude-code)).
-- Desktop app, Code tab and Chat: the docs that I read give no region setting.
+- Desktop app, Code tab: the docs that I read give no region setting.
 
 **Watch out:** If you run your own models, you choose the region of your own cloud
 account.
@@ -151,7 +151,7 @@ Google tells you to "pick a cleaner region for your new applications"
 
 **Where:**
 - Terminal: the variables above.
-- Desktop app, Code tab and Chat: the docs that I read give no region setting.
+- Desktop app, Code tab: the docs that I read give no region setting.
 
 **Watch out:** `CLOUD_ML_REGION=global` does not choose a region: the docs
 suggest it for better availability. If you use a geography instead of a region,
