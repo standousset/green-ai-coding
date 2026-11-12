@@ -49,7 +49,7 @@ These figures have two limits:
 | Item | Role |
 |---|---|
 | [6.1 Check whether you can choose a region](#61-check-whether-you-can-choose-a-region) | Check your options |
-| [6.2 Find the carbon data of a region and rank regions by the carbon intensity of their grid](#62-find-the-carbon-data-of-a-region-and-rank-regions-by-the-carbon-intensity-of-their-grid) | Find and read the data |
+| [6.2 Rank regions by the carbon intensity of their grid](#62-rank-regions-by-the-carbon-intensity-of-their-grid) | Find and read the data |
 | [6.3 Choose a region with low-carbon electricity when you can](#63-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
 | [6.4 Check where your requests really run](#64-check-where-your-requests-really-run) | Check the result |
 
@@ -81,7 +81,7 @@ give none.
   (see 6.4).
 - If you run your own models, you choose the region of your own cloud account.
 
-## 6.2 Find the carbon data of a region and rank regions by the carbon intensity of their grid
+## 6.2 Rank regions by the carbon intensity of their grid
 
 **What:** Look up the carbon data of each region that you can use. Rank the regions
 by the carbon intensity of their grid, and not by a carbon-free share or a claim
@@ -161,7 +161,7 @@ This is a gap in the grid, not a measure of one request.
 3. Set the region. On Google Cloud, run `export CLOUD_ML_REGION=europe-north1`, for
    example. On Bedrock, set `AWS_REGION` to the region that you chose.
 4. On Google Cloud, some models are offered only on `global` or multi-region
-   locations, so you may need `VERTEX_REGION_CLAUDE_*` for one model
+   locations, so you may need a variable for that one model, `VERTEX_REGION_CLAUDE_*`
    ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)).
    On Bedrock, list the profiles of a region with
    `aws bedrock list-inference-profiles --region your-region`
@@ -197,9 +197,8 @@ guarantee"
   ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
 **Watch out:** The AWS docs don't say whether you can force one single Region.
-They also don't list every destination Region of each geography. A global
-profile costs about 10% less than a geographic one, but it
-routes worldwide
+They also don't list every destination Region of each geography. A global profile
+costs about 10% less than a geographic one, but it routes worldwide
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
 ---
