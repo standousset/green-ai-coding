@@ -83,10 +83,10 @@ account.
 
 **What:** Look up the carbon data of a region before you choose it.
 
-**Why:** Two regions of the same provider can differ a lot. In the 2024 data of
-Google Cloud, the grid of `europe-north2` (Stockholm) emits 3 gCO₂eq per kWh. The
-grid of `asia-south1` (Mumbai) emits 679. In the United States, `us-west1`
-(Oregon) emits 79, and `us-east1` (South Carolina) emits 576
+**Why:** Two regions of the same provider can differ a lot. In the 2025 data of
+Google Cloud, the grid of `europe-north2` (Stockholm) emits 19 gCO₂eq per kWh. The
+grid of `asia-south1` (Mumbai) emits 598. In the United States, `us-west1`
+(Oregon) emits 98, and `us-east1` (South Carolina) emits 579
 ([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
 
 **How:**
@@ -95,20 +95,21 @@ grid of `asia-south1` (Mumbai) emits 679. In the United States, `us-west1`
   [carbon page](https://cloud.google.com/sustainability/region-carbon), in a
   [GitHub repository](https://github.com/GoogleCloudPlatform/region-carbon-info)
   and in a BigQuery public dataset. Google calls a region low-carbon when
-  carbon-free energy is at least 75%, or when the grid emits at most 200 gCO₂eq
-  per kWh.
+  carbon-free energy is at least 75%, or, when that value is not available, when
+  the grid emits at most 200 gCO₂eq per kWh.
 - For other providers, use the country data of
   [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
   (see 6.1). [Electricity Maps](https://www.electricitymaps.com/) shows live data
-  for more than 130 zones on an interactive map. Its API has a 14-day trial, and
-  then needs a paid plan.
+  on an interactive map. Its site offers a trial of its API: check the current
+  terms.
 
 **Where:**
 - All ways: these are web pages, and not settings of Claude.
 
-**Watch out:** Google says that its data "has not been assured". The data comes
-from Electricity Maps. The share of carbon-free energy and the grid intensity are
-two different values. In `us-central1` (Iowa), they are 87% and 413 gCO₂eq per
+**Watch out:** The data comes from Electricity Maps. The Google page says that
+Electricity Maps has an independent Letter of Assurance for its data pipeline and
+calculation models. The share of carbon-free energy and the grid intensity are
+two different values. In `us-central1` (Iowa), they are 88% and 432 gCO₂eq per
 kWh. This guide found no per-region carbon data from AWS or Microsoft.
 
 ## 6.4 Choose a region with low-carbon electricity when you can
@@ -151,8 +152,9 @@ different AWS Regions". A geographic profile stays inside its geography. For the
 US profile, the AWS example lists `us-east-1`, `us-east-2` and `us-west-2`. A
 global profile can use any supported commercial Region
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
-Claude Code picks the profile from your region: `us-` gives `us.`, `eu-` gives
-`eu.`, `ap-` gives `apac.`, and every other region gives `global.`. The docs call
+Claude Code picks the profile from your region: `us-` gives `us.`, `us-gov-` gives
+`us-gov.`, `eu-` gives `eu.`, `ap-` gives `apac.`, and every other region gives
+`global.`. The docs call
 this "a preference, not a guarantee"
 ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock#cross-region-inference-profile-prefixes)).
 
@@ -170,7 +172,7 @@ this "a preference, not a guarantee"
 **Watch out:** The AWS docs that I read do not say if you can force one single
 Region. They also do not list every destination Region of each geography. A global
 profile costs about 10% less than a geographic one, but it routes worldwide
-([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/geographic-cross-region-inference.html)).
+([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
 
 ---
 

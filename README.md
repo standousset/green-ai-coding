@@ -5,7 +5,7 @@ Use less energy when you code with Claude. Six levers with sources, and two text
 This guide is about the energy that the AI uses while it helps you code. It is not about the energy that the code you ship uses when it runs.
 
 > [!NOTE]
-> Spot-checked against the Claude Code docs on 12 November 2026. This guide does not measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
+> Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data. This guide does not measure any saving. Each lever comes from how the models run and how they are billed, and each page says where a claim is an estimate.
 
 ## Start here: audit your setup
 
