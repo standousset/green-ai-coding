@@ -201,7 +201,7 @@ reason above is fewer tokens, not a measured energy saving.
 
 ## 5.7 Stop work that runs without you
 
-**What:** Agent teams, scheduled tasks and idle check-ins send requests while you're
+**What:** Agent teams, scheduled tasks and goal check-ins send requests while you're
 doing nothing. Use them only when you need them, keep them small, and stop them
 when the work is done.
 
@@ -212,10 +212,19 @@ when the work is done.
   ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-agent-team-costs)).
   Each active teammate keeps using tokens until it exits
   ([Claude Code docs](https://code.claude.com/docs/en/costs#agent-team-token-costs)).
-- A session-scoped scheduled task fires on its interval even when the session is
-  idle, and it sends your full context each time. A goal check-in does the same, at
-  most three times between your prompts
+- A session-scoped scheduled task, for example one that you start with `/loop`,
+  repeats a prompt on a time interval. It fires on its interval even when the
+  session is idle, and it sends your full context each time
   ([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+- A goal check-in is a request that Claude Code starts by itself. A goal is a
+  condition that Claude keeps working toward, which you set with `/goal`, for
+  example "all tests in test/auth pass". If a subagent or a background shell
+  command is still running, a check-in is due after 30 minutes by default. Claude
+  Code then starts a new turn, even when the session is idle. It asks Claude to
+  read the output of the running tasks, and it sends your full context. It starts
+  at most three of these idle check-ins between your prompts
+  ([Claude Code docs](https://code.claude.com/docs/en/goal#background-work-defers-evaluation),
+  [costs page](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
 
 **How:**
 - Agent teams are off by default. Turn them on only for work that really needs
@@ -223,7 +232,7 @@ when the work is done.
 - Use Sonnet for the teammates, keep the team small, and give each teammate a
   small task that stands alone. Shut a teammate down when its work is done
   ([Claude Code docs](https://code.claude.com/docs/en/costs#agent-team-token-costs)).
-- To stop the idle goal check-ins, set `CLAUDE_CODE_GOAL_CHECKIN_MINUTES` to `0`.
+- To turn the goal check-ins off, set `CLAUDE_CODE_GOAL_CHECKIN_MINUTES` to `0`.
   Idle check-ins need Claude Code 2.1.236 or later.
 - Stop a scheduled task as soon as you don't need it any more.
 
