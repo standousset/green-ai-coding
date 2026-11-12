@@ -5,26 +5,26 @@
 *Reading time: about 9 minutes.*
 
 > [!IMPORTANT]
-> Choose the model, the effort level and the speed at the start of a task, and do not change them in the middle of it. Compact before a long break, or set a cache time of 1 hour.
+> Pick the model, the effort level and the speed at the start of a task, and don't change them halfway through. Compact before a long break, or set a 1-hour cache time.
 
-**Why it matters:** Each request sends the whole conversation again (see
-[lever 1](lever-1-keep-the-context-short.md)). Prompt caching lets the provider
-keep its work on the start of the request, so it processes only what is new
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching)). The start
-of the request is the system prompt, the rules file and the earlier messages.
-The model, the effort level and the speed count as part of it. The match must be
-exact. If one part changes, the provider processes everything after it again.
+**Why it matters:** Each request sends the whole conversation again (see [lever
+1](lever-1-keep-the-context-short.md)). Prompt caching lets the provider hold on
+to its work on the start of the request, so it only has to process what's new
+([Claude Code docs](https://code.claude.com/docs/en/prompt-caching)). The start of
+the request is the system prompt, the rules file and the earlier messages. The
+model, the effort level and the speed count as part of it. The match has to be
+exact: if one part changes, everything after it gets processed again.
 
-The cache does not last. It expires after 5 minutes or 1 hour without a request.
+The cache doesn't last. It expires after 5 minutes or 1 hour without a request.
 Then the next request processes the whole conversation again. On the Anthropic
 API, a cache read costs 0.1 times the normal input price. It costs 0.05 times on
-Opus 5.5 and Sonnet 5.5, and 0.025 times on Fable 5.1
-([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)).
-This is a price, not a measure of energy. But a cache that expired means that
-the provider computes the whole conversation again, and this is what you avoid.
+Opus 5.5 and Sonnet 5.5, and 0.025 times on Fable 5.1 ([Anthropic
+docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)).
+That's a price, not a measure of energy. But an expired cache means the provider
+computes the whole conversation again, and that's what you're trying to avoid.
 Other providers also cache the start of a prompt. OpenAI does it automatically
-when the prompt has at least 1,024 tokens on its newest models
-([OpenAI docs](https://platform.openai.com/docs/guides/prompt-caching)).
+when the prompt has at least 1,024 tokens on its newest models ([OpenAI
+docs](https://platform.openai.com/docs/guides/prompt-caching)).
 
 <img alt="Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again." src="../images/cache-reuses-the-start.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again." src="../images/cache-reuses-the-start-dark.svg#gh-dark-mode-only">
@@ -41,11 +41,11 @@ when the prompt has at least 1,024 tokens on its newest models
 
 **What:** Find out if your cache lasts 5 minutes or 1 hour.
 
-**Why:** A break that is longer than the cache time ends the cache. The next
-request then reads the full conversation again. With a cache time of 1 hour, the
-same break causes no extra cost. The cache starts its time again with each
-request that uses it
-([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
+**Why:** A break longer than your cache time ends the cache, and the next request
+has to read the full conversation again. With a 1-hour cache time, the same break
+costs nothing extra. The cache starts its time again with each request that uses
+it ([Claude Code
+docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
 
 <img alt="Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache." src="../images/cache-time-5-minutes-or-1-hour.svg#gh-light-mode-only">
 <img alt="Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache." src="../images/cache-time-5-minutes-or-1-hour-dark.svg#gh-dark-mode-only">
@@ -74,7 +74,7 @@ request that uses it
 - Terminal: `/usage` shows a **Prompt cache** line with the hit ratio and whether
   the cache is warm. It needs Claude Code 2.1.251 or later
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#check-cache-performance)).
-- Desktop app, Code tab: the cache docs do not describe the desktop app. It runs
+- Desktop app, Code tab: the cache docs don't describe the desktop app. It runs
   Claude Code, so the table should apply there too.
 
 ## 2.2 Compact before a break longer than your cache time
@@ -112,10 +112,10 @@ part that is already in the cache (see
 `CLAUDE_CODE_PROMPT_CACHE_TTL=1h`. If you need 1 hour only for a long session with
 many breaks, use the variable for that session only.
 
-**Why:** With an API key, a cloud provider or usage credits, the main
-conversation has a cache time of 5 minutes (see 2.1). A break of more than 5
-minutes then makes the next request process the whole conversation again. The
-1-hour cache time avoids this.
+**Why:** With an API key, a cloud provider or usage credits, the main conversation
+has a cache time of 5 minutes (see 2.1). A break of more than 5 minutes then
+forces the next request to process the whole conversation again. A 1-hour cache
+time avoids that.
 - A cache write costs 2 times the normal input price with 1 hour, against 1.25
   times with 5 minutes. A cache read costs the same for both
   ([Anthropic docs](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)).
@@ -124,9 +124,9 @@ minutes then makes the next request process the whole conversation again. The
 - It costs more on short bursts of work with no stop of 5 minutes. The longer
   cache time is then not used
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
-- The docs give prices, not energy. If you are not sure, and you often leave and
-  come back, 1 hour is the safer choice: it avoids computing the conversation
-  again.
+- The docs give prices, not energy. If you aren't sure and you often step away and
+  come back, 1 hour is the safer choice, because it avoids computing the
+  conversation again.
 
 **How:** It needs Claude Code 2.1.242 or later. Each control takes `5m` or `1h`.
 - To keep the value for every session, save it in a settings file.
@@ -155,7 +155,7 @@ minutes then makes the next request process the whole conversation again. The
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#set-environment-variables-for-local-sessions)).
 
 **Watch out:** On a Claude subscription, inside the usage of your plan, the main
-conversation already has 1 hour. You do not need this setting there.
+conversation already has 1 hour. You don't need this setting there.
 
 ## 2.4 Do not change the model in the middle of a task
 
@@ -177,7 +177,7 @@ reads the whole conversation with no cache, even if the content is the same
 - Desktop app, Code tab: choose the model with the model picker under the prompt
   box. You can change it during the session
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The cache docs
-  do not describe the desktop app. Each model has its own cache, so a switch
+  don't describe the desktop app. Each model has its own cache, so a switch
   there can cost the same.
 
 **Watch out:** Some actions switch the model without a clear sign
@@ -187,15 +187,15 @@ reads the whole conversation with no cache, even if the content is the same
 - An automatic fallback is a switch. A safety check can flag a request, and
   Claude Code then runs it again on a fallback model. The session continues
   there.
-- A skill or command can set a `model` in its header. If it is not your current
+- A skill or command can set a `model` in its header. If it isn't your current
   model, that turn runs on it. Your model comes back at your next prompt.
 
 ## 2.5 Change the effort level, the speed and other settings only between tasks
 
 **What:** Choose the effort level and the speed at the start of a task. Before you
-change any other setting in the middle of a task, check if it resets the cache.
+change any other setting halfway through, check whether it resets the cache.
 
-**Why:** The model is not the only part of the start of the request. Each of these
+**Why:** The model isn't the only part of the start of the request. Each of these
 changes can make the next request read the whole conversation again.
 - **Effort level.** On most models, each level has its own cache. With an API key
   or a Claude subscription, the cache stays on Fable 5.1 and later, Opus 5.5,
@@ -217,13 +217,13 @@ changes can make the next request read the whole conversation again.
   and denying a whole tool. Compacting, many images in the conversation and an
   upgrade of Claude Code also count. Some of them cost nothing in some cases. For example,
   tool search is on by default on supported models. Then a server that connects
-  in the middle of a session does not change what is cached.
+  in the middle of a session doesn't change what is cached.
 
 **How:**
 - Choose the effort level at the start (see [lever 4](lever-4-lower-the-effort.md)).
-  On a model that does not keep the cache, Claude Code asks you to confirm a
+  On a model that doesn't keep the cache, Claude Code asks you to confirm a
   change while the cache is warm.
-- Turn on fast mode before the first message of the session, or do not use it.
+- Turn on fast mode before the first message of the session, or don't use it.
   Run `/fast` again to see if it is on. A small `↯` icon shows next to the prompt
   while it is on
   ([Claude Code docs](https://code.claude.com/docs/en/fast-mode#toggle-fast-mode)).
@@ -237,12 +237,12 @@ changes can make the next request read the whole conversation again.
 - VS Code extension: the **Toggle fast mode** command.
 - Desktop app, Code tab: Cmd+Shift+E opens the effort menu
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The cache docs
-  do not describe the desktop app. The fast mode docs name only the terminal and
+  don't describe the desktop app. The fast mode docs name only the terminal and
   the VS Code extension. If `/fast` appears in the `/` menu of the prompt box, the
   same advice applies.
 
 **Watch out:**
-- If your model does not support fast mode, `/fast` also switches you to Opus.
+- If your model doesn't support fast mode, `/fast` also switches you to Opus.
   This is a model switch (see 2.4).
 - If you hit a rate limit, Claude Code goes back to standard speed by itself.
   Later it goes back to fast mode. Each of these changes of speed loses the cache
