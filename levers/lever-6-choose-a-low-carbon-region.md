@@ -1,4 +1,4 @@
-[← Lever 5: Get it right in fewer tries](lever-5-get-it-right-in-fewer-tries.md) &emsp; [All levers](../README.md)
+[← Lever 5: Make fewer round trips](lever-5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)
 
 # Lever 6: Choose a low-carbon region
 
@@ -240,4 +240,4 @@ made.
 
 ---
 
-[← Lever 5: Get it right in fewer tries](lever-5-get-it-right-in-fewer-tries.md) &emsp; [All levers](../README.md)
+[← Lever 5: Make fewer round trips](lever-5-make-fewer-round-trips.md) &emsp; [All levers](../README.md)

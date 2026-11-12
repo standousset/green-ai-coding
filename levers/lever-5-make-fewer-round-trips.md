@@ -1,11 +1,11 @@
 [← Lever 4: Lower the effort](lever-4-lower-the-effort.md) &emsp; [All levers](../README.md) &emsp; [Lever 6: Choose a low-carbon region →](lever-6-choose-a-low-carbon-region.md)
 
-# Lever 5: Get it right in fewer tries
+# Lever 5: Make fewer round trips
 
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Say the task precisely, plan a large task first, and give Claude a check to run. When a try fails, stop it early and start fresh instead of correcting a third time. Skip the requests that a simple tool, or an agent that runs without you, adds for no gain.
+> Say the task precisely, plan a large task first, and give Claude a check to run. When a round fails, stop it early and start fresh instead of correcting a third time. Skip the requests that a simple tool, or an agent that runs without you, adds for no gain.
 
 **Why it matters:** Each request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
@@ -31,7 +31,7 @@ measured energy.
 
 ## 5.1 Know that a retry costs more than the first attempt
 
-**What:** Count the tries that a typical task needs. Each retry is a new request
+**What:** Count the rounds that a typical task needs. Each retry is a new request
 with a longer context.
 
 **Why:** Each request sends the full conversation again. Each time Claude uses a
@@ -42,9 +42,9 @@ A failed reply stays in the conversation, so the retry sends it again.
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg#gh-light-mode-only">
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt-dark.svg#gh-dark-mode-only">
 
-**How:** To get the result in fewer tries, use
+**How:** To get the result in fewer rounds, use
 [5.2](#52-name-the-file-the-limit-and-the-result-in-your-first-request) to
-[5.5](#55-give-claude-a-check-to-run). When a try fails, use
+[5.5](#55-give-claude-a-check-to-run). When a round fails, use
 [5.6](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) and
 [5.7](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt).
 

@@ -1,4 +1,4 @@
-[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Get it right in fewer tries →](lever-5-get-it-right-in-fewer-tries.md)
+[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Make fewer round trips →](lever-5-make-fewer-round-trips.md)
 
 # Lever 4: Lower the effort
 
@@ -255,4 +255,4 @@ subagent (see 4.5).
 
 ---
 
-[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Get it right in fewer tries →](lever-5-get-it-right-in-fewer-tries.md)
+[← Lever 3: Use a smaller model](lever-3-use-a-smaller-model.md) &emsp; [All levers](../README.md) &emsp; [Lever 5: Make fewer round trips →](lever-5-make-fewer-round-trips.md)
