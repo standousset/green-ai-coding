@@ -9,46 +9,31 @@
 
 **Why it matters:** Each request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)),
-so a retry costs more than the first attempt. A vague request also makes Claude
-scan more files than it needs
+so a retry costs more than the first attempt. A failed reply stays in the
+conversation, so the retry sends it again. Each time Claude uses a tool, it sends
+one more request with the tool results
+([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
+A vague request also makes Claude scan more files than it needs
 ([Claude Code docs](https://code.claude.com/docs/en/costs#write-specific-prompts)).
 A long context makes the answers less reliable too (see
 [lever 1](lever-1-keep-the-context-short.md)).
 The guide has no energy figure for this lever. It counts requests and tokens, not
 measured energy.
 
-| Item | Role |
-|---|---|
-| [5.1 Know that a retry costs more than the first attempt](#51-know-that-a-retry-costs-more-than-the-first-attempt) | Learn the rule |
-| [5.2 Name the file, the limit and the result in your first request](#52-name-the-file-the-limit-and-the-result-in-your-first-request) | Prevent: say it clearly |
-| [5.3 Ask Claude to interview you when the task is not clear](#53-ask-claude-to-interview-you-when-the-task-is-not-clear) | Prevent: find out what you want |
-| [5.4 Plan a large task first](#54-plan-a-large-task-first) | Prevent: agree on the approach |
-| [5.5 Give Claude a check to run](#55-give-claude-a-check-to-run) | Prevent: let Claude find its own errors |
-| [5.6 Press Esc as soon as Claude goes the wrong way](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
-| [5.7 After two failed corrections, run `/clear` and write a better prompt](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
-| [5.8 Use a simple tool when it does the job](#58-use-a-simple-tool-when-it-does-the-job) | Skip the model |
-| [5.9 Stop work that runs without you](#59-stop-work-that-runs-without-you) | Skip the hidden requests |
-
-## 5.1 Know that a retry costs more than the first attempt
-
-**What:** Count the rounds that a typical task needs. Each retry is a new request
-with a longer context.
-
-**Why:** Each request sends the full conversation again. Each time Claude uses a
-tool, it sends one more request with the tool results
-([Claude Code docs](https://code.claude.com/docs/en/costs#why-usage-climbs-in-a-long-session)).
-A failed reply stays in the conversation, so the retry sends it again.
-
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt.svg#gh-light-mode-only">
 <img alt="Three horizontal bars, one for each request, each in a frame. The first attempt holds your request and reply 1. Retry 1 holds your request, reply 1, your note and reply 2. Retry 2 holds your request, reply 1, your note, reply 2, another note and reply 3. Each bar is longer than the one before, because the failed replies stay in the input." src="../images/retry-resends-the-failed-attempt-dark.svg#gh-dark-mode-only">
 
-**How:** To get the result in fewer rounds, use
-[5.2](#52-name-the-file-the-limit-and-the-result-in-your-first-request) to
-[5.5](#55-give-claude-a-check-to-run). When a round fails, use
-[5.6](#56-press-esc-as-soon-as-claude-goes-the-wrong-way) and
-[5.7](#57-after-two-failed-corrections-run-clear-and-write-a-better-prompt).
+| Item | Role |
+|---|---|
+| [5.1 Name the file, the limit and the result in your first request](#51-name-the-file-the-limit-and-the-result-in-your-first-request) | Prevent: say it clearly |
+| [5.2 Agree on a plan before Claude edits anything](#52-agree-on-a-plan-before-claude-edits-anything) | Prevent: agree on the approach |
+| [5.3 Give Claude a check to run](#53-give-claude-a-check-to-run) | Prevent: let Claude find its own errors |
+| [5.4 Press Esc as soon as Claude goes the wrong way](#54-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
+| [5.5 After two failed corrections, run `/clear` and write a better prompt](#55-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
+| [5.6 Use a simple tool when it does the job](#56-use-a-simple-tool-when-it-does-the-job) | Skip the model |
+| [5.7 Stop work that runs without you](#57-stop-work-that-runs-without-you) | Skip the hidden requests |
 
-## 5.2 Name the file, the limit and the result in your first request
+## 5.1 Name the file, the limit and the result in your first request
 
 **What:** Say which file, which limit and which result you expect. Do not write
 "try again" with no new information.
@@ -72,47 +57,34 @@ scanning". A request that names the file lets Claude work with few file reads
 - Desktop app, Code tab: type `@` followed by a file name in the prompt box
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
-## 5.3 Ask Claude to interview you when the task is not clear
+## 5.2 Agree on a plan before Claude edits anything
 
-**What:** If you have not thought the task through, ask Claude to question you
-first and to write a spec.
+**What:** For a large task, agree on the plan before Claude edits. If you have not
+thought the task through, ask Claude to interview you and to write a spec first.
+Then ask for a plan, read it and correct it.
 
-**Why:** Claude comes back with "multiple-choice questions about the parts you
-haven't pinned down"
+**Why:** In the interview, Claude comes back with "multiple-choice questions about
+the parts you haven't pinned down"
 ([Claude Code docs](https://code.claude.com/docs/en/best-practices#brainstorm-with-claude-first)).
-A choice that stays open until the build can come back later as a retry (see 5.1).
-
-**How:**
-- Use a prompt like the one in the docs. It says: "Interview me until you could
-  write the spec".
-- Ask Claude to write the spec to a file, for example `SPEC.md`.
-- When the spec exists, start a fresh session to build from it. The interview
-  then leaves the context (see
-  [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
-
-**Where:**
-- Terminal: a normal prompt.
-
-**Watch out:** The questions are requests too. Use this only when the task is not
-clear.
-
-## 5.4 Plan a large task first
-
-**What:** For a large task, ask for a plan first. Read it, correct it, then let
-Claude edit.
-
-**Why:** In plan mode, Claude "does not edit your source" until you approve the
-plan
+A choice that stays open until the build can come back later as a retry. In plan
+mode, Claude "does not edit your source" until you approve the plan
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode)).
-The Claude Code docs say that plan mode prevents "expensive re-work when the
-initial direction is wrong"
+The docs say that plan mode prevents "expensive re-work when the initial direction
+is wrong"
 ([source](https://code.claude.com/docs/en/costs#work-efficiently-on-complex-tasks)).
 
-**How:** Press Shift+Tab until the status bar shows `⏸ plan mode on`, or start
-one prompt with `/plan`. You can also start with `claude --permission-mode plan`.
-When the plan is ready, Claude asks how to proceed. Press Ctrl+G to edit the plan
-in your editor before Claude continues
-([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
+**How:**
+- If the task is not clear, use a prompt like the one in the docs. It says:
+  "Interview me until you could write the spec". Ask Claude to write the spec to a
+  file, for example `SPEC.md`.
+- Then plan. Press Shift+Tab until the status bar shows `⏸ plan mode on`, or start
+  one prompt with `/plan`. You can also start with `claude --permission-mode plan`.
+  When the plan is ready, Claude asks how to proceed. Press Ctrl+G to edit the plan
+  in your editor before Claude continues
+  ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
+- When the spec and the plan are ready, start a fresh session to build from the
+  spec. The interview then leaves the context (see
+  [1.1](lever-1-keep-the-context-short.md#11-drop-old-context-that-the-task-does-not-need)).
 
 **Where:**
 - Terminal: Shift+Tab, `/plan` or `--permission-mode plan`.
@@ -122,10 +94,11 @@ in your editor before Claude continues
   Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#choose-a-permission-mode)).
 
-**Watch out:** The docs recommend plan mode for complex tasks. A plan costs
-requests too, so for a small task, ask directly.
+**Watch out:** The questions and the plan are requests too. Use the interview only
+when the task is not clear, and plan mode only for a complex task. For a small
+task, ask directly.
 
-## 5.5 Give Claude a check to run
+## 5.3 Give Claude a check to run
 
 **What:** Give Claude a test, a linter or a build to run, so it finds its own
 errors before you ask for a fix.
@@ -144,22 +117,22 @@ it, then continue."
 
 **Watch out:** A check does not remove the retries. Claude makes them in place of
 you. Each run of the check and each fix is still a request that sends the whole
-conversation again (see 5.1). The check pays off when it catches an error before
-you read the result, because then you do not need to send a correction. The docs
-give no token figure for this loop.
+conversation again (see the intro). The check pays off when it catches an error
+before you read the result, because then you do not need to send a correction. The
+docs give no token figure for this loop.
 
-## 5.6 Press Esc as soon as Claude goes the wrong way
+## 5.4 Press Esc as soon as Claude goes the wrong way
 
 **What:** When Claude starts on a wrong path, press Esc. Do not wait for it to
 finish.
 
 **Why:** Esc "stops Claude mid-action and keeps everything up to that point"
 ([Claude Code docs](https://code.claude.com/docs/en/best-practices#steer-the-session)).
-Each tool use sends one more request (see 5.1), so work that you stop early does
-not send those requests.
+Each tool use sends one more request (see the intro), so work that you stop early
+does not send those requests.
 
 **How:** Watch the first minute. When Claude drifts, press Esc, and then send a
-precise message (see 5.2). To go back to an earlier point and drop the dead end,
+precise message (see 5.1). To go back to an earlier point and drop the dead end,
 use `/rewind`, or press Esc twice on an empty prompt (see
 [1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
 
@@ -170,7 +143,7 @@ use `/rewind`, or press Esc twice on an empty prompt (see
 own file tools. A file that a Bash command changed is not restored
 ([Claude Code docs](https://code.claude.com/docs/en/best-practices#steer-the-session)).
 
-## 5.7 After two failed corrections, run `/clear` and write a better prompt
+## 5.5 After two failed corrections, run `/clear` and write a better prompt
 
 **What:** If you corrected the same thing twice and it is still wrong, do not send
 a third correction. Run `/clear` and write a new prompt with what you learned.
@@ -184,7 +157,7 @@ you learned works better almost every time
 <img alt="Two horizontal bars, each in a frame. The first bar is the request after a third correction. It holds your request, three failed replies and three fixes as input, and a new reply 4 as output. The second bar is the request after /clear with a better prompt. It holds only the better prompt as input and a new reply as output. The second bar is much shorter." src="../images/fresh-start-beats-a-third-correction-dark.svg#gh-dark-mode-only">
 
 **How:** Put what the failed tries showed into the new prompt: the file, the error
-and the limit (see 5.2). `/clear` costs nothing. To find the old session later, run
+and the limit (see 5.1). `/clear` costs nothing. To find the old session later, run
 `/rename` before `/clear`, and `/resume` to return to it
 ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-context-proactively)).
 If part of the conversation is good, use `/rewind` instead (see
@@ -196,13 +169,13 @@ If part of the conversation is good, use `/rewind` instead (see
   session, click **+ New** or press Cmd+N (Ctrl+N on Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
-## 5.8 Use a simple tool when it does the job
+## 5.6 Use a simple tool when it does the job
 
 **What:** If a search, a rename, a formatter or a linter can do the task, use it
 and do not write a prompt.
 
-**Why:** Each prompt starts requests that send the whole conversation (see 5.1).
-The Claude Code docs give two cases where a plain tool costs less context. CLI
+**Why:** Each prompt starts requests that send the whole conversation (see the
+intro). The Claude Code docs give two cases where a plain tool costs less context. CLI
 tools such as `gh` and `aws` are "more context-efficient than MCP servers"
 ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 For typed languages, one "go to definition" call replaces a grep and the reading
@@ -220,7 +193,7 @@ of several files
 **Watch out:** This guide has no energy figure that compares a simple tool with a
 model request. The reason above is fewer tokens, not a measured energy saving.
 
-## 5.9 Stop work that runs without you
+## 5.7 Stop work that runs without you
 
 **What:** Agent teams, scheduled tasks and idle check-ins send requests while you
 do nothing. Use them only when you need them, keep them small, and stop them when

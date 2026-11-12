@@ -26,7 +26,7 @@ Short on time? Do these six things first. The six linked items take about 6 minu
 2. **Compact before a long break.** Run `/compact` before a break that is longer than your cache time ([2.2](levers/lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time)).
 3. **Make Sonnet your default model.** Go up to Opus only when the result is not good enough ([3.2](levers/lever-3-use-a-smaller-model.md#32-make-sonnet-your-default-model)).
 4. **Use a low or medium effort level.** Go up only for the hard tasks ([4.2](levers/lever-4-lower-the-effort.md#42-use-a-low-or-medium-level-for-most-coding-tasks-and-go-up-only-when-needed)).
-5. **Name the file, the limit and the result in your first request.** This avoids retries ([5.2](levers/lever-5-make-fewer-round-trips.md#52-name-the-file-the-limit-and-the-result-in-your-first-request)).
+5. **Name the file, the limit and the result in your first request.** This avoids retries ([5.1](levers/lever-5-make-fewer-round-trips.md#51-name-the-file-the-limit-and-the-result-in-your-first-request)).
 6. **Check whether you can choose where your requests run.** This applies on Amazon Bedrock and Google Cloud ([6.2](levers/lever-6-choose-a-low-carbon-region.md#62-check-whether-you-can-choose-a-region)).
 
 ## Audit your setup
@@ -73,7 +73,7 @@ Optional, and a different topic: if you also want the code that you ship to be l
 - The pages cover Claude Code, in the terminal and in the desktop app. Other assistants have similar settings under other names.
 - Levers 1 and 2 follow from billing and from reliability more than from energy. In a test of local models, the output length and the model size explained most of the energy, and the length of the prompt explained little ([Alizadeh et al.](https://arxiv.org/abs/2412.00329)). Levers 3 and 4 act on those two factors.
 - Lever 3 relies on an estimate of the energy for each token, because the size of the Claude models is not public.
-- Agents that run alone and MCP servers have one short item each (5.9 and 1.2).
+- Agents that run alone and MCP servers have one short item each (5.7 and 1.2).
 
 ## Feedback
 
