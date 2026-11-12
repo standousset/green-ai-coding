@@ -208,8 +208,8 @@ full conversation.
 - To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
   [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
-- Claude Code also compacts by itself when the context is full enough. The window,
-  which is the context size at which this happens, depends on the model and can be
+- Claude Code also compacts by itself when the context is full enough. The window
+  is the context size at which this happens. It depends on the model and can be
   very large: the docs give about 967K tokens for Haiku 5.5. You don't choose the
   moment, and it can happen in the middle of a task.
 - To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to return
