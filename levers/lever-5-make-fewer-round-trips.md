@@ -218,7 +218,7 @@ of several files
   editor to rename a symbol. Run your formatter and your linter yourself.
 - For a typed language, install a code intelligence plugin.
 - To have Claude tell you when a tool can do the task, add the matching line of
-  the [permanent rules](../README.md#b---copy-this-permanent-rules) to your rules
+  the [permanent rules](../README.md#copy-this-permanent-rules) to your rules
   file.
 
 **Where:**

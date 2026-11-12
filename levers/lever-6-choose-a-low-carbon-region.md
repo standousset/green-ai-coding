@@ -14,7 +14,7 @@ Claude give no such setting in the docs (see 6.2).
 
 | Item | Role |
 |---|---|
-| [6.1 Know that the same energy emits very different amounts of CO₂](#61-know-that-the-same-energy-emits-very-different-amounts-of-co₂) | Learn the gap |
+| [6.1 Know that the same energy emits very different amounts of CO₂](#61-know-that-the-same-energy-emits-very-different-amounts-of-co) | Learn the gap |
 | [6.2 Check whether you can choose a region](#62-check-whether-you-can-choose-a-region) | Check your options |
 | [6.3 Find the carbon data of a region](#63-find-the-carbon-data-of-a-region) | Find the data |
 | [6.4 Choose a region with low-carbon electricity when you can](#64-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
