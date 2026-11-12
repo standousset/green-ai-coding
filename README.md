@@ -55,7 +55,7 @@ Levers 1 to 5 apply to everyone. Lever 6 applies only if you can choose where yo
 3. **[Use a smaller model](levers/lever-3-use-a-smaller-model.md)**: a larger model uses more energy for each token. Make Sonnet your default, and use Opus for the hardest tasks only.
 4. **[Lower the effort](levers/lever-4-lower-the-effort.md)**: thinking is text that the model writes, and each token uses energy. Use a low or medium level for most tasks, and go up only when needed.
 5. **[Make fewer round trips](levers/lever-5-make-fewer-round-trips.md)**: each retry sends the whole conversation again, with the failed reply. Name the file, plan a large task first, run `/clear` after two failed corrections, and stop agents that run without you.
-6. **[Choose a low-carbon region](levers/lever-6-choose-a-low-carbon-region.md)**: in 2025, electricity emitted 28 gCO₂/kWh in Norway and 670 in India. Use this on Amazon Bedrock or Google Cloud, where you can choose the region.
+6. **[Choose a low-carbon region](levers/lever-6-choose-a-low-carbon-region.md)**: in 2025, electricity emitted 28 gCO₂/kWh in Norway and 670 in India. Use this on Amazon Bedrock or Google Cloud, where you can choose the region, and rank regions by the grid of the place, not by contracts.
 
 Each page has short items with the same parts: what to do, why, how, and where (terminal, desktop app or chat).
 
