@@ -21,7 +21,6 @@ reliable answers lead to more retries (see
 | [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
 | [1.4 Go back with `/rewind` when an attempt failed](#14-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
 | [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink |
-| [1.6 Set when auto-compaction starts](#16-set-when-auto-compaction-starts) | Set the automatic fallback |
 
 ## 1.1 Drop old context that the task does not need
 
@@ -178,7 +177,8 @@ turn is already in the cache, and it stays there
 
 ## 1.5 Compact when a long task must continue
 
-**What:** `/compact` replaces the old conversation with a short summary.
+**What:** `/compact` replaces the old conversation with a short summary. You can also
+choose when Claude Code compacts by itself.
 
 **Why:**
 - In a long task, each request is large, because it sends the whole conversation
@@ -208,28 +208,19 @@ full conversation.
 - To drop one failed attempt and keep the rest, see 1.4.
 - For the best moment to compact, see
   [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
+- Claude Code also compacts by itself when the context is full enough. You do not
+  choose the moment, and it can happen in the middle of a task. The window depends
+  on the model and can be very large: the docs give about 967K tokens for Haiku
+  5.5. To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to
+  return to the default. Run `/autocompact` alone to see the current window. The
+  window can be from 100K to 1M tokens
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
 
 **Where:**
 - Terminal and desktop app, Code tab: type `/compact`, with or without
   instructions, in the prompt box. When the context fills up, Claude also
   summarizes the conversation by itself
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-
-## 1.6 Set when auto-compaction starts
-
-**What:** Choose the context size at which Claude Code compacts by itself.
-
-**Why:** Claude Code compacts by itself when the context is full enough. You do
-not choose the moment, and it can happen in the middle of a task. The window
-depends on the model and can be very large: the docs give about 967K tokens for
-Haiku 5.5.
-
-**How:** To compact earlier, run `/autocompact 200k`. Run `/autocompact auto` to
-return to the default. Run `/autocompact` alone to see the current window. The
-window can be from 100K to 1M tokens
-([Claude Code docs](https://code.claude.com/docs/en/model-config#set-the-auto-compact-window)).
-
-**Where:**
 - Terminal and desktop app, Code tab: type `/autocompact` in the prompt box.
   `/autocompact` saves the value for the current model. Before Claude Code
   2.1.288, it saved one window for every model.
