@@ -161,7 +161,7 @@ This is a gap in the grid, not a measure of one request.
 3. Set the region. On Google Cloud, run `export CLOUD_ML_REGION=europe-north1`, for
    example. On Bedrock, set `AWS_REGION` to the region that you chose.
 4. On Google Cloud, some models are offered only on `global` or multi-region
-   locations, so you may need a variable for that one model, `VERTEX_REGION_CLAUDE_*`
+   locations. For such a model, you may need its own variable, `VERTEX_REGION_CLAUDE_*`
    ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)).
    On Bedrock, list the profiles of a region with
    `aws bedrock list-inference-profiles --region your-region`
