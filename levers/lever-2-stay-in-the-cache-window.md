@@ -50,7 +50,7 @@ request that uses it
 <img alt="Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache." src="../images/cache-time-5-minutes-or-1-hour.svg#gh-light-mode-only">
 <img alt="Two timelines that start at your last request. With a cache time of 5 minutes, the cache expires, and after a break of 10 minutes the next request processes the whole conversation again. With a cache time of 1 hour, the cache is still warm after 10 minutes, and the next request reads the conversation from the cache." src="../images/cache-time-5-minutes-or-1-hour-dark.svg#gh-dark-mode-only">
 
-**How:** In Claude Code, the cache time depends on how you pay
+**How:** In Claude Code, the cache time depends on how you pay. The table shows it
 ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)):
 
 | How you use Claude Code | Main conversation | Subagents and other requests |
@@ -102,8 +102,8 @@ part that is already in the cache (see
 - Terminal and desktop app, Code tab: type `/compact` in the prompt box
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 - Terminal: on the 1-hour cache, Claude Code also compacts an idle conversation
-  of 200K tokens or more, about an hour after your last request and before the
-  cache expires. The setting is `idleCompaction`, on by default
+  of 200K tokens or more. It does this about an hour after your last request,
+  before the cache expires. The setting is `idleCompaction`, on by default
   ([Claude Code docs](https://code.claude.com/docs/en/settings-reference#idlecompaction)).
 
 ## 2.3 Set the cache time to 1 hour if you often take a break
@@ -212,12 +212,12 @@ changes can make the next request read the whole conversation again.
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#turning-on-fast-mode)).
   The docs give the speed and the price, not the energy of fast mode.
 - **Other changes.** The docs list more actions that can invalidate the cache
-  ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#actions-that-invalidate-the-cache)):
-  connecting or removing an MCP server, enabling or disabling a plugin, denying a
-  whole tool, compacting, many images in the conversation, and an upgrade of
-  Claude Code. Some of them cost nothing in some cases. For example, tool search
-  is on by default on supported models. Then a server that connects in the middle
-  of a session does not change what is cached.
+  ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#actions-that-invalidate-the-cache)).
+  They are connecting or removing an MCP server, enabling or disabling a plugin,
+  and denying a whole tool. Compacting, many images in the conversation and an
+  upgrade of Claude Code also count. Some of them cost nothing in some cases. For example,
+  tool search is on by default on supported models. Then a server that connects
+  in the middle of a session does not change what is cached.
 
 **How:**
 - Choose the effort level at the start (see [lever 4](lever-4-lower-the-effort.md)).
