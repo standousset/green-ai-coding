@@ -25,7 +25,7 @@ and tokens, not on measured energy.
 
 | Item | Role |
 |---|---|
-| [5.1 Name the file, the limit and the result in your first request](#51-name-the-file-the-limit-and-the-result-in-your-first-request) | Prevent: say it clearly |
+| [5.1 Tag the file, set the boundaries and state the expected result](#51-tag-the-file-set-the-boundaries-and-state-the-expected-result) | Prevent: say it clearly |
 | [5.2 Agree on a plan before Claude edits anything](#52-agree-on-a-plan-before-claude-edits-anything) | Prevent: agree on the approach |
 | [5.3 Give Claude a check to run](#53-give-claude-a-check-to-run) | Prevent: let Claude find its own errors |
 | [5.4 Press Esc as soon as Claude goes the wrong way](#54-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
@@ -33,20 +33,26 @@ and tokens, not on measured energy.
 | [5.6 Use a simple tool when it does the job](#56-use-a-simple-tool-when-it-does-the-job) | Skip the model |
 | [5.7 Stop work that runs without you](#57-stop-work-that-runs-without-you) | Skip the hidden requests |
 
-## 5.1 Name the file, the limit and the result in your first request
+## 5.1 Tag the file, set the boundaries and state the expected result
 
-**What:** Say which file, which limit and which result you expect. Whatever you do,
-don't just write "try again" with nothing new in it.
+**What:** In your first request, tag the file Claude should work on, set the
+boundaries, and state the expected result. The boundaries say what Claude must keep
+and what it must not do. The expected result is how you'll know it worked.
+Whatever you do, don't just write "try again" with nothing new in it.
 
 **Why:** A vague request like "improve this codebase" triggers "broad
-scanning". Name the file, and Claude can work with far fewer file reads
+scanning". Tag the file, and Claude can work with far fewer file reads
 ([Claude Code docs](https://code.claude.com/docs/en/costs#write-specific-prompts)).
 
 **How:**
-- Point to the file with `@` (see
+- Tag the file with `@` (see
   [1.2](lever-1-keep-the-context-short.md#12-send-only-what-the-task-needs)).
-- Give the limits that Claude can't read in the code, for example "no new
-  libraries". If you prefer one of several ways to do it, say which.
+  Claude then has the file and doesn't need to search for it.
+- Set the boundaries. Claude can't read these in the code. They say what to keep
+  and what to leave alone, for example "no new libraries" or "don't change the
+  public API". If you prefer one of several ways to do it, say which.
+- State the expected result: how you'll know the task is done. For example, "the
+  failing login test passes" or "the total shows two decimals".
 - Point to an example, such as "follow the pattern in HotDogWidget.php".
 - Hand over what Claude needs: the error text, the failing test, a screenshot.
   Don't describe it, show it
@@ -156,7 +162,7 @@ what you learned works better almost every time
 <img alt="Two horizontal bars, each in a frame. The first bar is the request after a third correction. It holds your request, three failed replies and three fixes as input, and a new reply 4 as output. The second bar is the request after /clear with a better prompt. It holds only the better prompt as input and a new reply as output. The second bar is much shorter." src="../images/fresh-start-beats-a-third-correction-dark.svg#gh-dark-mode-only">
 
 **How:** Put what the failed tries showed you into the new prompt: the file, the
-error and the limit (see 5.1). `/clear` costs nothing. To find the old session
+error and the boundaries (see 5.1). `/clear` costs nothing. To find the old session
 later, run `/rename` before `/clear`, and `/resume` to go back to it
 ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-context-proactively)).
 If part of the conversation is good, use `/rewind` instead (see
