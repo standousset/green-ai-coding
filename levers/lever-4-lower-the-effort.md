@@ -230,7 +230,7 @@ The `effort` field in the file of the subagent overrides the level of the sessio
 ([Claude Code docs](https://code.claude.com/docs/en/sub-agents#supported-frontmatter-fields)).
 
 **How:** Add the field to the frontmatter of the subagent file, next to `model`
-(see [3.6](lever-3-use-a-smaller-model.md#36-give-simple-subagent-tasks-to-haiku)).
+(see [3.4](lever-3-use-a-smaller-model.md#34-give-simple-subagent-tasks-to-haiku)).
 For example:
 
 ```markdown

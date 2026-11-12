@@ -132,7 +132,7 @@ the context of a subagent, they stay out of your main conversation
 **How:** To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). To run it on a
 smaller model or at a lower effort, see
-[3.6](lever-3-use-a-smaller-model.md#36-give-simple-subagent-tasks-to-haiku) and
+[3.4](lever-3-use-a-smaller-model.md#34-give-simple-subagent-tasks-to-haiku) and
 [4.6](lever-4-lower-the-effort.md#46-give-simple-subagent-tasks-a-low-effort).
 
 **Where:**

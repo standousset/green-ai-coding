@@ -7,27 +7,13 @@
 > [!IMPORTANT]
 > Make a mid-size model your default, and use the largest model for the hardest tasks only.
 
-**Why it matters:** A larger model uses more energy for each token that it writes
-(see 3.1). Many plans start on the largest model. The Claude Code docs say that
-"Sonnet handles most coding tasks well and costs less than Opus"
+**Why it matters:** A larger model uses more energy for each token that it writes.
+Many plans start on the largest model. The Claude Code docs say that "Sonnet
+handles most coding tasks well and costs less than Opus"
 ([Claude Code docs](https://code.claude.com/docs/en/costs#choose-the-right-model)).
 A smaller default model is the simplest saving in this guide.
 
-| Item | Role |
-|---|---|
-| [3.1 Know that a larger model uses more energy for each token](#31-know-that-a-larger-model-uses-more-energy-for-each-token) | Learn the rule |
-| [3.2 Make Sonnet your default model](#32-make-sonnet-your-default-model) | Set your default |
-| [3.3 Try the smaller model first and go up only when needed](#33-try-the-smaller-model-first-and-go-up-only-when-needed) | Use |
-| [3.4 Press `s` in the `/model` picker to switch for one session only](#34-press-s-in-the-model-picker-to-switch-for-one-session-only) | Protect your default |
-| [3.5 Plan with Opus and do the work on Sonnet](#35-plan-with-opus-and-do-the-work-on-sonnet) | Use two models |
-| [3.6 Give simple subagent tasks to Haiku](#36-give-simple-subagent-tasks-to-haiku) | Use a small model for subagents |
-
-## 3.1 Know that a larger model uses more energy for each token
-
-**What:** Treat the size of the model as a cost. Use the smallest model that does
-the task well.
-
-**Why:** In the EcoLogits method, the energy for one output token is linear in
+In the EcoLogits method, the energy for one output token is linear in
 the number of active parameters of the model. It also has a fixed part
 ([EcoLogits method](https://ecologits.ai/latest/methodology/llm_inference/)).
 So a larger model uses more energy for each word that it writes. The method fits
@@ -45,25 +31,32 @@ hardware, not Claude
 <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size.svg#gh-light-mode-only">
 <img alt="Three horizontal bars show the energy for one output token on a small, a mid-size and a large model. Each bar has a fixed part of the same length and a second part that grows with the number of active parameters. The large model has the longest bar." src="../images/energy-per-token-grows-with-model-size-dark.svg#gh-dark-mode-only">
 
-**How:** Make Sonnet your default model (3.2), and go up only when the result is
-not good enough (3.3). For the cost of a switch in the middle of a task, see
-[2.4](lever-2-stay-in-the-cache-window.md#24-do-not-change-the-model-in-the-middle-of-a-task).
+| Item | Role |
+|---|---|
+| [3.1 Make Sonnet your default model, and switch for one session with `s`](#31-make-sonnet-your-default-model-and-switch-for-one-session-with-s) | Set your default |
+| [3.2 Try the smaller model first and go up only when needed](#32-try-the-smaller-model-first-and-go-up-only-when-needed) | Use |
+| [3.3 Plan with Opus and do the work on Sonnet](#33-plan-with-opus-and-do-the-work-on-sonnet) | Use two models |
+| [3.4 Give simple subagent tasks to Haiku](#34-give-simple-subagent-tasks-to-haiku) | Use a small model for subagents |
 
-**Where:** This applies to the terminal and to the desktop app, Code tab.
+## 3.1 Make Sonnet your default model, and switch for one session with `s`
 
-## 3.2 Make Sonnet your default model
+**What:** Set Sonnet as the model that new sessions start on. To try another model
+in one session, press `s` in the `/model` picker. Do not press Enter.
 
-**What:** Set Sonnet as the model that new sessions start on.
-
-**Why:** The docs list Opus 5.5 as the default model on Pro, Max, Ultra, Team,
-Enterprise and the Anthropic API
-([Claude Code docs](https://code.claude.com/docs/en/model-config#default-model-setting)).
-The costs page names "Opus left as the default model" as a common cause of
-limit problems
-([Claude Code docs](https://code.claude.com/docs/en/costs#when-a-developer-asks-about-a-limit)).
-If you never chose a model, you may use the largest one for every task. Most
-coding tasks do not need it (see 3.3). With Sonnet as your default, you use a
-smaller model unless you choose another one.
+**Why:**
+- The docs list Opus 5.5 as the default model on Pro, Max, Ultra, Team,
+  Enterprise and the Anthropic API
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#default-model-setting)).
+  The costs page names "Opus left as the default model" as a common cause of
+  limit problems
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#when-a-developer-asks-about-a-limit)).
+  If you never chose a model, you may use the largest one for every task. Most
+  coding tasks do not need it (see 3.2). With Sonnet as your default, you use a
+  smaller model unless you choose another one.
+- Enter in the `/model` picker switches the model and also saves it as the default
+  of all your new sessions. The `s` key switches for the current session only. If
+  you try Opus once with Enter, all later sessions can start on Opus
+  ([Claude Code docs](https://code.claude.com/docs/en/model-config#setting-your-model)).
 
 <img alt="Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model." src="../images/model-setting-priority.svg#gh-light-mode-only">
 <img alt="Five rows from the strongest to the weakest way to set the model in Claude Code: /model in the session, the --model option, the ANTHROPIC_MODEL variable, the model key in a settings file, and the ANTHROPIC_DEFAULT_MODEL variable, which applies only when nothing above sets a model." src="../images/model-setting-priority-dark.svg#gh-dark-mode-only">
@@ -82,16 +75,36 @@ whatever your user file says. For one run, use `claude --model sonnet`. The
 order is in the figure above
 ([model configuration](https://code.claude.com/docs/en/model-config#setting-your-model)).
 
+<img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only.svg#gh-light-mode-only">
+<img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only-dark.svg#gh-dark-mode-only">
+
+To switch for one session only, use the picker:
+1. Type `/model` with no model name. Typing `/model opus` behaves like Enter and
+   saves the choice.
+2. Move to the model with the arrow keys.
+3. Press `s`.
+
+You can also use `/model` in a session started with `-p`. This applies to the
+current session only
+([Claude Code docs](https://code.claude.com/docs/en/model-config#a-new-session-starts-on-a-different-model-than-you-picked)).
+
 **Where:**
 - Terminal: the settings and the option above. `/model` shows the model in use.
   `/usage` shows a **Usage by model** list with the tokens of each model
   ([Claude Code docs](https://code.claude.com/docs/en/costs#using-the-usage-command)).
+  The `/model` command needs Claude Code 2.1.205 or later in `-p` mode.
 - Desktop app, Code tab: choose the model with the picker in the row under the
   prompt box. Cmd+Shift+I opens the model menu
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#start-a-session)).
-  The docs do not say whether the picker saves your choice for new sessions.
+  The docs do not say whether the picker saves your choice for new sessions, and
+  they do not describe the `s` key. A help center article says that `/model` works
+  in Claude Desktop
+  ([Claude help center](https://support.claude.com/en/articles/11940350-claude-code-model-configuration)).
 
-## 3.3 Try the smaller model first and go up only when needed
+**Watch out:** A `model` key in a project settings file wins over your saved
+default. Your next session can start on the project model.
+
+## 3.2 Try the smaller model first and go up only when needed
 
 **What:** Start each type of task on the smaller model. Go up one step only when
 the result is not good enough.
@@ -119,40 +132,7 @@ again, with no cache (see
 **Watch out:** The docs describe the aliases, not a test for your own tasks. Check
 the result on your own code before you trust the smaller model.
 
-## 3.4 Press `s` in the `/model` picker to switch for one session only
-
-**What:** When you choose a model in the `/model` picker, press `s`. Do not press
-Enter.
-
-**Why:** Enter switches the model and also saves it as the default of all your new
-sessions. The `s` key switches for the current session only. If you try Opus once
-with Enter, all later sessions can start on Opus
-([Claude Code docs](https://code.claude.com/docs/en/model-config#setting-your-model)).
-
-<img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only.svg#gh-light-mode-only">
-<img alt="Two rows. When you press Enter in the /model picker or type /model with a model name, the session uses the model and the choice is saved as the default in your user settings. When you press s, the session uses the model and the saved default stays unchanged." src="../images/model-switch-saved-or-session-only-dark.svg#gh-dark-mode-only">
-
-**How:**
-1. Type `/model` with no model name. Typing `/model opus` behaves like Enter and
-   saves the choice.
-2. Move to the model with the arrow keys.
-3. Press `s`.
-
-Two other ways apply to the current session only. You can start Claude Code with
-`claude --model opus`. You can also use `/model` in a session started with `-p`
-([Claude Code docs](https://code.claude.com/docs/en/model-config#a-new-session-starts-on-a-different-model-than-you-picked)).
-
-**Where:**
-- Terminal: the keys above. The `/model` command needs Claude Code 2.1.205 or
-  later in `-p` mode.
-- Desktop app, Code tab: the docs do not describe the `s` key. A help center
-  article says that `/model` works in Claude Desktop
-  ([Claude help center](https://support.claude.com/en/articles/11940350-claude-code-model-configuration)).
-
-**Watch out:** A `model` key in a project settings file still wins over your saved
-default (see 3.2). Your next session can start on the project model.
-
-## 3.5 Plan with Opus and do the work on Sonnet
+## 3.3 Plan with Opus and do the work on Sonnet
 
 **What:** For a task that needs a plan, plan with Opus and do the work on
 Sonnet. If you can, clear the planning context before the work starts.
@@ -210,7 +190,7 @@ while it planned.
 the plan before you approve it. Press `Ctrl+G` to open it in your editor
 ([Claude Code docs](https://code.claude.com/docs/en/permission-modes#review-and-approve-a-plan)).
 
-## 3.6 Give simple subagent tasks to Haiku
+## 3.4 Give simple subagent tasks to Haiku
 
 **What:** For a subagent that does a simple task, set `model: haiku` in its file.
 
