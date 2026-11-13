@@ -73,7 +73,7 @@ Optional, and a different topic: if you also want the code that you ship to be l
 - The pages cover Claude Code, in the terminal and in the desktop app. Other assistants have similar settings under other names.
 - Levers 1 and 2 follow from billing and from reliability more than from energy. In a test of local models, the output length and the model size explained most of the energy, and the length of the prompt explained little ([Alizadeh et al.](https://arxiv.org/abs/2412.00329)). Levers 3 and 4 act on those two factors.
 - Lever 3 relies on an estimate of the energy for each token, because the size of the Claude models isn't public.
-- Agents that run alone have one short item (5.7). MCP servers have one bullet (in 1.2).
+- Agents that run alone have one short item (5.6). MCP servers have one bullet (in 1.2).
 
 ## Feedback
 

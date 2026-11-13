@@ -136,7 +136,7 @@ again, with no cache (see
   that gets it right the first time. Each correction sends the whole conversation
   again (see [lever 5](lever-5-make-fewer-round-trips.md)). If the smaller model
   fails twice on a task, start the task again on the next model (see
-  [5.5](lever-5-make-fewer-round-trips.md#55-after-two-failed-corrections-run-clear-and-write-a-better-prompt)).
+  [5.4](lever-5-make-fewer-round-trips.md#54-after-two-failed-corrections-run-clear-and-write-a-better-prompt)).
   No measure exists of where the break-even is.
 
 ## 3.3 Plan with Opus and do the work on Sonnet

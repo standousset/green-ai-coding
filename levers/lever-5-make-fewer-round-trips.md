@@ -5,7 +5,7 @@
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Say the task precisely, plan a big one first, and hand Claude a check to run. If a round goes wrong, stop it early, and after two failed corrections start fresh. And don't send requests that a simple tool or an unattended agent could save you.
+> Say the task precisely and plan a big one first. If a round goes wrong, stop it early, and after two failed corrections start fresh. And don't send requests that a simple tool or an unattended agent could save you.
 
 **Why it matters:** Every request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task)),
@@ -27,11 +27,10 @@ and tokens, not on measured energy.
 |---|---|
 | [5.1 Tag the file, set the boundaries and state the expected result](#51-tag-the-file-set-the-boundaries-and-state-the-expected-result) | Prevent: say it clearly |
 | [5.2 Agree on a plan before Claude edits anything](#52-agree-on-a-plan-before-claude-edits-anything) | Prevent: agree on the approach |
-| [5.3 Give Claude a check to run](#53-give-claude-a-check-to-run) | Prevent: let Claude find its own errors |
-| [5.4 Press Esc as soon as Claude goes the wrong way](#54-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
-| [5.5 After two failed corrections, run `/clear` and write a better prompt](#55-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
-| [5.6 Use a simple tool when it does the job](#56-use-a-simple-tool-when-it-does-the-job) | Skip the model |
-| [5.7 Stop work that runs without you](#57-stop-work-that-runs-without-you) | Skip the hidden requests |
+| [5.3 Press Esc as soon as Claude goes the wrong way](#53-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
+| [5.4 After two failed corrections, run `/clear` and write a better prompt](#54-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
+| [5.5 Use a simple tool when it does the job](#55-use-a-simple-tool-when-it-does-the-job) | Skip the model |
+| [5.6 Stop work that runs without you](#56-stop-work-that-runs-without-you) | Skip the hidden requests |
 
 ## 5.1 Tag the file, set the boundaries and state the expected result
 
@@ -107,30 +106,7 @@ is wrong"
 when the task isn't clear, and plan mode only when the task is complex. For a
 small task, just ask.
 
-## 5.3 Give Claude a check to run
-
-**What:** Give Claude a test, a linter or a build to run, so it finds its own
-mistakes before you have to ask for a fix.
-
-**Why:** When Claude can check its own work, it "catches issues before you need
-to request fixes"
-([Claude Code docs](https://code.claude.com/docs/en/costs#work-efficiently-on-complex-tasks)).
-With a check that gives pass or fail, Claude can "keep going on its own"
-([Claude Code docs](https://code.claude.com/docs/en/best-practices#give-claude-a-check-to-run)).
-
-**How:** Name the check in the request, for example "run the tests and fix the
-failures". The docs list a few options: a test file, a build's exit code, a
-linter, or a script that compares the output to a fixture. Ask Claude to show the
-command and its output. For a long task, the docs advise: "Write one file, test
-it, then continue."
-
-**Watch out:** A check doesn't make the retries disappear. Claude just makes them
-instead of you. Every run of the check and every fix is still a request that sends
-the whole conversation again (see the intro). Where it pays off is when the check
-catches an error before you read the result, because then you never have to send a
-correction. The docs give no token figure for this loop.
-
-## 5.4 Press Esc as soon as Claude goes the wrong way
+## 5.3 Press Esc as soon as Claude goes the wrong way
 
 **What:** When Claude heads down the wrong path, press Esc. Don't wait for it to
 finish.
@@ -149,7 +125,7 @@ use `/rewind`, or press Esc twice on an empty prompt (see
 file tools. If a Bash command changed a file, it isn't restored
 ([Claude Code docs](https://code.claude.com/docs/en/best-practices#steer-the-session)).
 
-## 5.5 After two failed corrections, run `/clear` and write a better prompt
+## 5.4 After two failed corrections, run `/clear` and write a better prompt
 
 **What:** If you've corrected the same thing twice and it's still wrong, don't send
 a third correction. Run `/clear` and write a new prompt with what you've learned.
@@ -175,7 +151,7 @@ If part of the conversation is good, use `/rewind` instead (see
   session, click **+ New** or press Cmd+N (Ctrl+N on Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
-## 5.6 Use a simple tool when it does the job
+## 5.5 Use a simple tool when it does the job
 
 **What:** If a search, a rename, a formatter or a linter can do the task, use it
 instead of writing a prompt.
@@ -199,7 +175,7 @@ reading of several files
 **Watch out:** No energy figure compares a simple tool with a model request. The
 reason above is fewer tokens, not a measured energy saving.
 
-## 5.7 Stop work that runs without you
+## 5.6 Stop work that runs without you
 
 **What:** Agent teams, scheduled tasks and goal check-ins send requests while you're
 doing nothing. Use them only when you need them, keep them small, and stop them
