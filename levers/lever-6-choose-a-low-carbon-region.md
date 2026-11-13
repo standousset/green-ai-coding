@@ -49,9 +49,8 @@ These figures have two limits:
 | Item | Role |
 |---|---|
 | [6.1 Check whether you can choose a region](#61-check-whether-you-can-choose-a-region) | Check your options |
-| [6.2 Rank regions by the carbon intensity of their grid](#62-rank-regions-by-the-carbon-intensity-of-their-grid) | Find and read the data |
-| [6.3 Choose a region with low-carbon electricity when you can](#63-choose-a-region-with-low-carbon-electricity-when-you-can) | Set the region |
-| [6.4 Check where your requests really run](#64-check-where-your-requests-really-run) | Check the result |
+| [6.2 Choose a region with a low-carbon grid](#62-choose-a-region-with-a-low-carbon-grid) | Find the data and set the region |
+| [6.3 On Bedrock, check where your requests really run](#63-on-bedrock-check-where-your-requests-really-run) | Check the result |
 
 ## 6.1 Check whether you can choose a region
 
@@ -78,22 +77,27 @@ give none.
 
 **Watch out:**
 - On Bedrock, a region setting doesn't always keep your requests in that region
-  (see 6.4).
+  (see 6.3).
 - If you run your own models, you choose the region of your own cloud account.
 
-## 6.2 Rank regions by the carbon intensity of their grid
+## 6.2 Choose a region with a low-carbon grid
 
-**What:** Look up the carbon data of each region that you can use. Rank the regions
-by the carbon intensity of their grid, and not by a carbon-free share or a claim
-about clean power contracts.
+**What:** If you use Claude through a cloud provider, rank the regions that you can
+use by the carbon intensity of their grid. Set the region to a low-carbon one.
 
 **Why:**
-- Two regions of the same provider can differ a lot. In the 2025 data of Google
-  Cloud, the grid of `europe-north2` (Stockholm) emits 19 gCO₂eq per kWh. The grid
-  of `asia-south1` (Mumbai) emits 598
+- The same energy emits less CO₂ in a region with a clean grid (see the table
+  above). Google tells you to "pick a cleaner region for your new applications"
+  ([Google Cloud](https://cloud.google.com/sustainability/region-carbon)).
+- Example, from the Google data of 2025. The default region of Claude Code on Google
+  Cloud, `us-east5` (Columbus), has a grid of 343 gCO₂eq per kWh. The grid of
+  `us-west1` (Oregon) emits 98, about 3.5 times less. The grid of `europe-north1`
+  (Finland) emits 30, more than 11 times less
   ([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
-- A location-based figure uses the emissions of the grid where the energy is
-  used. A market-based figure also counts the clean power that a company buys.
+  This is a gap in the grid, not a measure of one request.
+- Rank by the grid, and not by a carbon-free share or a claim about clean power
+  contracts. A location-based figure uses the emissions of the grid where the energy
+  is used. A market-based figure also counts the clean power that a company buys.
   The paper of Google on Gemini defines both, and it uses the market-based one
   ([Google paper](https://arxiv.org/abs/2508.15734)).
 - A market-based figure can be far from the electricity that the data centre
@@ -104,28 +108,40 @@ about clean power contracts.
   ([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
 
 **How:**
-- Google Cloud publishes, for each of its regions, the share of carbon-free energy
-  and the carbon intensity of the grid. The data is on the
-  [carbon page](https://cloud.google.com/sustainability/region-carbon), in a
-  [GitHub repository](https://github.com/GoogleCloudPlatform/region-carbon-info)
-  and in a BigQuery public dataset. Rank by the grid value. Google calls a region
-  low-carbon when carbon-free energy is at least 75%. If that value isn't
-  available, the limit is a grid of at most 200 gCO₂eq per kWh.
-- For other providers, use the country data of
-  [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
-  (see the table above). [Electricity Maps](https://www.electricitymaps.com/) shows
-  live data on an interactive map. Its site offers a trial of its API: check the
-  current terms.
-- AWS and Microsoft publish tools for your own usage, not a table for each region
-  (checked on 12 November 2026). Since June 2025, the AWS Customer Carbon
-  Footprint Tool shows location-based and market-based emissions
-  ([AWS](https://aws.amazon.com/about-aws/whats-new/2025/06/customer-carbon-footprint-tool-location-based-emissions)).
-  The Microsoft Emissions Impact Dashboard shows your emissions by datacenter
-  region
-  ([Microsoft](https://azure.microsoft.com/en-us/blog/empowering-cloud-sustainability-with-the-microsoft-emissions-impact-dashboard/)).
-  Use a location-based figure when there is one.
+1. Find the carbon data of each region that you can use.
+   - Google Cloud publishes, for each of its regions, the share of carbon-free
+     energy and the carbon intensity of the grid. The data is on the
+     [carbon page](https://cloud.google.com/sustainability/region-carbon), in a
+     [GitHub repository](https://github.com/GoogleCloudPlatform/region-carbon-info)
+     and in a BigQuery public dataset. Google calls a region low-carbon when
+     carbon-free energy is at least 75%. If that value isn't available, the limit
+     is a grid of at most 200 gCO₂eq per kWh.
+   - For other providers, use the country data of
+     [Our World in Data](https://ourworldindata.org/grapher/carbon-intensity-electricity)
+     (see the table above).
+     [Electricity Maps](https://www.electricitymaps.com/) shows live data on an
+     interactive map. Its site offers a trial of its API: check the current terms.
+   - AWS and Microsoft publish tools for your own usage, not a table for each
+     region (checked on 12 November 2026). Since June 2025, the AWS Customer Carbon
+     Footprint Tool shows location-based and market-based emissions
+     ([AWS](https://aws.amazon.com/about-aws/whats-new/2025/06/customer-carbon-footprint-tool-location-based-emissions)).
+     The Microsoft Emissions Impact Dashboard shows your emissions by datacenter
+     region
+     ([Microsoft](https://azure.microsoft.com/en-us/blog/empowering-cloud-sustainability-with-the-microsoft-emissions-impact-dashboard/)).
+     Use a location-based figure when there is one.
+2. Rank the regions by the grid value. Choose a candidate region.
+3. Check what else matters: latency, price and your rules on data location
+   ([Google Cloud](https://cloud.google.com/sustainability/region-carbon)). Check
+   that the region has your Claude model, and that you have quota there.
+4. Set the region. On Google Cloud, run `export CLOUD_ML_REGION=europe-north1`, for
+   example. On Bedrock, set `AWS_REGION` to the region that you chose.
+5. On Google Cloud, some models are offered only on `global` or multi-region
+   locations. For such a model, you may need its own variable, `VERTEX_REGION_CLAUDE_*`
+   ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)).
 
 **Watch out:**
+- `CLOUD_ML_REGION=global` doesn't choose a region: the docs suggest it for better
+  availability. On Bedrock, if you use a geography instead of a region, read 6.3.
 - The grid data of Google comes from Electricity Maps. The Google page says that
   Electricity Maps has an independent Letter of Assurance for its data pipeline
   and its calculation models.
@@ -137,41 +153,7 @@ about clean power contracts.
   region.
 - Other providers, such as OpenAI or GitHub Copilot, aren't covered.
 
-## 6.3 Choose a region with low-carbon electricity when you can
-
-**What:** If you use Claude through a cloud provider, set the region to one with
-low-carbon electricity.
-
-**Why:** The same energy emits less CO₂ in a region with a clean grid (see the table
-above). Google tells you to "pick a cleaner region for your new applications"
-([Google Cloud](https://cloud.google.com/sustainability/region-carbon)).
-
-Example, from the Google data of 2025. The default region of Claude Code on Google
-Cloud, `us-east5` (Columbus), has a grid of 343 gCO₂eq per kWh. The grid of
-`us-west1` (Oregon) emits 98, about 3.5 times less. The grid of `europe-north1`
-(Finland) emits 30, more than 11 times less
-([Google Cloud region data](https://github.com/GoogleCloudPlatform/region-carbon-info)).
-This is a gap in the grid, not a measure of one request.
-
-**How:**
-1. Find a candidate region in 6.2. Rank the regions by the grid carbon intensity.
-2. Check what else matters: latency, price and your rules on data location
-   ([Google Cloud](https://cloud.google.com/sustainability/region-carbon)). Check
-   that the region has your Claude model, and that you have quota there.
-3. Set the region. On Google Cloud, run `export CLOUD_ML_REGION=europe-north1`, for
-   example. On Bedrock, set `AWS_REGION` to the region that you chose.
-4. On Google Cloud, some models are offered only on `global` or multi-region
-   locations. For such a model, you may need its own variable, `VERTEX_REGION_CLAUDE_*`
-   ([Claude Code docs](https://code.claude.com/docs/en/google-vertex-ai#region-configuration)).
-   On Bedrock, list the profiles of a region with
-   `aws bedrock list-inference-profiles --region your-region`
-   ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock)).
-
-**Watch out:** `CLOUD_ML_REGION=global` doesn't choose a region: the docs
-suggest it for better availability. On Bedrock, if you use a geography instead of
-a region, read 6.4.
-
-## 6.4 Check where your requests really run
+## 6.3 On Bedrock, check where your requests really run
 
 **What:** On Bedrock, check which inference profile Claude Code uses. The profile
 decides which AWS Regions can serve your requests, and it can send them to other
@@ -192,6 +174,9 @@ guarantee"
 - To pick the profile, set `ANTHROPIC_BEDROCK_REGION_PREFIX` to `us`, `eu`,
   `apac`, `jp`, `au` or `global`. If your account has no profile with that prefix,
   requests fail with a 400 error.
+- To list the profiles of a region, run
+  `aws bedrock list-inference-profiles --region your-region`
+  ([Claude Code docs](https://code.claude.com/docs/en/amazon-bedrock)).
 - To see where a request ran, look at the `additionalEventData.inferenceRegion`
   field in CloudTrail
   ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html)).
