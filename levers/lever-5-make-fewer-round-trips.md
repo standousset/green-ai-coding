@@ -5,7 +5,7 @@
 *Reading time: about 8 minutes.*
 
 > [!IMPORTANT]
-> Say the task precisely and plan a big one first. If a round goes wrong, stop it early, and after two failed corrections start fresh. And don't send requests that a simple tool or an unattended agent could save you.
+> Say the task precisely and plan a big one first. If a round goes wrong, stop it early, and after two failed corrections start fresh. And don't let agents run on their own when you don't need them.
 
 **Why it matters:** Every request sends the whole conversation again (see
 [1.1](lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task)),
@@ -29,8 +29,7 @@ and tokens, not on measured energy.
 | [5.2 Agree on a plan before Claude edits anything](#52-agree-on-a-plan-before-claude-edits-anything) | Prevent: agree on the approach |
 | [5.3 Press Esc as soon as Claude goes the wrong way](#53-press-esc-as-soon-as-claude-goes-the-wrong-way) | Recover: stop early |
 | [5.4 After two failed corrections, run `/clear` and write a better prompt](#54-after-two-failed-corrections-run-clear-and-write-a-better-prompt) | Recover: start fresh |
-| [5.5 Use a simple tool when it does the job](#55-use-a-simple-tool-when-it-does-the-job) | Skip the model |
-| [5.6 Stop work that runs without you](#56-stop-work-that-runs-without-you) | Skip the hidden requests |
+| [5.5 Stop work that runs without you](#55-stop-work-that-runs-without-you) | Skip the hidden requests |
 
 ## 5.1 Tag the file, set the boundaries and state the expected result
 
@@ -119,7 +118,7 @@ never sends those requests.
 **How:** Keep an eye on the first steps. When Claude drifts, press Esc, then send
 a precise message (see 5.1). To go back to an earlier point and drop the dead end,
 use `/rewind`, or press Esc twice on an empty prompt (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
+[1.5](lever-1-keep-the-context-short.md#15-go-back-with-rewind-when-an-attempt-failed)).
 
 **Watch out:** Checkpoints only cover the files that Claude edited with its own
 file tools. If a Bash command changed a file, it isn't restored
@@ -143,7 +142,7 @@ error and the boundaries (see 5.1). `/clear` costs nothing. To find the old sess
 later, run `/rename` before `/clear`, and `/resume` to go back to it
 ([Claude Code docs](https://code.claude.com/docs/en/costs#manage-context-proactively)).
 If part of the conversation is good, use `/rewind` instead (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
+[1.5](lever-1-keep-the-context-short.md#15-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
 - Terminal: `/clear`.
@@ -151,31 +150,7 @@ If part of the conversation is good, use `/rewind` instead (see
   session, click **+ New** or press Cmd+N (Ctrl+N on Windows)
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
-## 5.5 Use a simple tool when it does the job
-
-**What:** If a search, a rename, a formatter or a linter can do the task, use it
-instead of writing a prompt.
-
-**Why:** Every prompt starts requests that send the whole conversation (see the
-intro). The Claude Code docs give two cases where a plain tool costs less
-context. CLI tools such as `gh` and `aws` are "more context-efficient than MCP
-servers"
-([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
-And for typed languages, one "go to definition" call replaces a grep plus the
-reading of several files
-([Claude Code docs](https://code.claude.com/docs/en/costs#install-code-intelligence-plugins-for-typed-languages)).
-
-**How:**
-- Use your editor's search or `grep` to find code, your editor's rename to rename
-  a symbol, and run your formatter and linter yourself.
-- For a typed language, install a code intelligence plugin.
-- Want Claude to tell you when a tool could do the job? Add the matching line of
-  the [permanent rules](../README.md#permanent-rules) to your rules file.
-
-**Watch out:** No energy figure compares a simple tool with a model request. The
-reason above is fewer tokens, not a measured energy saving.
-
-## 5.6 Stop work that runs without you
+## 5.5 Stop work that runs without you
 
 **What:** Agent teams, scheduled tasks and goal check-ins send requests while you're
 doing nothing. Use them only when you need them, keep them small, and stop them

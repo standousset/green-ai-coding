@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 488" width="720" height="488" role="img" aria-labelledby="t d">
+  <title id="t">What the context holds before your first prompt</title>
+  <desc id="d">A list of what Claude Code loads into the context before you type. The system prompt is the largest part and you cannot change it. The CLAUDE.md of the project, the auto memory, the skill descriptions, the CLAUDE.md in your ~/.claude folder and the MCP tool names load at start, and you can change them. The environment information is fixed. In the docs example, the total is 7,850 tokens. The body of a skill and path-scoped rules load later, only when used. The sizes are examples from the Claude Code docs, not measured here.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">What the context holds before your first prompt</text>
+  <text class="row" x="40" y="62">Loaded before your first prompt</text>
+  <text class="label" x="40" y="93">System prompt</text>
+  <rect class="inp" x="250" y="76" width="300" height="22" rx="3"/>
+  <text class="label muted" x="558" y="93">4,200</text>
+  <text class="label muted right" x="680" y="93">fixed</text>
+  <text class="label" x="40" y="123">CLAUDE.md of the project</text>
+  <rect class="earl" x="250" y="106" width="129" height="22" rx="3"/>
+  <text class="label muted" x="387" y="123">1,800</text>
+  <text class="label muted right" x="680" y="123">you can change it</text>
+  <text class="label" x="40" y="153">Auto memory (MEMORY.md)</text>
+  <rect class="earl" x="250" y="136" width="49" height="22" rx="3"/>
+  <text class="label muted" x="307" y="153">680</text>
+  <text class="label muted right" x="680" y="153">you can change it</text>
+  <text class="label" x="40" y="183">Skill descriptions</text>
+  <rect class="earl" x="250" y="166" width="32" height="22" rx="3"/>
+  <text class="label muted" x="290" y="183">450</text>
+  <text class="label muted right" x="680" y="183">you can change it</text>
+  <text class="label" x="40" y="213">CLAUDE.md in ~/.claude</text>
+  <rect class="earl" x="250" y="196" width="23" height="22" rx="3"/>
+  <text class="label muted" x="281" y="213">320</text>
+  <text class="label muted right" x="680" y="213">you can change it</text>
+  <text class="label" x="40" y="243">Environment information</text>
+  <rect class="inp" x="250" y="226" width="20" height="22" rx="3"/>
+  <text class="label muted" x="278" y="243">280</text>
+  <text class="label muted right" x="680" y="243">fixed</text>
+  <text class="label" x="40" y="273">MCP tool names</text>
+  <rect class="earl" x="250" y="256" width="9" height="22" rx="3"/>
+  <text class="label muted" x="267" y="273">120</text>
+  <text class="label muted right" x="680" y="273">you can change it</text>
+  <path class="arrow" d="M 40 288 L 680 288"/>
+  <text class="row" x="40" y="310">Total in this example</text>
+  <text class="row right" x="680" y="310">7,850 tokens</text>
+  <text class="row" x="40" y="350">Loaded later, only when used</text>
+  <text class="label" x="40" y="381">Body of a skill</text>
+  <rect class="drop" x="250" y="364" width="44" height="22" rx="3"/>
+  <text class="label muted" x="302" y="381">620</text>
+  <text class="label muted right" x="680" y="381">when you use the skill</text>
+  <text class="label" x="40" y="411">Path-scoped rule</text>
+  <rect class="drop" x="250" y="394" width="27" height="22" rx="3"/>
+  <text class="label muted" x="285" y="411">380</text>
+  <text class="label muted right" x="680" y="411">when Claude reads a matching file</text>
+  <rect class="inp" x="40" y="432" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="445">Fixed</text>
+  <rect class="earl" x="154" y="432" width="16" height="16" rx="3"/>
+  <text class="label" x="178" y="445">Loaded at start, you can change it</text>
+  <rect class="drop" x="448" y="432" width="16" height="16" rx="3"/>
+  <text class="label" x="472" y="445">Loaded only when used</text>
+  <text class="label muted" x="40" y="466" text-anchor="start">Example sizes from the Claude Code docs, not measured here.</text>
+</svg>

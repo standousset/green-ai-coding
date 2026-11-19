@@ -4,13 +4,14 @@
 > This guide is about the carbon your AI coding assistant emits while it helps you code.
 > It isn't about the carbon that the app you ship emits when it runs (whether the app itself uses AI or not)
 
-Five levers cut that energy, and one cuts the carbon of each unit of energy. It isn't about the carbon that the code you ship emits when it runs.
-
 > [!NOTE]
 > Spot-checked on 12 November 2026 against the Claude docs, the cloud docs and the carbon data.
 > This guide doesn't measure any saving.
 
 ## The 6 levers
+*(Reading time: 30s)*
+
+Five levers cut that energy, and one cuts the carbon of each unit of energy. It isn't about the carbon that the code you ship emits when it runs.
 
 1. **Keep the context short**
 2. **Stay in the cache window**
@@ -33,7 +34,7 @@ Five levers cut that energy, and one cuts the carbon of each unit of energy. It 
 
 *(Reading time: about 47mn, ~8mn each)*
 
-1. **[Keep the context short](levers/lever-1-keep-the-context-short.md)** (7 min): each request sends the whole conversation again. Run `/clear` between tasks, send only what the task needs, give noisy work to a subagent, and compact a long task.
+1. **[Keep the context short](levers/lever-1-keep-the-context-short.md)** (7 min): each request sends the whole conversation again. Run `/clear` between tasks, send only what the task needs, keep the always-loaded context small, keep noisy output out with a hook or a subagent, and compact a long task.
 2. **[Stay in the cache window](levers/lever-2-stay-in-the-cache-window.md)** (9 min): the provider keeps its works in cache and reuses it during a certain time, so it processes only what changed. A change of model, or a long break, makes you lose it. So choose the model, the effort and the speed before the task, don't change them in the middle, and compact before a long break or set a 1-hour cache time.
 3. **[Use a smaller model](levers/lever-3-use-a-smaller-model.md)** (8 min): a larger model uses more energy for each token.
 4. **[Lower the effort](levers/lever-4-lower-the-effort.md)** (8 min): before it answers, the model writes its reasoning, called thinking. Thinking is as much output as the result from a prompt. Use a low or medium level for most tasks, and go up only when needed.

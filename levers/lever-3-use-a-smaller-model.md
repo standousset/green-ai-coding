@@ -201,7 +201,7 @@ For the reasons to plan at all, and when a plan isn't worth it, see
 ## 3.4 Give simple subagent tasks to Haiku
 
 **What:** For a subagent that does a simple task (see
-[1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent)), set
+[1.4](lever-1-keep-the-context-short.md#14-keep-noisy-output-out-of-the-context)), set
 `model: haiku` in its file.
 
 **Why:** A subagent with no model of its own uses the model of the main

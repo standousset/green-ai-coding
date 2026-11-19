@@ -62,7 +62,7 @@ docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
   with them.
 - Other requests are the requests outside the main conversation. Examples are
   subagents, agent teams, compaction (see
-  [1.5](lever-1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue))
+  [1.6](lever-1-keep-the-context-short.md#16-compact-when-a-long-task-must-continue))
   and the titles of sessions.
 - When you go over the limit of your plan and Claude Code uses usage credits,
   the main conversation drops to 5 minutes.
@@ -93,10 +93,10 @@ lifetime, it processes the full history again, with no cache
 
 **How:** Compact at a natural break, before you step away. To learn your cache
 time, see 2.1. For the effect of compaction on the context, see
-[1.5](lever-1-keep-the-context-short.md#15-compact-when-a-long-task-must-continue).
+[1.6](lever-1-keep-the-context-short.md#16-compact-when-a-long-task-must-continue).
 To drop a failed attempt, `/rewind` is better than `/compact`: it goes back to a
 part that is already in the cache (see
-[1.4](lever-1-keep-the-context-short.md#14-go-back-with-rewind-when-an-attempt-failed)).
+[1.5](lever-1-keep-the-context-short.md#15-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
 - Terminal and desktop app, Code tab: type `/compact` in the prompt box

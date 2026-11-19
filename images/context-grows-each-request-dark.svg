@@ -38,65 +38,65 @@
   <text class="small muted" x="20" y="106">input: 1 message</text>
   <rect class="frame" x="136" y="74" width="560" height="38" rx="6"/>
   <text class="small muted right" x="696" y="69">Maximum context size</text>
-  <rect class="inp" x="140" y="78" width="50" height="30" rx="5"/>
-  <text class="inblock" x="165" y="97">you 1</text>
-  <rect class="out" x="193" y="78" width="58" height="30" rx="5"/>
-  <text class="inblock outtext" x="222" y="97">reply 1</text>
-  <text class="small muted mid" x="222" y="69">output</text>
+  <rect class="inp" x="140" y="78" width="34" height="30" rx="5"/>
+  <text class="inblock" x="157" y="97">you 1</text>
+  <rect class="out" x="177" y="78" width="108" height="30" rx="5"/>
+  <text class="inblock outtext" x="231" y="97">reply 1</text>
+  <text class="small muted mid" x="231" y="69">output</text>
 
   <!-- Request 2 -->
   <text class="req" x="20" y="151">Request 2</text>
   <text class="small muted" x="20" y="166">input: 3 messages</text>
   <rect class="frame" x="136" y="134" width="560" height="38" rx="6"/>
-  <rect class="inp" x="140" y="138" width="50" height="30" rx="5"/>
-  <text class="inblock" x="165" y="157">you 1</text>
-  <rect class="earl" x="193" y="138" width="58" height="30" rx="5"/>
-  <text class="inblock" x="222" y="157">reply 1</text>
-  <rect class="inp" x="254" y="138" width="50" height="30" rx="5"/>
-  <text class="inblock" x="279" y="157">you 2</text>
-  <rect class="out" x="307" y="138" width="58" height="30" rx="5"/>
-  <text class="inblock outtext" x="336" y="157">reply 2</text>
-  <text class="small muted mid" x="336" y="129">output</text>
+  <rect class="inp" x="140" y="138" width="34" height="30" rx="5"/>
+  <text class="inblock" x="157" y="157">you 1</text>
+  <rect class="earl" x="177" y="138" width="108" height="30" rx="5"/>
+  <text class="inblock" x="231" y="157">reply 1</text>
+  <rect class="inp" x="288" y="138" width="84" height="30" rx="5"/>
+  <text class="inblock" x="330" y="157">you 2</text>
+  <rect class="out" x="375" y="138" width="46" height="30" rx="5"/>
+  <text class="inblock outtext" x="398" y="157">reply 2</text>
+  <text class="small muted mid" x="398" y="129">output</text>
 
   <!-- Request 3 -->
   <text class="req" x="20" y="211">Request 3</text>
   <text class="small muted" x="20" y="226">input: 5 messages</text>
   <rect class="frame" x="136" y="194" width="560" height="38" rx="6"/>
-  <rect class="inp" x="140" y="198" width="50" height="30" rx="5"/>
-  <text class="inblock" x="165" y="217">you 1</text>
-  <rect class="earl" x="193" y="198" width="58" height="30" rx="5"/>
-  <text class="inblock" x="222" y="217">reply 1</text>
-  <rect class="inp" x="254" y="198" width="50" height="30" rx="5"/>
-  <text class="inblock" x="279" y="217">you 2</text>
-  <rect class="earl" x="307" y="198" width="58" height="30" rx="5"/>
-  <text class="inblock" x="336" y="217">reply 2</text>
-  <rect class="inp" x="368" y="198" width="50" height="30" rx="5"/>
-  <text class="inblock" x="393" y="217">you 3</text>
-  <rect class="out" x="421" y="198" width="58" height="30" rx="5"/>
-  <text class="inblock outtext" x="450" y="217">reply 3</text>
-  <text class="small muted mid" x="450" y="189">output</text>
+  <rect class="inp" x="140" y="198" width="34" height="30" rx="5"/>
+  <text class="inblock" x="157" y="217">you 1</text>
+  <rect class="earl" x="177" y="198" width="108" height="30" rx="5"/>
+  <text class="inblock" x="231" y="217">reply 1</text>
+  <rect class="inp" x="288" y="198" width="84" height="30" rx="5"/>
+  <text class="inblock" x="330" y="217">you 2</text>
+  <rect class="earl" x="375" y="198" width="46" height="30" rx="5"/>
+  <text class="inblock" x="398" y="217">reply 2</text>
+  <rect class="inp" x="424" y="198" width="38" height="30" rx="5"/>
+  <text class="inblock" x="443" y="217">you 3</text>
+  <rect class="out" x="465" y="198" width="84" height="30" rx="5"/>
+  <text class="inblock outtext" x="507" y="217">reply 3</text>
+  <text class="small muted mid" x="507" y="189">output</text>
 
   <!-- Request 4 -->
   <text class="req" x="20" y="271">Request 4</text>
   <text class="small muted" x="20" y="286">input: 7 messages</text>
   <rect class="frame" x="136" y="254" width="560" height="38" rx="6"/>
-  <rect class="inp" x="140" y="258" width="50" height="30" rx="5"/>
-  <text class="inblock" x="165" y="277">you 1</text>
-  <rect class="earl" x="193" y="258" width="58" height="30" rx="5"/>
-  <text class="inblock" x="222" y="277">reply 1</text>
-  <rect class="inp" x="254" y="258" width="50" height="30" rx="5"/>
-  <text class="inblock" x="279" y="277">you 2</text>
-  <rect class="earl" x="307" y="258" width="58" height="30" rx="5"/>
-  <text class="inblock" x="336" y="277">reply 2</text>
-  <rect class="inp" x="368" y="258" width="50" height="30" rx="5"/>
-  <text class="inblock" x="393" y="277">you 3</text>
-  <rect class="earl" x="421" y="258" width="58" height="30" rx="5"/>
-  <text class="inblock" x="450" y="277">reply 3</text>
-  <rect class="inp" x="482" y="258" width="50" height="30" rx="5"/>
-  <text class="inblock" x="507" y="277">you 4</text>
-  <rect class="out" x="535" y="258" width="58" height="30" rx="5"/>
-  <text class="inblock outtext" x="564" y="277">reply 4</text>
-  <text class="small muted mid" x="564" y="249">output</text>
+  <rect class="inp" x="140" y="258" width="34" height="30" rx="5"/>
+  <text class="inblock" x="157" y="277">you 1</text>
+  <rect class="earl" x="177" y="258" width="108" height="30" rx="5"/>
+  <text class="inblock" x="231" y="277">reply 1</text>
+  <rect class="inp" x="288" y="258" width="84" height="30" rx="5"/>
+  <text class="inblock" x="330" y="277">you 2</text>
+  <rect class="earl" x="375" y="258" width="46" height="30" rx="5"/>
+  <text class="inblock" x="398" y="277">reply 2</text>
+  <rect class="inp" x="424" y="258" width="38" height="30" rx="5"/>
+  <text class="inblock" x="443" y="277">you 3</text>
+  <rect class="earl" x="465" y="258" width="84" height="30" rx="5"/>
+  <text class="inblock" x="507" y="277">reply 3</text>
+  <rect class="inp" x="552" y="258" width="70" height="30" rx="5"/>
+  <text class="inblock" x="587" y="277">you 4</text>
+  <rect class="out" x="625" y="258" width="48" height="30" rx="5"/>
+  <text class="inblock outtext" x="649" y="277">reply 4</text>
+  <text class="small muted mid" x="649" y="249">output</text>
 
   <!-- legend -->
   <rect class="inp" x="140" y="332" width="16" height="16" rx="3"/>

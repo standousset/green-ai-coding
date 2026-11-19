@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 356" width="720" height="356" role="img" aria-labelledby="t d">
+  <title id="t">@ adds the file. Naming lines asks for only those lines.</title>
+  <desc id="d">Two rows. In the first row, you type @ and a file name. Claude Code adds the content of the file to the context, if it fits the limit. It makes no tool call, so a PreToolUse hook does not run. In the second row, you write the file name and the lines 40 to 80 without @. Claude calls the Read tool with a line range, and those lines enter the context. A hook can run on that tool call. The sizes are illustrative, not measured.</desc>
+  <style>
+    :root {
+      --text: #2b2b2b; --muted: #6b6b66;
+      --inp-fill: #dcd9d2; --inp-stroke: #b9b5ab;
+      --earl-fill: #cfe8da; --earl-stroke: #5aa07f;
+      --out-fill: #1f7a50; --out-stroke: #165c3b; --out-text: #ffffff;
+      --noise-fill: #f0b04a; --noise-stroke: #a8731a;
+      --cache-fill: #d6e4f5; --cache-stroke: #4d78b3;
+      --frame: #8d8a82;
+    }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: var(--text); }
+    .title { font-size: 18px; font-weight: 600; text-anchor: middle; }
+    .row { font-size: 14px; font-weight: 600; }
+    .label { font-size: 13px; }
+    .small { font-size: 11px; }
+    .inblock { font-size: 12px; text-anchor: middle; }
+    .muted { fill: var(--muted); }
+    .right { text-anchor: end; }
+    .mid { text-anchor: middle; }
+    .frame { fill: none; stroke: var(--frame); stroke-width: 1.5; }
+    .dashed { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .inp { fill: var(--inp-fill); stroke: var(--inp-stroke); stroke-width: 1.5; }
+    .earl { fill: var(--earl-fill); stroke: var(--earl-stroke); stroke-width: 1.5; }
+    .out { fill: var(--out-fill); stroke: var(--out-stroke); stroke-width: 2; }
+    .outtext { fill: var(--out-text); font-weight: 600; }
+    .noise { fill: var(--noise-fill); stroke: var(--noise-stroke); stroke-width: 1.5; }
+    .noisetext { fill: #1a1a1a; }
+    .cache { fill: var(--cache-fill); stroke: var(--cache-stroke); stroke-width: 1.5; }
+    .cacheline { stroke: var(--cache-stroke); stroke-width: 3; fill: none; stroke-linecap: round; }
+    .drop { fill: none; stroke: var(--frame); stroke-width: 1.5; stroke-dasharray: 4 3; }
+    .droptext { fill: var(--muted); }
+    .arrow { stroke: var(--frame); stroke-width: 1.5; fill: none; }
+    .arrowhead { fill: var(--frame); }
+  </style>
+
+  <text class="title" x="360" y="30">@ adds the file. Naming lines asks for only those lines.</text>
+  <text class="row" x="40" y="62">With @: the content of the file, at once</text>
+  <rect class="inp" x="40" y="74" width="180" height="44" rx="4"/>
+  <text class="inblock " x="130" y="100">You type @src/login.ts</text>
+  <path class="arrow" d="M 220 96 L 252 96"/>
+  <path class="arrowhead" d="M 251 90 L 260 96 L 251 102 Z"/>
+  <rect class="earl" x="260" y="74" width="200" height="44" rx="4"/>
+  <text class="inblock " x="360" y="100">Claude Code adds the file</text>
+  <path class="arrow" d="M 460 96 L 492 96"/>
+  <path class="arrowhead" d="M 491 90 L 500 96 L 491 102 Z"/>
+  <rect class="out" x="500" y="74" width="180" height="44" rx="4"/>
+  <text class="inblock outtext" x="590" y="100">the file</text>
+  <text class="label muted" x="260" y="142">No tool call, so a PreToolUse hook does not run.</text>
+  <text class="row" x="40" y="182">Without @: Claude reads the lines you name</text>
+  <rect class="inp" x="40" y="194" width="180" height="44" rx="4"/>
+  <text class="inblock " x="130" y="220">You write: lines 40 to 80</text>
+  <path class="arrow" d="M 220 216 L 252 216"/>
+  <path class="arrowhead" d="M 251 210 L 260 216 L 251 222 Z"/>
+  <rect class="earl" x="260" y="194" width="200" height="44" rx="4"/>
+  <text class="inblock " x="360" y="220">Claude calls the Read tool</text>
+  <path class="arrow" d="M 460 216 L 492 216"/>
+  <path class="arrowhead" d="M 491 210 L 500 216 L 491 222 Z"/>
+  <rect class="out" x="500" y="194" width="110" height="44" rx="4"/>
+  <text class="inblock outtext" x="555" y="220">lines 40 to 80</text>
+  <text class="label muted" x="260" y="262">A tool call, so a PreToolUse hook can run.</text>
+  <rect class="inp" x="40" y="300" width="16" height="16" rx="3"/>
+  <text class="label" x="64" y="313">What you do</text>
+  <rect class="earl" x="174" y="300" width="16" height="16" rx="3"/>
+  <text class="label" x="198" y="313">What Claude Code does</text>
+  <rect class="out" x="368" y="300" width="16" height="16" rx="3"/>
+  <text class="label" x="392" y="313">What enters the context</text>
+  <text class="label muted" x="40" y="334" text-anchor="start">Sizes are illustrative, not measured.</text>
+</svg>

@@ -2,26 +2,24 @@
 
 # Lever 1: Keep the context short
 
+
+## Give the assistant only what the task needs, keep noisy output out, and compact when a long task has to keep going.
+
 *Reading time: about 7 minutes.*
 
-> [!IMPORTANT]
-> Give the assistant only what the task needs, hand the noisy work to a subagent, and compact when a long task has to keep going.
 
 **Why it matters:** The context is everything the model reads with each request:
 your messages, its replies, the tool results and the rules file. A long context
-means a lot more tokens, because every request sends the whole conversation again
-(see 1.1). It also makes the answers less reliable. In a study of 18 models, the
-results became less reliable as the input got longer ([Chroma, Context
-Rot](https://www.trychroma.com/research/context-rot)). And less reliable answers
-mean more retries (see [lever 5](lever-5-make-fewer-round-trips.md)).
+means a more tokens, because every request sends the whole conversation again.
 
 | Item | Role |
 |---|---|
 | [1.1 Start a new conversation for each unrelated task](#11-start-a-new-conversation-for-each-unrelated-task) | Start clean |
 | [1.2 Send only what the task needs](#12-send-only-what-the-task-needs) | Prevent |
-| [1.3 Give noisy work to a subagent](#13-give-noisy-work-to-a-subagent) | Prevent |
-| [1.4 Go back with `/rewind` when an attempt failed](#14-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
-| [1.5 Compact when a long task must continue](#15-compact-when-a-long-task-must-continue) | Shrink, by hand or by setting |
+| [1.3 Keep the always-loaded context small](#13-keep-the-always-loaded-context-small) | Prevent |
+| [1.4 Keep noisy output out of the context](#14-keep-noisy-output-out-of-the-context) | Prevent |
+| [1.5 Go back with `/rewind` when an attempt failed](#15-go-back-with-rewind-when-an-attempt-failed) | Remove a dead end |
+| [1.6 Compact when a long task must continue](#16-compact-when-a-long-task-must-continue) | Shrink, by hand or by setting |
 
 ## 1.1 Start a new conversation for each unrelated task
 
@@ -52,30 +50,79 @@ new conversation between unrelated tasks.
 
 ## 1.2 Send only what the task needs
 
-**What:** Give the assistant only the part of a log or a file that matters, and
-keep the rules file (for example `CLAUDE.md`) short.
+**What:** Name the file instead of making Claude search for it. Then choose what
+enters the context: the file with `@`, or only the lines you name.
 
 **Why:** Whatever you send stays in the context and goes out again with every
-request (see 1.1). The rules file rides along on every request too.
+request (see [1.1](#11-start-a-new-conversation-for-each-unrelated-task)).
 
 <img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. With a vague request, the context holds the rules file, your message, a search and six files, and it fills most of the frame. With a precise request that names one file, the context holds the rules file, your message and one file, so it stays small." src="../images/send-only-what-the-task-needs-dark.svg#gh-dark-mode-only">
 
+<img alt="Two rows. In the first row, you type @ and a file name. Claude Code adds the content of the file to the context, if it fits the limit. It makes no tool call, so a PreToolUse hook does not run. In the second row, you write the file name and the lines 40 to 80 without @. Claude calls the Read tool with a line range, and those lines enter the context. A hook can run on that tool call. The sizes are illustrative, not measured." src="../images/at-sign-versus-named-lines.svg#gh-light-mode-only">
+<img alt="Two rows. In the first row, you type @ and a file name. Claude Code adds the content of the file to the context, if it fits the limit. It makes no tool call, so a PreToolUse hook does not run. In the second row, you write the file name and the lines 40 to 80 without @. Claude calls the Read tool with a line range, and those lines enter the context. A hook can run on that tool call. The sizes are illustrative, not measured." src="../images/at-sign-versus-named-lines-dark.svg#gh-dark-mode-only">
+
+**How:** Choose by what you need. Write the path of the file, not "find the
+login code". Claude then doesn't need to search.
+
+| You need | You write | What enters the context |
+|---|---|---|
+| A file in full | `@src/login.ts` | The content of the file, if it fits 25,000 tokens, and the `CLAUDE.md` files of its folder and parent folders |
+| One part of a big file | `Read lines 40 to 80 of src/login.ts`, with no `@` | The lines that Claude reads with its Read tool |
+| The structure of a folder | `@src/components/` | A list of files, not their content |
+| A big log | No `@`. Ask Claude to read it, or to run a command that filters it (see [1.4](#14-keep-noisy-output-out-of-the-context)) | What the tool or the command returns |
+
+Don't put `@` before the file name when you name lines. `@` adds the content of
+the file, and the docs don't say that it keeps only the lines you name
+([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+Without `@`, Claude reads a large file in pages with `offset` and `limit`
+([Claude Code docs](https://code.claude.com/docs/en/tools-reference#read-tool-behavior)).
+
+**Where:**
+- Terminal and desktop app, Code tab: type `@` in the prompt box to open a menu
+  of paths. Accept the path with Enter or Tab
+  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+- VS Code and JetBrains extensions: select lines in the editor. The extension
+  shares the selection with Claude. The JetBrains shortcut inserts a reference
+  with the line range, for example `@src/auth.ts#L1-99`. The docs don't say if
+  only these lines or the whole file enter the context
+  ([JetBrains docs](https://code.claude.com/docs/en/jetbrains),
+  [VS Code docs](https://code.claude.com/docs/en/vs-code)).
+
+**Watch out:**
+- A text file larger than 256 KB isn't included. For a file over 25,000 tokens,
+  the docs don't say what `@` adds. Name the lines instead
+  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+- A `PreToolUse` hook does not run on an `@` reference, because Claude Code makes
+  no tool call. So a hook cannot filter a big log that you add with `@`.
+- To stop `@` from including content, set `CLAUDE_CODE_DISABLE_FILE_MENTIONS`
+  to `1`. Use your shell, or the `env` block of your user or managed settings.
+  This needs Claude Code 2.1.299 or later. Claude then gets only the path. Your
+  hooks run when it opens the file. This changes the table above: `@` no longer adds
+  content. A project or local settings file ignores this variable
+  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+- To block one path, add a `Read` deny rule. Claude Code makes a best-effort
+  attempt to apply it to `@` mentions too
+  ([Claude Code docs](https://code.claude.com/docs/en/permissions#read-and-edit)).
+
+## 1.3 Keep the always-loaded context small
+
+**What:** Keep the rules file short, and load the other instructions only when a
+task needs them.
+
+**Why:** Claude Code loads some content before your first prompt. This is the
+system prompt, your `CLAUDE.md` files, the auto memory, the skill descriptions
+and the MCP tool names. All of it goes out again with every request (see
+[1.1](#11-start-a-new-conversation-for-each-unrelated-task)). The body of a skill
+and a path-scoped rule load later, only when used
+([Claude Code docs](https://code.claude.com/docs/en/context-window#what-the-timeline-shows)).
+
+<img alt="A list of what Claude Code loads into the context before you type. The system prompt is the largest part and you cannot change it. The CLAUDE.md of the project, the auto memory, the skill descriptions, the CLAUDE.md in your ~/.claude folder and the MCP tool names load at start, and you can change them. The environment information is fixed. In the docs example, the total is 7,850 tokens. The body of a skill and path-scoped rules load later, only when used. The sizes are examples from the Claude Code docs, not measured here." src="../images/what-loads-before-the-first-prompt.svg#gh-light-mode-only">
+<img alt="A list of what Claude Code loads into the context before you type. The system prompt is the largest part and you cannot change it. The CLAUDE.md of the project, the auto memory, the skill descriptions, the CLAUDE.md in your ~/.claude folder and the MCP tool names load at start, and you can change them. The environment information is fixed. In the docs example, the total is 7,850 tokens. The body of a skill and path-scoped rules load later, only when used. The sizes are examples from the Claude Code docs, not measured here." src="../images/what-loads-before-the-first-prompt-dark.svg#gh-dark-mode-only">
+
 **How:**
-- Point to the file with `@`. Type `@login.ts` and accept the file in the menu,
-  instead of writing "find the login code". Claude then has the file and doesn't
-  need to search for it.
-- If only a part of a file matters, name the lines in your prompt, for example
-  "Read lines 40 to 80 of src/login.ts". Claude can read part of a file with an
-  `offset` and a `limit`
-  ([Claude Code docs](https://code.claude.com/docs/en/tools-reference#read-tool-behavior)).
-- Filter a log before Claude sees it. For example, run `tail -n 100 build.log`
-  or `grep ERROR build.log | head -50`, and give Claude the result. You can also
-  ask Claude to run the filtered command. A hook can trim the output of every
-  command for you
-  ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
-- Ask for short answers, for example "Be brief. Show only the code that
-  changes."
+- Run `/context` to see what loads in your session
+  ([Claude Code docs](https://code.claude.com/docs/en/context-window#check-your-own-session)).
 - Keep `CLAUDE.md` or `AGENTS.md` under 200 lines. [AGENTS.md](https://agents.md/)
   is a shared format for the rules file of coding assistants
   ([Claude Code docs](https://code.claude.com/docs/en/memory#write-effective-instructions)).
@@ -84,6 +131,11 @@ request (see 1.1). The rules file rides along on every request too.
   A skill is also a way to repeat a workflow: you write it once, and you can call
   it by name
   ([Claude Code docs](https://code.claude.com/docs/en/costs#move-instructions-from-claudemd-to-skills)).
+- Give Claude a map of the project in a skill, for example `codebase-overview`.
+  Write the key folders and the naming rules: "auth is in `src/auth/`, tests are
+  `*.spec.ts`". When Claude uses the skill, it has this context at once. It
+  doesn't need to read many files to learn the structure
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
 - Put the rules for one part of the project where they load only when needed.
   Use a `CLAUDE.md` or `AGENTS.md` in that folder, or a path-scoped rule (a rule
   file with `paths` in its header). Claude loads them when it reads or edits a
@@ -94,33 +146,30 @@ request (see 1.1). The rules file rides along on every request too.
   cost is small, but it isn't zero
   ([Claude Code docs](https://code.claude.com/docs/en/costs#reduce-mcp-server-overhead)).
 
-**Where:**
-- Terminal and desktop app, Code tab: type `@` in the prompt box to open a menu
-  of paths. The content of the file goes into the context, and so does the
-  `CLAUDE.md` of its folder
-  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
-  The terminal and the desktop app use the same `CLAUDE.md`
-  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
-- VS Code and JetBrains extensions: select lines in the editor. The extension
-  adds a reference with the line range, for example `@src/auth.ts#L1-99`
-  ([JetBrains docs](https://code.claude.com/docs/en/jetbrains),
-  [VS Code docs](https://code.claude.com/docs/en/vs-code)).
+**Where:** Terminal and desktop app, Code tab: both use the same `CLAUDE.md`
+([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
 **Watch out:**
-- `@` adds the whole file to the context, up to 25,000 tokens by default. To send
-  only some lines, select them in your IDE, or name the lines in your prompt
-  without `@`
-  ([Claude Code docs](https://code.claude.com/docs/en/common-workflows#reference-files-and-directories)).
+- The sizes in the picture are an example from the docs. They change with the
+  size of your `CLAUDE.md`, your MCP servers and your files. Your setup can add
+  more, for example an output style
+  ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-the-timeline-shows)).
+- The description of a skill loads at start. Only its body waits until the skill
+  is used. The text of a skill uses tokens when Claude loads it. Write only what is costly
+  for Claude to find alone. A long map can cost more than the reading it saves.
+- A skill doesn't make `@` cheaper. A large file that you add with `@` costs the
+  same tokens with or without the skill (see
+  [1.2](#12-send-only-what-the-task-needs)).
 - After a compaction, Claude loads a path-scoped rule or a `CLAUDE.md` of a
   folder again only when it touches a matching file. If a rule must always
   apply, keep it in the `CLAUDE.md` at the project root
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#what-survives-compaction)).
 
-## 1.3 Give noisy work to a subagent
+## 1.4 Keep noisy output out of the context
 
-**What:** A subagent is a helper agent with its own context. Hand it work that
-produces a lot of output, such as test runs, logs and searches. It sends back only
-a short result.
+**What:** Cut big tool output before it enters the context. Filter it with a
+hook, or hand the work to a subagent. A subagent is a helper agent with its own
+context. It sends back only a short result.
 
 **Why:** Test runs, logs and documentation searches fill the context fast. Run
 them in a subagent and they stay out of your main conversation ([Claude Code
@@ -129,17 +178,38 @@ docs](https://code.claude.com/docs/en/costs#delegate-verbose-operations-to-subag
 <img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out.svg#gh-light-mode-only">
 <img alt="Two bars for the main context and one for the subagent. Without a subagent, test logs fill the main context. With a subagent, the logs stay in the own context of the subagent, and only its short result goes back." src="../images/subagent-keeps-noise-out-dark.svg#gh-dark-mode-only">
 
-**How:** To write a subagent, see the
+**How:**
+- Use a hook when you know the command and its output. A `PreToolUse` hook on
+  `Bash` can rewrite the command, for example to `npm test 2>&1 | tail -n 100`.
+  Claude then sees only the last 100 lines. The hook runs before the tool. It
+  changes the command, so that the tool makes less output. That output is what
+  enters the context.
+
+  ```text
+  command  ->  [hook rewrites it]  ->  tool runs  ->  short output  ->  context
+  ```
+
+  The docs give a sample script for `npm test`, `pytest` and `go test`. To check
+  it, run `/hooks`
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
+- Use a subagent when the work needs judgment, such as a search in the code or in
+  the docs. To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). To run it on a
 smaller model or at a lower effort, see
 [3.4](lever-3-use-a-smaller-model.md#34-give-simple-subagent-tasks-to-haiku) and
 [4.4](lever-4-lower-the-effort.md#44-give-simple-subagent-tasks-a-low-effort).
 
-**Where:** In the desktop app, Code tab, the **Background tasks** pane shows the
-subagents that run. Open it from the **⋮** menu of the title bar
-([Claude Code docs](https://code.claude.com/docs/en/desktop)).
+**Where:**
+- Hook: add it to your `settings.json`
+  ([Claude Code docs](https://code.claude.com/docs/en/costs#offload-processing-to-hooks-and-skills)).
+- Subagent: in the desktop app, Code tab, the **Background tasks** pane shows the
+  subagents that run. Open it from the **⋮** menu of the title bar
+  ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 
 **Watch out:**
+- A hook doesn't run on an `@` reference (see
+  [1.2](#12-send-only-what-the-task-needs)). The sample in the docs covers `Bash`
+  commands only.
 - A subagent can't ask you questions. Claude Code removes the `AskUserQuestion`
   tool from every subagent. Permission prompts still reach you in the main
   session. Put everything the subagent needs in its task, or it has to guess
@@ -149,7 +219,7 @@ subagents that run. Open it from the **⋮** menu of the title bar
   by default
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#which-ttl-each-request-gets)).
 
-## 1.4 Go back with `/rewind` when an attempt failed
+## 1.5 Go back with `/rewind` when an attempt failed
 
 **What:** Take the conversation back to the message before a failed attempt. The
 attempt drops out of the context, and you choose whether the code changes stay or
@@ -174,7 +244,7 @@ docs](https://code.claude.com/docs/en/prompt-caching#rewinding-the-conversation)
 - Terminal and desktop app, Code tab: type `/rewind` in the prompt box. In the
   terminal, you can also press `Esc` twice when the prompt box is empty.
 
-## 1.5 Compact when a long task must continue
+## 1.6 Compact when a long task must continue
 
 **What:** `/compact` replaces the old conversation with a short summary. You can
 also choose when Claude Code compacts by itself.
@@ -205,7 +275,7 @@ full conversation.
   automatic pass guesses is important
   ([Claude Code docs](https://code.claude.com/docs/en/context-window#when-your-context-fills-up)).
 - When the next task is unrelated, use `/clear` (see 1.1). It costs nothing.
-- To drop one failed attempt and keep the rest, see 1.4.
+- To drop one failed attempt and keep the rest, see 1.5.
 - For the best moment to compact, see
   [2.2 Compact before a break longer than your cache time](lever-2-stay-in-the-cache-window.md#22-compact-before-a-break-longer-than-your-cache-time).
 - Claude Code also compacts by itself when the context is full enough. The window

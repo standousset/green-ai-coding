@@ -201,7 +201,7 @@ settings. If `/effort` seems to do nothing, check that this variable isn't set
 ## 4.4 Give simple subagent tasks a low effort
 
 **What:** In the file of a subagent (see
-[1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent)) that
+[1.4](lever-1-keep-the-context-short.md#14-keep-noisy-output-out-of-the-context)) that
 does simple work, such as running tests or a search, set `effort: low`.
 
 **Why:** A subagent that has no `effort` runs at the level of your session. If
@@ -227,7 +227,7 @@ effort: low
 The options are `low`, `medium`, `high`, `xhigh` and `max`. The levels that you can
 use depend on the model. To write a subagent, see the
 [Claude Code docs](https://code.claude.com/docs/en/sub-agents). For the reason to
-use a subagent, see [1.3](lever-1-keep-the-context-short.md#13-give-noisy-work-to-a-subagent).
+use a subagent, see [1.4](lever-1-keep-the-context-short.md#14-keep-noisy-output-out-of-the-context).
 
 **Watch out:** `CLAUDE_CODE_EFFORT_LEVEL` also beats the `effort` field of a
 subagent (see 4.3).
