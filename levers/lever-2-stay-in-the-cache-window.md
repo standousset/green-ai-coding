@@ -74,7 +74,7 @@ docs](https://code.claude.com/docs/en/prompt-caching#cache-lifetime)).
 - Terminal: `/usage` shows a **Prompt cache** line with the hit ratio and whether
   the cache is warm. It needs Claude Code 2.1.251 or later
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#check-cache-performance)).
-- Desktop app, Code tab: the cache docs don't describe the desktop app. It runs
+- Desktop app (Code tab): the cache docs don't describe the desktop app. It runs
   Claude Code, so the table should apply there too.
 
 ## 2.2 Compact before a break longer than your cache time
@@ -99,7 +99,7 @@ part that is already in the cache (see
 [1.5](lever-1-keep-the-context-short.md#15-go-back-with-rewind-when-an-attempt-failed)).
 
 **Where:**
-- Terminal and desktop app, Code tab: type `/compact` in the prompt box
+- Terminal and Desktop app (Code tab): type `/compact` in the prompt box
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)).
 - Terminal: on the 1-hour cache, Claude Code also compacts an idle conversation
   of 200K tokens or more. It does this about an hour after your last request,
@@ -146,10 +146,10 @@ time avoids that.
   example `~/.claude/settings.json`.
 - Terminal, one session: start Claude Code with the variable, for example
   `CLAUDE_CODE_PROMPT_CACHE_TTL=1h claude`.
-- Desktop app, Code tab, every local session: add the variable to the `env` key of
+- Desktop app (Code tab), every local session: add the variable to the `env` key of
   `~/.claude/settings.json`, for example
   `"env": {"CLAUDE_CODE_PROMPT_CACHE_TTL": "1h"}`.
-- Desktop app, Code tab, one session: add the variable to a saved local
+- Desktop app (Code tab), one session: add the variable to a saved local
   environment, then start the session from that environment. Only sessions that
   you start from it get the variable
   ([Claude Code docs](https://code.claude.com/docs/en/desktop#set-environment-variables-for-local-sessions)).
@@ -174,7 +174,7 @@ reads the whole conversation with no cache, even if the content is the same
   warm. After the cache expired, it switches without a question (Claude Code
   2.1.238 or later)
   ([Claude Code docs](https://code.claude.com/docs/en/prompt-caching#switching-models)).
-- Desktop app, Code tab: choose the model with the model picker under the prompt
+- Desktop app (Code tab): choose the model with the model picker under the prompt
   box. You can change it during the session
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The cache docs
   don't describe the desktop app. Each model has its own cache, so a switch
@@ -236,7 +236,7 @@ changes can make the next request read the whole conversation again.
   your user settings file for fast mode. `/usage` shows the cache hit ratio (see
   2.1).
 - VS Code extension: the **Toggle fast mode** command.
-- Desktop app, Code tab: Cmd+Shift+E opens the effort menu
+- Desktop app (Code tab): Cmd+Shift+E opens the effort menu
   ([Claude Code docs](https://code.claude.com/docs/en/desktop)). The cache docs
   don't describe the desktop app. The fast mode docs name only the terminal and
   the VS Code extension. If `/fast` appears in the `/` menu of the prompt box, the
