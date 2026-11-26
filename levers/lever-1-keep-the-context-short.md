@@ -37,6 +37,19 @@ Old, unrelated context makes every message cost more.
 **How:** Use `/context` to see what fills the context. Use `/clear` to start a
 new conversation between unrelated tasks.
 
+**Related tasks:** The choice is not only about relatedness. A related task can
+still need a new conversation, depending on the size of the context and the
+cache:
+- **Keep the conversation** when the next task needs the context and the context
+  is small. The old context is in the cache, and a cache read costs 0.1 times the
+  input price on most models (0.05 times on Opus 5.5 and Sonnet 5.5). Check that
+  the cache is still warm first ([2.1](lever-2-stay-in-the-cache-window.md#21-check-how-long-your-cache-lasts)).
+- **Clear the conversation** when the first task filled a lot of context. Every
+  request still reads all of that context, even from the cache. The handoff note
+  also costs something: writing it into a new cache costs 1.25 times the input
+  price. Compare the two costs before you decide.
+
+
 **Where:**
 - Terminal and Desktop app (Code tab): `/context` shows what fills the context,
   and `/clear` starts a new conversation. In the desktop app, type `/` in the

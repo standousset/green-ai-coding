@@ -29,6 +29,9 @@ docs](https://platform.openai.com/docs/guides/prompt-caching)).
 <img alt="Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again." src="../images/cache-reuses-the-start.svg#gh-light-mode-only">
 <img alt="Two horizontal bars. In a normal turn, the system prompt, the rules file and the earlier messages are read from the cache, and only your new message and the new reply are processed. After a change at the start, for example a new model, the whole conversation is processed again." src="../images/cache-reuses-the-start-dark.svg#gh-dark-mode-only">
 
+For the choice between keeping a conversation and starting a new one for a related
+task, see [1.1 Start a new conversation for each unrelated task](lever-1-keep-the-context-short.md#11-start-a-new-conversation-for-each-unrelated-task).
+
 | Item | Role |
 |---|---|
 | [2.1 Check how long your cache lasts](#21-check-how-long-your-cache-lasts) | Learn your cache time |
